@@ -1,0 +1,37 @@
+The AppServiceProvider does not have access to your auth() facade, in order words, 
+it cannot check if you're authenticated or not because it is a service provider, 
+kinda far above all middlewares
+your auth()->check() is a product of a middleware, hence they cannot talk to each other
+
+
+View::share is used to share data from the database that is not tied to the aforementioned
+ auth()->check()
+meaning you can call anything in your db,
+ but you can't run a auth()->user() or any auth related directly from your 
+AppServiceProvider
+
+However, we can call the auth()->check() from the View::composer(), its function is to compose a view before its rendered,
+hence it can do all that the view::share() can do and even access the auth() facade
+
+So as not to select all components and every view file in your views directory, its advisable that when you use the 
+View::composer(), you do so with namespace, eg. 
+instead of doing the following in your AppServiceProvider
+
+        View::composer(*, function($view){
+            $authUser = auth()->user(); 
+            return $view->with(compact('authUser'));
+        });
+
+
+do : 
+        View::composer(['admin.*', 'auth.*'], function($view){
+            $authUser = auth()->user();
+            return $view->with(compact('authUser'));
+        });
+
+
+
+ // create a new empty profile using for this user (code is from a Registered Event 'Listener class')
+            $event->user->profile()->create();
+            // or 
+            // $event->user->profile()->save(new Profile()); //passing an obj to the save()

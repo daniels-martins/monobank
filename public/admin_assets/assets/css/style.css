@@ -1,0 +1,75 @@
+/*================================================================================
+	Item Name: Modern Admin - Clean Bootstrap 4 Dashboard HTML Template
+	Author: Martins
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+/* body { */
+	/* background-color: rgba(127, 255, 212, 0.149) !important; */
+	/* background-color: rgba(20, 9, 9, 0.459) !important; */
+	/* background-color: gold !important; */
+	/* background-color: goldenrod !important; */
+	/* background-color: rgba(128, 128, 128, 0.561) !important; */
+/* } */
+
+
+.text-gray-500 {
+	color: rgb(238, 231, 231);
+}
+
+.profile_summary {
+	background-color: rgba(6, 6, 7, 0.685);
+}
+
+.error {
+	color: rgba(255, 42, 0, 0.679);
+	font-weight: 300;
+}
+
+.center_div {
+	margin: 0 auto;
+}
+
+
+.alert-container {
+	position: relative;
+  }
+  
+  .floating-alert {
+	position: absolute;
+	top: 50;
+	left: 80vw;
+	z-index: 2000;
+	/* transition: all 5.8s; */
+  
+  }
+  
+  .toast-alert-warning {
+	/* background: #ffc107;
+	border-color: #edb100; */
+	/* color: #fff; */
+	background: #ffc107cb;
+	border-color: #edb100;
+  }
+  
+  .toast-alert-success {
+	color: #fff;
+	background-color: #6cc982;
+	border-color: #c3e6cb;
+  }
+
+  .toast-alert-danger {
+	color: #fff;
+	background-color: #fc0022b3;
+	border-color: #fc0021;
+  }
+
+  body, div, p, span, .form-control, *, .card*, .row*{
+	font-family: sans-serif !important;
+  }

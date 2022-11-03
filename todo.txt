@@ -1,0 +1,82 @@
+accountType table
+id
+name (in us eg. savings, checking; in ng, savings, current, loan, joint)
+
+AccountModeOfOperation table (futures??)
+(eg. self only, self or survivor, former or survivor, anyone or survivor, joint)
+
+
+aza table
+
+foreign keys:
+accountType_id
+account_mode_id
+
+fname
+lname
+add
+dob
+phone
+email
+gender
+marital_status
+
+//unnecessary
+kyc table (futures)
+annual_income
+income_tax_num
+passport_num
+pan_num
+nat_id_num
+proof_of_address_id
+
+
+proof_of_address table(futures)
+id
+id_name(Electricity Bill,  IT Return,  Telephone Bill,  Bank A/c Statement)
+
+proof_of_id_table(futures)
+id
+id_name(nat_id_num, passport_num, pan_card, drivers_license)
+
+
+Next of kin (nominee) table
+name
+relationship
+addre
+phone
+
+
+card table
+    card_no
+    card_kind_id
+    card_type_id
+    card_group_id
+
+
+card_kind table
+(eg. virtual, physical)
+    name
+
+card_type table
+(debit or credit)
+
+card_group table
+(verve, visa, mastercard)
+
+
+vscode extensions
+auto rename tag
+laravel blade snippets
+js es6 code snippets
+lara blade spacer
+lara extra intellisence
+lara goto view
+live server
+live share
+live share audio
+php intelephense
+php namespace resolver
+rainbow brackets
+rainbow tags
+lara goto

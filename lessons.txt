@@ -1,0 +1,9 @@
+Facades vs Illuminate/library/resource
+e.g Request facades vs Illuminate/Http/Request
+
+You cannot create an instance of a facade, 
+Facades are there only for you to use as a portal to access all the properties 
+of a resource eg. (Request)
+so Request::all() from a facade will work
+whereas doing this from a Illuminate\Http\Request would return false 
+because all() is not a static method.
