@@ -32,15 +32,17 @@ class GenerateSavingsAzaForNewUser
      */
     public function handle(Registered $event)
     {
-        // create a new empty profile using for this user
-        /**
-         * We will just create an empty profile for this user
-         * later he will fill out the rest from his profile page
-         * 
-         */
+       /**
+        * We will just create an empty profile for this user
+        * later he will fill out the rest from his profile page
+        * 
+        */
+        $event->user->profile()->create([]);
+        
+        
+        // create a new empty aza for this user with a default as savings
         $req = new Request();
-        $req->azatype = 'savings';
-
+        $req['azatype'] = 'savings';
         (new AzaController())->store($req);
     }
 }

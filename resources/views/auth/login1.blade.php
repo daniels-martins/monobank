@@ -101,7 +101,7 @@
               <button type="submit" class="btn btn-outline-info btn-block"><i class="ft-unlock"></i> Login</button>
             </form>
           </div>
-          <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span> New to MonoBank ?</span></p>
+          <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span> New to Bluebird ?</span></p>
           <div class="card-body">
             <a href="{{ route('register') }}" class="btn btn-outline-danger btn-block"><i class="la la-user"></i>
               Register</a>

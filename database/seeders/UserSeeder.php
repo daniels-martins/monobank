@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         // create and link a profile to authUser
         $user_profile_link_created = $new_user->profile()->create([
             'fname' =>  $new_user->name,
-            'user_email' =>  $new_user->email
+            // 'user_email' =>  $new_user->email
         ]);
 
         //  link a user to aza

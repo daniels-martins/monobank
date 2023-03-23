@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AzaController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,9 @@ Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware([
 
 // 
 
-Route::get('/profile', [AzaController::class, 'profile'])->middleware(['auth'])->name('profile');
+Route::get('/profile/index', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile.index');
 
-Route::post('/profile', [AzaController::class, 'profile_store'])->middleware(['auth'])->name('profile.store');
+Route::patch('/profile/{id}', [ProfileController::class, 'update'])->middleware(['auth'])->name('profile.update');
 
 
 // Route::get('/accounts', [AzaController::class, 'index'])->middleware(['auth'])->name('accounts.index');

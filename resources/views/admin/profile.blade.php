@@ -39,7 +39,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-        <h3 class="content-header-title">New Account</h3>
+        <h3 class="content-header-title">Update Profile Information</h3>
         <div class="row breadcrumbs-top">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
@@ -47,7 +47,7 @@
               </li>
               <li class="breadcrumb-item"><a href="#">Accounts</a>
               </li>
-              <li class="breadcrumb-item active">Add New Account
+              <li class="breadcrumb-item active">Update Profile
               </li>
             </ol>
           </div>
@@ -72,14 +72,14 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">
-                  Add New Account
+                  Update Profile
                 </h4>
               </div>
               <div class="card-content collapse show">
                 <div class="card-body">
-                  <form action="{{ route('profile.store') }}" method="post" 
+                  <form action="{{ route('profile.update', auth()->user()->profile->id) }}" method="post" 
                   class="steps-validation wizard-notification wizard-info" novalidate>
-                  @csrf
+                  @csrf @method('patch')
 
                     <!----   Step 1 ------>
                     <h6>
@@ -95,6 +95,7 @@
                                 *
                               </span>
                             </label>
+                            {{-- {{ dd($authUser->profile) }} --}}
                             <input class="form-control" value="{{ $authUser->profile->fname ?? old('fname') }}" id="fname" placeholder="First Name" type="text" name="fname">
                           </div>
                         </div>
@@ -153,7 +154,7 @@
                               </span>
                             </label>
                             <input class="form-control" id="user_email" placeholder="E-mail ID" type="email" name="user_email"
-                            value="{{ $authUser->profile->email  ??  $authUser->email ??  old('user_email') }}" >
+                            value="{{ $authUser->email  ??  $authUser->email ??  old('user_email') }}" >
                           </div>
                         </div>
                       </div>

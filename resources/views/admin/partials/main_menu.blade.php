@@ -27,7 +27,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown nav-item" data-menu="dropdown">
+                {{-- <li class="dropdown nav-item" data-menu="dropdown">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="la la-dollar"></i><span
                             data-i18n="Payments">Payments</span></a>
                     <ul class="dropdown-menu">
@@ -38,14 +38,13 @@
                                     data-i18n="Add New">Add New</span></a>
                         </li>
                     </ul>
+                </li> --}}
+                <li class="dropdown nav-item" data-menu="dropdown">
+                  <a class="dropdown-toggle nav-link" href="{{ route('transactions.index') }}">Transactions</a>
                 </li>
-                <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#"
-                        data-toggle="dropdown"><i class="la la-money"></i><span data-i18n="Loan">Transactions</span></a>
-                    <ul class="dropdown-menu">
-                        <li data-menu=""><a class="dropdown-item" href="{{ route('transactions.index') }}" data-toggle=""><span
-                                    data-i18n="All Loan">All Transactions</span></a>
-                        </li>
-                    </ul>
+
+                <li class="dropdown nav-item" data-menu="dropdown">
+                  <a class="dropdown-toggle nav-link" href="{{ route('profile.index') }}">Profile</a>
                 </li>
 
             </ul>

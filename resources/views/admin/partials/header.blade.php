@@ -6,9 +6,10 @@
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
-                <li class="nav-item"><a class="navbar-brand" href="index.html"><img class="brand-logo"
-                            alt="modern admin logo" src="/admin_assets/app-assets/images/logo/logo.png">
-                        <h3 class="brand-text">MonoBank</h3>
+                <li class="nav-item">
+                  <a class="navbar-brand" href="index.html">
+                     <x-application-logo />
+
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                         data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>
@@ -243,7 +244,7 @@
                                     src="/admin_assets/app-assets/images/portrait/small/avatar-s-19.png"
                                     alt="avatar"><i></i></span></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route('profile') }}"><i class="ft-user"></i> Edit Profile</a>
+                            <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="ft-user"></i> Edit Profile</a>
                             {{-- <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
                             <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
                             <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a> --}}
