@@ -14,7 +14,7 @@ class ProfileController extends Controller
    public function index()
    {
       // dd('ddl');
-      return view('admin.profile');
+      // return view('admin.profile');
    }
 
    /**
@@ -55,9 +55,10 @@ class ProfileController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-   public function edit($id)
+   public function edit()
    {
-      //
+
+      return view('admin.profile.edit');
    }
 
    /**
@@ -72,12 +73,15 @@ class ProfileController extends Controller
       // return 'update this user profile';
       // foreach ($request->all() as $key => $val) {
       // }
-      $userFormData = $request->except('_token', '_method');
-         dd($userFormData);
+      $userFormData = $request->except('_token', '_method', 'email');
+      // dd($userFormData);
       // update the user profile using fresh data
-      if (is_null(auth()->user()->profile()))
-         dd(auth()->user());
-      auth()->user()->profile()->create([]);
+      // if (is_null(auth()->user()->profile()))
+      //    auth()->user()->profile()->create([]);
+      // dd(auth()->user());
+      auth()->user()->profile->nok_name = $userFormData['nok_name'];
+      auth()->user()->profile->save();
+      // dd(auth()->user()->profile->nok_name);
       if (auth()->user()->profile()->update($userFormData))
          return back()->with('success', 'Profile updated');
       return back()->with('error', 'Profile update failed');

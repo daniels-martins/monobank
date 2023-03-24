@@ -42,7 +42,9 @@ Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware([
 
 // 
 
-Route::get('/profile/index', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile.index');
+Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile.index');
+
+Route::get('/profile/edit/', [ProfileController::class, 'edit'])->middleware(['auth'])->name('profile.edit');
 
 Route::patch('/profile/{id}', [ProfileController::class, 'update'])->middleware(['auth'])->name('profile.update');
 
@@ -73,19 +75,25 @@ Route::patch('/profile/{id}', [ProfileController::class, 'update'])->middleware(
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::resources([
-        // 'plural form of resouce' => ControllerForResource
-        'payments' => PaymentController::class,
-        'accounts' => AzaController::class,
+Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
+   Route::resources([
+      // 'plural form of resouce' => ControllerForResource
+      'payments' => PaymentController::class,
+      'accounts' => AzaController::class,
 
-    ]);
+   ]);
 });
 
 Route::get('/transactions', function () {
-    return view('admin.transactions');
+   return view('admin.transactions');
 })->middleware(['auth'])->name('transactions.index');
 
+// Route::get('/transactions/create', function () {
 
+//    return view('admin.payments.create');
+
+
+
+// })->middleware(['auth'])->name('transactions.create');
 
 require __DIR__ . '/auth.php';

@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('webdev587'),
         ]);
 
-        // create and link a profile to authUser
+        // create and link a new profile to authUser
         $user_profile_link_created = $new_user->profile()->create([
             'fname' =>  $new_user->name,
             // 'user_email' =>  $new_user->email

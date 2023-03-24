@@ -56,11 +56,11 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title float-left">Completed Transactions</h4>
+                <h4 class="card-title float-left">My Cards</h4>
                 <div class="float-right">
-                  <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
+                  {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
                     <i class="ft-plus white"></i>
-                    Add New Card</a>
+                    Add New Card</a> --}}
                   <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -230,7 +230,9 @@
 <!-- BEGIN: Page Vendor JS-->
 <script src="/admin_assets/app-assets/vendors/js/ui/jquery.sticky.js"></script>
 <script src="/admin_assets/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
-<script src="/admin_assets/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+
+{{-- this is the source of the data tables both html and js --}}
+{{-- <script src="/admin_assets/app-assets/vendors/js/tables/datatable/datatables.min.js"></script> --}}
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
