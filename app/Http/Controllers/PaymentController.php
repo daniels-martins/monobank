@@ -42,25 +42,21 @@ class PaymentController extends Controller
     */
    public function store(Request $request)
    {
-      // dd($request->all());
       // first of all, make sure that the uid is unique
-      $request['uid'] = uniqid('093');
-      // $request->validate(); //normal validation goes here
+      $request['uid'] = $this->makeUniqueUid();
 
-      $validator = Validator::make(
-         $request->all(),
-         ['uid' => 'unique:payments,uid']
-      );
+      $request->validate([
+         // source_bank is not sent in request cause it's supposed to be from our bank app
+         'source_aza' => 'required|min:5', //bluebird aza
+         'destination_aza' => 'required|min:5', //bank aza num
+         'destination_bank' => 'required|min:5', //bank name
+         'beneficiary' => 'required|min:5',
+         
+         'amount' => 'required'
+         
+      ]);
 
-      if ($validator->fails()) {
-         // regenerate uniqid
-         $request['uid'] = uniqid('093');
-         // reload the backend route with the modified $request
-         return redirect()->route('payments.store', $request);
-      } else   $uid =  $request['uid']; // we go ahead and use the uniqid
-
-      // The default payment method for this route is Debit
-      // You can't make a payment and be credited
+      // The default payment method for this route is Debit cos You can't make a payment and be credited.
       $payment_type = 'DR'; //debit or credit
 
       // Payment Medium
@@ -75,46 +71,24 @@ class PaymentController extends Controller
 
 
 
-      // Since its done online via bank app,
+      // Because it's done online via bank app,
       $payment_medium = 'online_transfer';
 
       // each payment medium has their message generated randomly from a set of rules
       // eg. the date, location and atm machine changes per every atm transaction.
 
 
-      // get the sender account info used in trx
-      $senderAza = Aza::where('num', $request->source_aza)->first();
+      // get the sender account info used in trx and save to $request
+      $request['senderAza'] = Aza::where('num', $request->source_aza)->first(); //sender aza model
+      $request['sender']  = $request->senderAza->getOwner(); // get the sender name
 
-      // get the sender name
-      $sender = $senderAza->getOwner();
+      //learn how to implement exceptions so that here you'll throw an InsufficientBalance Exception
+      // if (intval($request->senderAza->balance) < intval($request->amount)) return back()->withInput($request->all())->with('danger', 'Insufficient Funds');
 
-
-
-
-      $time_info = date('Hisu');
-
-      // build the trx_uid
-      $trx_uid = $this->buildTrxUId();
-      dd('herego');
-      //learn how to implement exceptions here
-      // here you'll throw an InsufficientBalance Exception
-      if (intval($senderAza->balance) < intval($request->amount))
-         return back()->with('danger', 'Insufficient Funds');
-
-      // dump all extra trx data into a native php object
-      $newTrx = new stdClass();
-
-      $newTrx->sender = $sender;
-      $newTrx->payment_type = $payment_type;
-      $newTrx->payment_medium = $payment_medium;
-      $newTrx->trx_uid = $trx_uid;
-      $newTrx->time_info = $time_info;
-      $newTrx->senderAzaBalance = $senderAza->balance;
-
+      $request['payment_type'] = $payment_type;
+      $request['payment_medium'] = $payment_medium;
       // create new payment
-      $newPayment = $this->createNewPayment($request, $newTrx);
-
-
+      $newPayment = $this->createNewPayment($request);
 
       // Notifications Fmt
       /** 
@@ -129,15 +103,15 @@ class PaymentController extends Controller
        */
       if ($newPayment) {
 
-         $senderAza->refresh(); //to make sure we get the updated account balance
+         $request->senderAza->refresh(); //to make sure we get the updated account balance
 
          // perform the debit transaction after creating the trx not before 
-         // then save evidence to both the sender aza and the trx
+         // then save evidence to both the sender aza and the trx ledger
 
-         $senderBalanceAfterTrx = $senderAza->balance = $senderAza->balance - $request->amount;
-         $senderAza->save();
+         $senderBalanceAfterTrx = $request->senderAza->balance = $request->senderAza->balance - $request->amount;
+         $request->senderAza->save();
 
-         $newPayment->final_balance =  $senderBalanceAfterTrx;
+         // $newPayment->final_balance =  $senderBalanceAfterTrx;
          $newPayment->save();
 
          // ==================================================
@@ -146,12 +120,12 @@ class PaymentController extends Controller
          #code
 
          $desc = "$request->remarks | $payment_medium __ 
-            FROM $sender TO $request->beneficiary ";
+            FROM $request->sender TO $request->beneficiary ";
 
          $smsComposer  = 'Acct: ' . $request->source_aza . '\n';
          $smsComposer .= 'Amt: ' . $request->$request->amount . '\n';
          $smsComposer .= "Desc: $desc" . '\n';
-         $smsComposer .= 'Avail Bal: ' . $senderAza->balance . '\n';
+         $smsComposer .= 'Avail Bal: ' . $request->senderAza->balance . '\n';
          $smsComposer .= 'Date: ' . $newPayment->created_at . '\n';
 
          // save sms alert content to db
@@ -217,27 +191,14 @@ class PaymentController extends Controller
 
    // ===================================Helpers
 
-   public function buildTrxUId()
-   {
 
-      $unique_trx_id_prefix = 'TRX'; //default prefix
-
-      // unique Bank Code, specific to MonoBank
-      $MonoBankTrxPrefix = '093';
-
-      // date identifying code
-      $date_info = date('dmYHisu');
-      // final trx id
-      return $trx_uid = $unique_trx_id_prefix . $MonoBankTrxPrefix . $date_info;
-   }
-
-   public  function createNewPayment(Request $request, stdClass $newTrx)
+   public  function createNewPayment(Request $request)
    {
       return $newPayment = Payment::create([
          // sender information
          'sender_acc' => $request->source_aza,
          'sender_bank' =>  'MonoBank',
-         'sender' =>  $newTrx->sender,
+         'sender' =>  $request->sender,
 
 
          // receiver info
@@ -246,18 +207,26 @@ class PaymentController extends Controller
          'receiver' => $request->beneficiary,
 
          // transaction info
-         'type' => $newTrx->payment_type,
-         'medium' => $newTrx->payment_medium,
+         'type' => $request->payment_type,
+         'medium' => $request->payment_medium,
          'amount' => $request->amount,
          'remarks' => $request->remarks,
-         'init_balance' => $newTrx->ssenderAzaBalance,
+         // 'init_balance' => $request->senderAza->balance,
 
          // tracking info
          // 'session_id' => $request->_token,
-         // 'trx_session_id' => $request->_token . $newTrx->time_info,
          'uid' => $request['uid'],
-         'trx_uid' => $newTrx->trx_uid,
 
       ]);
+   }
+
+   /**
+    * Generates a unique uid for this new payment with the unique constraint on the payments table    
+    */
+   public function makeUniqueUid()
+   {
+      $genUid = uniqid('093');
+      while (Payment::where('uid', $genUid)->first()) $genUid = uniqid('093'); // check for duplicates
+      return $genUid;
    }
 }

@@ -16,16 +16,19 @@ return new class extends Migration
     {
         Schema::create('trx', function (Blueprint $table) {
             $table->id();
+            // sender info
             $table->string('sender_bank');
             $table->string('sender_acc');
+            // receiver info
             $table->string('receiver_bank');
             $table->string('receiver_acc');
-            $table->string('amount');
+            // trx info
+            $table->float('amount', 12);
             $table->enum('type', ['credit', 'debit']);//(deposit, withdraw)
-
             $table->string('method'); //online, cash, cheque
 
             // foreign keys
+            // the user_id belongs to the bluebird sender; payments are made by users of the app,but not all receivers are banking with us
             $table->foreignIdFor(User::class);
             
             $table->timestamps();

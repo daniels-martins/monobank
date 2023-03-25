@@ -2,19 +2,25 @@
 <html class="wide wow-animation" lang="en">
 
 <head>
-    <title>Home</title>
+    <title>Bluebird Mortgage Bank | Home</title>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport"
         content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <script src="http://livedemo00.template-help.com/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
-    <link rel="icon" href="http://livedemo00.template-help.com/wt_prod-20296/images/favicon.ico"
+    <link rel="icon" href="/static_assets/img/blue-bird-logo-1.svg"
         type="image/x-icon" />
     <link rel="stylesheet" type="text/css"
         href="http://fonts.googleapis.com/css?family=Lato:400,700%7CRaleway:300,300i,400,400i,700,900%7CPlayfair+Display:700italic,900" />
     <link rel="stylesheet" href="http://livedemo00.template-help.com/wt_prod-20296/css/bootstrap.css" />
     <link rel="stylesheet" href="http://livedemo00.template-help.com/wt_prod-20296/css/style.css" />
+
+    <style>
+      a{
+         cursor: pointer;
+      }
+    </style>
     <!--[if lt IE 10]>
       <div
         style="
@@ -44,8 +50,8 @@
     <div class="page-loader">
         <div>
             <a class="brand brand-md" href="/">
-                <img src="http://livedemo00.template-help.com/wt_prod-20296/images/logo-inverse-160x52.png"
-                    alt="" width="160" height="52" /></a>
+                <img src="/static_assets/img/blue-bird-logo-1.svg"   alt="" width="200" height="52" />
+                  </a>
             <div class="page-loader-body">
                 <div class="cssload-container">
                     <div class="cssload-whirlpool"></div>
@@ -68,22 +74,23 @@
                             <button class="rd-navbar-toggle" data-custom-toggle=".rd-navbar-nav-wrap"
                                 data-custom-toggle-disable-on-blur="true">
                                 <span></span></button><a class="rd-navbar-brand brand"
-                                href="http://livedemo00.template-help.com/wt_prod-20296/index.html"><img
-                                    src="http://livedemo00.template-help.com/wt_prod-20296/images/logo-default-160x52.png"
-                                    alt="" width="160" height="52" /></a>
+                                href="http://livedemo00.template-help.com/wt_prod-20296/index.html">
+                                <img  
+                                src="/static_assets/img/blue-bird-logo-1.svg"
+                                    alt="" width="80" height="15" /></a>
                         </div>
                         <div class="rd-navbar-nav-wrap">
                             <div class="rd-navbar-nav-inner">
                                 <!-- RD Navbar Nav-->
                                 <ul class="rd-navbar-nav">
                                     <li class="rd-nav-item active">
-                                        <a class="rd-nav-link" href="index.html#home">Home</a>
+                                        <a class="rd-nav-link" href="#">Home</a>
                                     </li>
                                     <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="index.html#about">About</a>
+                                        <a class="rd-nav-link" href="#about">About</a>
                                     </li>
                                     <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="index.html#services">Services</a>
+                                        <a class="rd-nav-link" href="#services">Services</a>
                                     </li>
                                     @auth
                                     <li class="rd-nav-item">
@@ -175,11 +182,11 @@
                                     </h2>
                                     <p class="slider-text" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="300">
-                                        Providing low-rate mortgage loans since 2001.
+                                        Providing low-rate mortgage loans since 2000.
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
-                                        <a class="button button-link button-link-white" href="index.html#"
+                                        <a class="button button-link button-link-white" 
                                             data-toggle="modal" data-target="#exampleModal">Get a Quote</a>
                                     </div>
                                 </div>
@@ -204,7 +211,7 @@
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
-                                        <a class="button button-link button-link-white" href="index.html#"
+                                        <a class="button button-link button-link-white" 
                                             data-toggle="modal" data-target="#exampleModal">Get a Quote</a>
                                     </div>
                                 </div>
@@ -228,7 +235,7 @@
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
-                                        <a class="button button-link button-link-white" href="index.html#"
+                                        <a class="button button-link button-link-white" 
                                             data-toggle="modal" data-target="#exampleModal">Get a Quote</a>
                                     </div>
                                 </div>
@@ -298,8 +305,7 @@
                             <tr>
                                 <th></th>
                                 <th>
-                                    <img src="http://livedemo00.template-help.com/wt_prod-20296/images/logo-inverse-160x52.png"
-                                        alt="" width="160" height="52" />
+                                    <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="160" height="52" />
                                 </th>
                             </tr>
                             <tr>
@@ -389,7 +395,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a href="index.html#">Quick and Easy</a></h5>
+                                    <h5><a >Quick and Easy</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -423,7 +429,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a href="index.html#">No Penalties</a></h5>
+                                    <h5><a >No Penalties</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -468,7 +474,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a href="index.html#">Lower Rates</a></h5>
+                                    <h5><a >Lower Rates</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -555,7 +561,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a href="index.html#">Secure Process</a></h5>
+                                    <h5><a >Secure Process</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -581,7 +587,7 @@
                         </p>
                     </div>
                     <div class="col-lg-4 col-xl-4 text-lg-right">
-                        <a class="button button-xl button-white-outline" href="index.html#" data-toggle="modal"
+                        <a class="button button-xl button-white-outline"  data-toggle="modal"
                             data-target="#exampleModal">Send us a letter</a>
                     </div>
                 </div>
@@ -646,7 +652,7 @@
                         </h3>
                     </div>
                     <div class="col-lg-4 col-xl-3">
-                        <a class="button button-xl button-white-outline" href="index.html#" data-toggle="modal"
+                        <a class="button button-xl button-white-outline"  data-toggle="modal"
                             data-target="#exampleModal">Get a Quote</a>
                     </div>
                 </div>
@@ -668,12 +674,12 @@
                             requirements.
                         </p>
                         <p class="text-spacing-50 text-gray">
-                            Capital is not tied to any specific lender, which means we can
+                            Bluebird is not tied to any specific lender, which means we can
                             establish and recommend the best mortgage product. Our aim is to
                             provide you with tailored and honest advice to help guide you
                             through difficult decisions.
                         </p>
-                        <a class="button button-primary button-width" href="index.html#">read more</a>
+                        <a class="button button-primary button-width" >read more</a>
                     </div>
                     <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
                         <img class="img-responsive center-block"
@@ -745,24 +751,24 @@
                         <div class="section-dividers-white">
                             <div class="row row-30">
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" href="index.html#"><img
+                                    <a class="thumbnail-grayscale" ><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-3.png"
                                             alt="" /></a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" href="index.html#"><img
+                                    <a class="thumbnail-grayscale" ><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-4.png"
                                             alt="" /></a>
                                 </div>
                             </div>
                             <div class="row row-30 row-offset-5">
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" href="index.html#"><img
+                                    <a class="thumbnail-grayscale" ><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-7.png"
                                             alt="" /></a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" href="index.html#"><img
+                                    <a class="thumbnail-grayscale" ><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-8.png"
                                             alt="" /></a>
                                 </div>
@@ -790,18 +796,18 @@
                     <div class="col-sm-6 col-lg-3">
                         <h6 class="page-footer-title">Products</h6>
                         <ul class="list">
-                            <li><a href="index.html#">Credit Cards</a></li>
-                            <li><a href="index.html#">Student Loans</a></li>
-                            <li><a href="index.html#">Mortgages</a></li>
-                            <li><a href="index.html#">Personal Loans</a></li>
+                            <li><a >Credit Cards</a></li>
+                            <li><a >Student Loans</a></li>
+                            <li><a >Mortgages</a></li>
+                            <li><a >Personal Loans</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <h6 class="page-footer-title">About us</h6>
                         <ul class="list">
-                            <li><a href="index.html#">Social Media</a></li>
-                            <li><a href="index.html#">Testimonials</a></li>
-                            <li><a href="index.html#">Our History</a></li>
+                            <li><a >Social Media</a></li>
+                            <li><a >Testimonials</a></li>
+                            <li><a >Our History</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-lg-3">
@@ -809,7 +815,7 @@
                         <p class="text-spacing-0">
                             Feel free to contact our loan agents.
                         </p>
-                        <a class="button button-icon button-icon-right button-primary button-rect" href="index.html#"
+                        <a class="button button-icon button-icon-right button-primary button-rect" 
                             data-toggle="modal" data-target="#exampleModal"><span
                                 class="icon icon-xs-smaller fl-bigmug-line-email64"></span>Contact us</a>
                     </div>
@@ -822,10 +828,10 @@
                 <p>
                     Estimated savings are calculated based on the credit profiles of all
                     loans originated as of December 01, 2017 in which the funds were
-                    used for credit card refinancing. Capital calculates estimated
+                    used for credit card refinancing. Bluebird calculates estimated
                     savings by deriving current credit card APR using minimum monthly
                     payment and 1% of the principal balance. We then compare estimated
-                    credit card APR to Capital APR to determine median savings per
+                    credit card APR to Bluebird APR to determine median savings per
                     borrower. To evaluate savings on a loan you are considering, it is
                     important to compare your actual APR from your existing debt to the
                     APR offered by our company.
@@ -839,9 +845,9 @@
                     flexibility to choose the repayment method that works best for them.
                 </p>
                 <p>
-                    The average 3-year loan on Capital will have an APR of 17% and 36
+                    The average 3-year loan on Bluebird will have an APR of 17% and 36
                     monthly payments of $31 per $1,000 borrowed. The average APR on
-                    Capital is calculated based on 3-year rates offered in the last 1
+                    Bluebird is calculated based on 3-year rates offered in the last 1
                     month. You can find out more information from our agents.
                 </p>
             </div>
@@ -850,15 +856,14 @@
                     <div class="col-sm-4 text-sm-right order-sm-1">
                         <ul class="list-inline list-inline-xs">
                             <li>
-                                <a class="icon icon-sm-custom link-tundora-inverse fa-instagram"
-                                    href="index.html#"></a>
+                                <a class="icon icon-sm-custom link-tundora-inverse fa-instagram">line</a>
                             </li>
                             <li>
-                                <a class="icon icon-sm-custom link-tundora-inverse fa-facebook"
-                                    href="index.html#"></a>
+                                <a class="icon icon-sm-custom link-tundora-inverse fa-facebook" 
+                                    ></a>
                             </li>
                             <li>
-                                <a class="icon icon-sm-custom link-tundora-inverse fa-twitter" href="index.html#"></a>
+                                <a class="icon icon-sm-custom link-tundora-inverse fa-twitter" ></a>
                             </li>
                         </ul>
                     </div>

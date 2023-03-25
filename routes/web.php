@@ -20,7 +20,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', fn () =>  view('welcome'));
+Route::get('/', fn () =>  view('welcome'))->name('welcome');
 
 Route::get('/dashboard',  fn () => view('admin.index'))->middleware(['auth'])->name('dashboard');
 
@@ -47,6 +47,10 @@ Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']
 Route::get('/profile/edit/', [ProfileController::class, 'edit'])->middleware(['auth'])->name('profile.edit');
 
 Route::patch('/profile/{id}', [ProfileController::class, 'update'])->middleware(['auth'])->name('profile.update');
+
+
+// deposit route
+Route::get('/deposit', [DepositController::class, 'index'])->middleware(['auth'])->name('profile.edit');
 
 
 // Route::get('/accounts', [AzaController::class, 'index'])->middleware(['auth'])->name('accounts.index');

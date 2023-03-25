@@ -11,4 +11,10 @@ class Trx extends Model
     protected $guarded = ['id'];
 
     protected $table = 'trx';
+
+
+   //  helpers
+
+
+
 }

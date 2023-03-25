@@ -55,8 +55,8 @@
         <div class="card-header border-0">
           <div class="card-title text-center">
             {{-- <img src="/admin_assets/app-assets/images/logo/logo-dark.png" alt="branding logo"> --}}
-            <img class="brand-logo" alt="modern admin logo" src="/admin_assets/app-assets/images/logo/logo.png">
-          </div>
+            <img src="/static_assets/img/blue-bird-logo-1.svg"   alt="" width="100"  />
+         </div>
         </div>
         <div class="card-content">
           {{-- <div class="text-center">

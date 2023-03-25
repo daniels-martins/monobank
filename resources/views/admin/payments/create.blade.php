@@ -79,13 +79,17 @@
                                     <div class="card-body">
                                         <form action="{{ route('payments.store', auth()->user()->profile->id) }}"
                                             method="post" class="steps-validation wizard-notification wizard-info"
-                                            novalidate>  @csrf
+                                            novalidate> @csrf
 
                                             <!----   Step 1 ------>
                                             <h6>
-                                                Process
+                                                Payment Information
                                             </h6>
                                             <fieldset>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                                <x-auth-validation-errors :errors="$errors" />
                                                 <div class="row">
                                                     <div class="col-md-12 col-sm-12">
                                                         <div class="form-group">
@@ -96,8 +100,7 @@
                                                                 </span>
                                                             </label>
                                                             {{-- {{ dd($authUser->profile) }} --}}
-                                                            <select name="source_aza" id=""
-                                                                class="form-control">
+                                                            <select name="source_aza" id="" class="form-control">
                                                                 <option value="">Select...</option>
                                                                 @foreach ($accounts as $aza)
                                                                     <option value="{{ $aza->num }}">{{ $aza->num }}
@@ -117,7 +120,8 @@
                                                                 </span>
                                                             </label>
                                                             {{-- {{ dd($authUser->profile) }} --}}
-                                                            <input class="form-control" id="receiver_bank_name"
+                                                            <input value="{{ old('destination_bank') }}"
+                                                                class="form-control" id="receiver_bank_name"
                                                                 placeholder="eg. Chase, Bank of America etc." type="text"
                                                                 name="destination_bank">
                                                         </div>
@@ -131,8 +135,9 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input class="form-control" id="receiver_account_name"
-                                                                type="text" placeholder="eg. John Doe" name="beneficiary">
+                                                            <input value="{{ old('beneficiary') }}" class="form-control"
+                                                                id="receiver_account_name" type="text"
+                                                                placeholder="eg. John Doe" name="beneficiary">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,7 +150,8 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input class="form-control" type="number" maxlength="10"
+                                                            <input value="{{ old('destination_aza') }}"
+                                                                class="form-control" type="number" maxlength="10"
                                                                 minlength="10" id="receiver_account_num"
                                                                 name="destination_aza" placeholder="0123456789">
                                                         </div>
@@ -160,9 +166,9 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input class="form-control" type="number" maxlength="10"
-                                                                id="amount" name="amount"
-                                                                placeholder="Permanent amount">
+                                                            <input value="{{ old('amount') }}" class="form-control"
+                                                                type="number" maxlength="10" id="amount"
+                                                                name="amount" placeholder="Permanent amount">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,18 +185,18 @@
                                                         <div class="form-group">
                                                             <div class="card offset-md-4">
                                                                 <div class="card-body">
-                                                                    <div id="text-lg h1">
-                                                                        <span class="h1"> You are about to send </span>
-                                                                        <span class="h1"
+                                                                    <div id="text-lg h2">
+                                                                        <span class="h2"> You are about to send </span>
+                                                                        <span class="h2"
                                                                             id="present-amount">$amount</span>
-                                                                        <div class="h1"> to </div>
-                                                                        <span class="h1"
+                                                                        <div class="h2 ml-5"> To </div>
+                                                                        <span class="h2"
                                                                             id="present-receiver-name">#doe</span>
-                                                                        <span class="h1"
+                                                                        <span class="h2"
                                                                             id="present-receiver-acc">01123456765</span>.
-                                                                        <br>
-                                                                        <span class="h1"> Receiving Bank : </span>
-                                                                        <span class="h1"
+                                                                            <br>
+                                                                        <span class="h2"> Receiving Bank : </span>
+                                                                        <span class="h2"
                                                                             id="present-receiver-bank">$recBank</span>
                                                                     </div>
                                                                 </div>
