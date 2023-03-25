@@ -856,7 +856,7 @@
                     <div class="col-sm-4 text-sm-right order-sm-1">
                         <ul class="list-inline list-inline-xs">
                             <li>
-                                <a class="icon icon-sm-custom link-tundora-inverse fa-instagram">line</a>
+                                <a class="icon icon-sm-custom link-tundora-inverse fa-instagram"></a>
                             </li>
                             <li>
                                 <a class="icon icon-sm-custom link-tundora-inverse fa-facebook" 

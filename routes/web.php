@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\Aza;
-use Illuminate\Http\Request;
+use App\Models\Payment;
 // use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AzaController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 
@@ -50,7 +52,9 @@ Route::patch('/profile/{id}', [ProfileController::class, 'update'])->middleware(
 
 
 // deposit route
-Route::get('/deposit', [DepositController::class, 'index'])->middleware(['auth'])->name('profile.edit');
+Route::get('/deposit', [DepositController::class, 'create'])->middleware(['auth'])->name('depsit.create');
+
+Route::post('/deposit', [DepositController::class, 'store'])->middleware(['auth'])->name('depsit.store');
 
 
 // Route::get('/accounts', [AzaController::class, 'index'])->middleware(['auth'])->name('accounts.index');
@@ -89,7 +93,8 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 });
 
 Route::get('/transactions', function () {
-   return view('admin.transactions');
+   $all_trx = Payment::all();
+   return view('admin.transactions', compact('all_trx'));
 })->middleware(['auth'])->name('transactions.index');
 
 // Route::get('/transactions/create', function () {

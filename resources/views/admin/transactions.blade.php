@@ -55,7 +55,7 @@
                             <div id="sp-bar-total-sales"></div>
                         </media-left>
                         <div class="media-body media-right text-right">
-                            <h3 class="m-0">$5,668</h3><span class="text-muted">Sales</span>
+                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span class="text-muted">Balance</span>
                         </div>
                     </div>
                 </div>
@@ -199,12 +199,12 @@
                                     <h4 class="card-title float-left">
                                         Completed Transactions
                                     </h4>
-                                    <div class="float-right">
+                                    {{-- <div class="float-right">
                                         <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
                                             href="bank-add-payment.html">
                                             <i class="ft-plus white"></i>Add New Payment
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="card-body mt-1 table-wrapper">
                                     <div class="table-responsive">
@@ -222,24 +222,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="align-middle ac-from">5421********234</td>
-                                                    <td class="align-middle ac-to">1257********589</td>
-                                                    <td class="align-middle amount">$680.00</td>
-                                                    <td class="align-middle trans-date">04/13/2019</td>
-                                                    <td>
-                                                        <span class="tran-type badge badge-success badge-pill badge-sm">
-                                                            Deposit
-                                                        </span>
-                                                    </td>
-                                                    <td class="align-middle trans-source">Cash</td>
-                                                    <td class="align-middle action">
-                                                        <a href="bank-add-payment.html"><i
-                                                                class="la la-pencil-square success"></i></a>
-                                                        <a href="#"><i class="la la-trash danger"></i></a>
-                                                    </td>
-
-                                                </tr>
+                                                @foreach ($all_trx as $trx)
+                                                   <tr>
+                                                      <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
+                                                      <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
+                                                      <td class="align-middle amount">{{ $trx->amount }}</td>
+                                                      <td class="align-middle trans-date">{{ $trx->created_at }}</td>
+                                                      <td>
+                                                          <span class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                              {{$trx->type }}
+                                                          </span>
+                                                      </td>
+                                                      <td class="align-middle trans-source">{{ $trx->medium }}</td>
+                                                      <td class="align-middle action">
+                                                          <a href="bank-add-payment.html"><i
+                                                                  class="la la-pencil-square success"></i></a>
+                                                          <a href="#"><i class="la la-trash danger"></i></a>
+                                                      </td>
+  
+                                                  </tr>
+                                                @endforeach
                                                 <tr>
                                                     <td class="align-middle ac-from">5312********987</td>
                                                     <td class="align-middle ac-to">4390********233</td>

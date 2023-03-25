@@ -53,7 +53,6 @@
             <div id="sp-bar-total-sales"></div>
           </media-left>
           <div class="media-body media-right text-right">
-            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span class="text-muted">Balance</span>
 
           </div>
         </div>
@@ -70,10 +69,10 @@
                   Accounts Summary
                 </h4>
                 <div class="float-right">
-                  {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
+                  <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
                     href="{{ route('accounts.create') }}">
                     <i class="ft-plus white"></i>Add New Account
-                  </a> --}}
+                  </a>
                 </div>
               </div>
               <div class="card-body mt-1">

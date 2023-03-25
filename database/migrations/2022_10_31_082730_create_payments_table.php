@@ -32,7 +32,7 @@ return new class extends Migration
          $table->enum('type', ['credit', 'debit']); //(deposit, withdraw)
          $table->string('medium', 10); //cash, online, atm, cheque
          $table->float('amount', 12);
-         $table->string('remarks', 50);
+         $table->string('remarks', 100);
 
          // Notifications
          $table->longText('trx_email')->default('Email Notification : Unavailable ');
