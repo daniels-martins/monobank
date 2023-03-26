@@ -28,8 +28,12 @@ use App\Http\Controllers\ContactMessageController;
 Route::get('/', fn () =>  view('welcome'))->name('welcome');
 Route::get('/thankyou', fn () =>  view('welcome'))->name('thankyou');
 
+// any one should be able to send a message auth or not 
+Route::post('/contactmessage',  [ContactMessageController::class, 'store'])->name('contactmessages.store');
+
+// only auth users can view all the messages and delete any message
 Route::get('/contactmessage',  [ContactMessageController::class, 'index'])->middleware(['auth'])->name('contactmessages.index');
-Route::post('/contactmessage',  [ContactMessageController::class, 'store'])->middleware(['auth'])->name('contactmessages.store');
+
 Route::delete('/contactmessage/{contactMessage}',  [ContactMessageController::class, 'destroy'])->middleware(['auth'])->name('contactmessages.destroy');
 
 

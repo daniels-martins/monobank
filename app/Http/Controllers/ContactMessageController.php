@@ -37,7 +37,7 @@ class ContactMessageController extends Controller
     */
    public function store(Request $request)
    {
-      // dd(request()->all(), 'ok');
+      $request['phone'] = str_replace([' ', '(', ')'], '',$request->phone);//trim spaces and '()' from number
       return ContactMessage::create(request()->all()) ? back()->with('success', 'Message Sent') : back()->with('danger', 'Oops! Try again');
    }
 

@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="unit-body">
                                     <p>Customer Service</p>
-                                    <a href="tel:#">+1 (409) 987–5874</a>
+                                    <a href="tel:#">+1 (373) 987–3342</a>
                                 </div>
                             </div>
                         </div>
@@ -920,11 +920,11 @@
                             <label class="form-label" for="contact-email-2">Your e-mail</label>
                         </div>
                         <div class="form-wrap">
-                            <input class="form-input" id="contact-phone-2" type="text" name="phone" />
+                            <input class="form-input" id="contact-phone-2" type="tel" name="phone" maxlength="14" />
                             <label class="form-label" for="contact-phone-2">Phone</label>
                         </div>
                         <div class="form-wrap">
-                            <textarea class="form-input" id="contact-message-3" name="message"></textarea>
+                            <textarea class="form-input" id="contact-message-3" name="message" maxlength="100"></textarea>
                             <label class="form-label" for="contact-message-3">Your message</label>
                         </div>
                         <button class="button button-primary" type="submit">Send Now</button>
