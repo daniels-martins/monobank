@@ -154,11 +154,11 @@
                             </a>
                           </div>
 
-                          <form class="action" method="post" action="{{ route('accounts.destroy', $account->id ) }}">
+                          {{-- <form class="action" method="post" action="{{ route('accounts.destroy', $account->id ) }}">
                             @csrf @method('delete')
                             <button class="border-0 bg-transparent" title="Delete" type="submit"><i
                                 class="la la-trash danger"></i></button>
-                          </form>
+                          </form> --}}
                         </td>
                       </tr>
                       @endforeach

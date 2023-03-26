@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form action="{{ route('depsit.store') }}" id="deposit_form" method="post"> @csrf
+                                        <form action="{{ route('deposit.store') }}" id="deposit_form" method="post"> @csrf
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12">
                                                     <div class="form-group">

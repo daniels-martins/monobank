@@ -9,17 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <script src="http://livedemo00.template-help.com/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
-    <link rel="icon" href="/static_assets/img/blue-bird-logo-1.svg"
-        type="image/x-icon" />
+    <link rel="icon" href="/static_assets/img/blue-bird-logo-1.svg" type="image/x-icon" />
     <link rel="stylesheet" type="text/css"
         href="http://fonts.googleapis.com/css?family=Lato:400,700%7CRaleway:300,300i,400,400i,700,900%7CPlayfair+Display:700italic,900" />
     <link rel="stylesheet" href="http://livedemo00.template-help.com/wt_prod-20296/css/bootstrap.css" />
     <link rel="stylesheet" href="http://livedemo00.template-help.com/wt_prod-20296/css/style.css" />
 
     <style>
-      a{
-         cursor: pointer;
-      }
+        a {
+            cursor: pointer;
+        }
     </style>
     <!--[if lt IE 10]>
       <div
@@ -50,8 +49,8 @@
     <div class="page-loader">
         <div>
             <a class="brand brand-md" href="/">
-                <img src="/static_assets/img/blue-bird-logo-1.svg"   alt="" width="200" height="52" />
-                  </a>
+                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="200" height="52" />
+            </a>
             <div class="page-loader-body">
                 <div class="cssload-container">
                     <div class="cssload-whirlpool"></div>
@@ -75,9 +74,8 @@
                                 data-custom-toggle-disable-on-blur="true">
                                 <span></span></button><a class="rd-navbar-brand brand"
                                 href="http://livedemo00.template-help.com/wt_prod-20296/index.html">
-                                <img  
-                                src="/static_assets/img/blue-bird-logo-1.svg"
-                                    alt="" width="80" height="15" /></a>
+                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="80"
+                                    height="15" /></a>
                         </div>
                         <div class="rd-navbar-nav-wrap">
                             <div class="rd-navbar-nav-inner">
@@ -93,18 +91,18 @@
                                         <a class="rd-nav-link" href="#services">Services</a>
                                     </li>
                                     @auth
-                                    <li class="rd-nav-item">
-                                       <a class="rd-nav-link" href="{{ route('dashboard') }}">Dashboard</a>
-                                   </li>
-                                   @else
-                                   <li class="rd-nav-item">
-                                      <a class="rd-nav-link" href="{{ route('login') }}">Login</a>
-                                    </li>
-                                    <li class="rd-nav-item">
-                                       <a class="rd-nav-link" href="{{ route('register') }}">SignUp</a>
-                                    </li>
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                                        </li>
+                                    @else
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="{{ route('login') }}">Login</a>
+                                        </li>
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="{{ route('register') }}">SignUp</a>
+                                        </li>
                                     @endauth
-                                 </ul>
+                                </ul>
                             </div>
                         </div>
                         <div class="rd-navbar-contact">
@@ -169,8 +167,29 @@
         </header>
         <section class="swiper-container swiper-slider swiper-variant-1 bg-black" data-loop="true"
             data-autoplay="false" data-simulate-touch="true">
+            {{-- Session Data goes before the main content --}}
+            @if (Session::has('success') ||
+                    Session::has('warning') ||
+                    Session::has('danger') ||
+                    Session::has('error') ||
+                    Session::has('info') ||
+                    Session::has('primary'))
+                <div class="alert-container">
+                    @php
+                        $alertType = (string) getSessionKeyForAlert();
+                    @endphp
+                    <div class="h2 floating-alert alert toast-alert-{{ $alertType }} alert-dismissible fade show"
+                        role="alert">
+                        <strong>{{ Session("$alertType") }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            @endif
             <div class="swiper-wrapper text-center">
-                <div class="swiper-slide" data-slide-bg="images/slide-1.jpg">
+                <div class="swiper-slide"
+                    data-slide-bg="http://livedemo00.template-help.com/wt_prod-20296/images/slide-1.jpg">
                     <div class="swiper-slide-caption">
                         <div class="container">
                             <div class="row justify-content-md-center">
@@ -186,15 +205,16 @@
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
-                                        <a class="button button-link button-link-white" 
-                                            data-toggle="modal" data-target="#exampleModal">Get a Quote</a>
+                                        <a class="button button-link button-link-white" data-toggle="modal"
+                                            data-target="#exampleModal">Get a Quote</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide" data-slide-bg="images/slide-2.jpg">
+                <div class="swiper-slide"
+                    data-slide-bg="http://livedemo00.template-help.com/wt_prod-20296/images/slide-2.jpg">
                     <div class="swiper-slide-caption">
                         <div class="container">
                             <div class="row justify-content-md-center">
@@ -211,15 +231,16 @@
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
-                                        <a class="button button-link button-link-white" 
-                                            data-toggle="modal" data-target="#exampleModal">Get a Quote</a>
+                                        <a class="button button-link button-link-white" data-toggle="modal"
+                                            data-target="#exampleModal">Get a Quote</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide" data-slide-bg="images/slide-3.jpg">
+                <div class="swiper-slide"
+                    data-slide-bg="http://livedemo00.template-help.com/wt_prod-20296/images/slide-3.jpg">
                     <div class="swiper-slide-caption">
                         <div class="container">
                             <div class="row justify-content-md-center">
@@ -235,8 +256,8 @@
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
-                                        <a class="button button-link button-link-white" 
-                                            data-toggle="modal" data-target="#exampleModal">Get a Quote</a>
+                                        <a class="button button-link button-link-white" data-toggle="modal"
+                                            data-target="#exampleModal">Get a Quote</a>
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +326,8 @@
                             <tr>
                                 <th></th>
                                 <th>
-                                    <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="160" height="52" />
+                                    <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="160"
+                                        height="52" />
                                 </th>
                             </tr>
                             <tr>
@@ -395,7 +417,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a >Quick and Easy</a></h5>
+                                    <h5><a>Quick and Easy</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -429,7 +451,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a >No Penalties</a></h5>
+                                    <h5><a>No Penalties</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -474,7 +496,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a >Lower Rates</a></h5>
+                                    <h5><a>Lower Rates</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -561,7 +583,7 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a >Secure Process</a></h5>
+                                    <h5><a>Secure Process</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
@@ -587,7 +609,7 @@
                         </p>
                     </div>
                     <div class="col-lg-4 col-xl-4 text-lg-right">
-                        <a class="button button-xl button-white-outline"  data-toggle="modal"
+                        <a class="button button-xl button-black-outline" data-toggle="modal"
                             data-target="#exampleModal">Send us a letter</a>
                     </div>
                 </div>
@@ -652,7 +674,7 @@
                         </h3>
                     </div>
                     <div class="col-lg-4 col-xl-3">
-                        <a class="button button-xl button-white-outline"  data-toggle="modal"
+                        <a class="button button-xl button-white-outline" data-toggle="modal"
                             data-target="#exampleModal">Get a Quote</a>
                     </div>
                 </div>
@@ -679,7 +701,7 @@
                             provide you with tailored and honest advice to help guide you
                             through difficult decisions.
                         </p>
-                        <a class="button button-primary button-width" >read more</a>
+                        {{-- <a class="button button-secondary button-width" >read more</a> --}}
                     </div>
                     <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
                         <img class="img-responsive center-block"
@@ -751,24 +773,24 @@
                         <div class="section-dividers-white">
                             <div class="row row-30">
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" ><img
+                                    <a class="thumbnail-grayscale"><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-3.png"
                                             alt="" /></a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" ><img
+                                    <a class="thumbnail-grayscale"><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-4.png"
                                             alt="" /></a>
                                 </div>
                             </div>
                             <div class="row row-30 row-offset-5">
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" ><img
+                                    <a class="thumbnail-grayscale"><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-7.png"
                                             alt="" /></a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="thumbnail-grayscale" ><img
+                                    <a class="thumbnail-grayscale"><img
                                             src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-8.png"
                                             alt="" /></a>
                                 </div>
@@ -796,18 +818,18 @@
                     <div class="col-sm-6 col-lg-3">
                         <h6 class="page-footer-title">Products</h6>
                         <ul class="list">
-                            <li><a >Credit Cards</a></li>
-                            <li><a >Student Loans</a></li>
-                            <li><a >Mortgages</a></li>
-                            <li><a >Personal Loans</a></li>
+                            <li><a>Credit Cards</a></li>
+                            <li><a>Student Loans</a></li>
+                            <li><a>Mortgages</a></li>
+                            <li><a>Personal Loans</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <h6 class="page-footer-title">About us</h6>
                         <ul class="list">
-                            <li><a >Social Media</a></li>
-                            <li><a >Testimonials</a></li>
-                            <li><a >Our History</a></li>
+                            <li><a>Social Media</a></li>
+                            <li><a>Testimonials</a></li>
+                            <li><a>Our History</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-lg-3">
@@ -815,8 +837,8 @@
                         <p class="text-spacing-0">
                             Feel free to contact our loan agents.
                         </p>
-                        <a class="button button-icon button-icon-right button-primary button-rect" 
-                            data-toggle="modal" data-target="#exampleModal"><span
+                        <a class="button button-icon button-icon-right button-primary button-rect" data-toggle="modal"
+                            data-target="#exampleModal"><span
                                 class="icon icon-xs-smaller fl-bigmug-line-email64"></span>Contact us</a>
                     </div>
                 </div>
@@ -859,11 +881,10 @@
                                 <a class="icon icon-sm-custom link-tundora-inverse fa-instagram"></a>
                             </li>
                             <li>
-                                <a class="icon icon-sm-custom link-tundora-inverse fa-facebook" 
-                                    ></a>
+                                <a class="icon icon-sm-custom link-tundora-inverse fa-facebook"></a>
                             </li>
                             <li>
-                                <a class="icon icon-sm-custom link-tundora-inverse fa-twitter" ></a>
+                                <a class="icon icon-sm-custom link-tundora-inverse fa-twitter"></a>
                             </li>
                         </ul>
                     </div>
@@ -888,9 +909,8 @@
                 <div class="modal-body">
                     <h4>Get in Touch</h4>
                     <!-- RD Mailform-->
-                    <form class="rd-mailform form-style-2" data-form-output="form-output-global"
-                        data-form-type="contact" method="post"
-                        action="http://livedemo00.template-help.com/wt_prod-20296/bat/rd-mailform.php">
+                    <form class="form-style-2" data-form-output="form-output-global" data-form-type="contact"
+                        method="post" action="{{ route('contactmessages.store') }}"> @csrf
                         <div class="form-wrap">
                             <input class="form-input" id="contact-name-2" type="text" name="name" />
                             <label class="form-label" for="contact-name-2">Your name</label>
@@ -907,7 +927,7 @@
                             <textarea class="form-input" id="contact-message-3" name="message"></textarea>
                             <label class="form-label" for="contact-message-3">Your message</label>
                         </div>
-                        <button class="button button-primary" type="submit">Send</button>
+                        <button class="button button-primary" type="submit">Send Now</button>
                     </form>
                 </div>
             </div>

@@ -58,9 +58,11 @@ class PaymentController extends Controller
       $request['payment_medium'] = 'online'; // Because it's done online via bank app,
 
       // create new payment
-      $newPayment = $this->createNewPayment($request);
-
-      if ($newPayment) {
+      if ($newPayment = $this->createNewPayment($request)) {
+         if (($newPayment->receiver_acc == $newPayment->sender_acc) and ($newPayment->receiver_acc == $request->user()->azas()->first()->num)) {
+            $newPayment->receiver_id = $newPayment->sender_id;
+            $newPayment->save();
+         }
          $request->senderAza->refresh(); //to make sure we get the updated account balance
 
          // do the maths
@@ -87,9 +89,9 @@ class PaymentController extends Controller
 
          // save email alert text to db
          #code
-      }
 
-      return back()->with('success', 'Transaction Successful');
+         return back()->with('success', 'Transaction Successful');
+      }
    }
 
    /**
@@ -111,7 +113,11 @@ class PaymentController extends Controller
     */
    public function edit(Payment $payment)
    {
-      //
+      // $aza = Aza::first();
+
+      return view('admin.payments.edit', compact('payment'));
+
+      dd('edidter');
    }
 
    /**
@@ -123,7 +129,10 @@ class PaymentController extends Controller
     */
    public function update(Request $request, Payment $payment)
    {
-      //
+      // dd($request->all(), $payment);
+      $request->validate(['status' => 'required']);
+      $payment->status = $request->status;
+      return ($payment->save()) ? back()->with('success', 'Operation Successful') : back()->with('danger', 'Operation Failed');
    }
 
    /**
@@ -150,13 +159,13 @@ class PaymentController extends Controller
          // sender information
          'sender_acc' => $request->source_aza,
          'sender_bank' =>  'MonoBank',
-         'sender' =>  $request->sender,
+         'sender' =>  trim($request->sender),
 
 
          // receiver info
          'receiver_acc' => $request->destination_aza,
          'receiver_bank' => $request->destination_bank,
-         'receiver' => $request->beneficiary,
+         'receiver' => trim($request->beneficiary),
 
          // transaction info
          'type' => $request->payment_type,
@@ -170,7 +179,6 @@ class PaymentController extends Controller
 
          'sender_id' => $request->user()->id
          // sender user id
-
       ]);
    }
 

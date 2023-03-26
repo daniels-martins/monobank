@@ -249,6 +249,12 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="ft-user"></i> Edit
                                 Profile</a>
+                                <a class="dropdown-item" href="{{ route('contactmessages.index') }}"><i
+                                 class="ft-mail"></i>Messages</a>
+
+                                 <a class="dropdown-item" href="{{ route('deposit.create') }}"><i
+                                    class="ft-plus"></i>Add Money ($)</a>
+
                             {{-- <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
                             <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
                             <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a> --}}
@@ -256,8 +262,8 @@
                             <form class='' action="{{ route('logout') }}" method="post" id="logout_form">
                                 @csrf
                             </form>
-                            <button class="dropdown-item btn-danger" href="" type="submit" form="logout_form"><i
-                                    class="ft-power"></i>Logout</button>
+                            <button class="dropdown-item btn-danger" href="" type="submit"
+                                form="logout_form"><i class="ft-power"></i>Logout</button>
                         </div>
                     </li>
                 </ul>

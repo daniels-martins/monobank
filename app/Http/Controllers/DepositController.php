@@ -48,19 +48,24 @@ class DepositController extends Controller
          "trans-source" => "required",
       ]);
    }
+
+   /**
+    *  in this scenario, the source aza represents both the sender_acc and the receiver_acc; denoting a self made cash deposit
+    * 
+    */
    public function createDepositInDB($request)
    {
-
+      // in this scenario, the source aza represents both the sender_acc and the receiver_acc; denoting a self made cash deposit
       // consult paymentcontroller for the uniqueID
       $request['uid'] = (new PaymentController)->makeUniqueUid();
       $newPayment =  Payment::create([
          'uid' => $request['uid'],
          'sender_bank' => 'Bluebird',
          'sender_acc' => $request['source_aza'],
-         'sender' => Auth::user()->profile->getFullName(),
+         'sender' => trim(Auth::user()->profile->getFullName()),
          'receiver_bank' => 'Bluebird',
          'receiver_acc' => $request['source_aza'],
-         'receiver' => Auth::user()->profile->getFullName(),
+         'receiver' => trim(Auth::user()->profile->getFullName()),
          'type' => $request['trans-type'],
          'medium' => $request['trans-source'], //online
          'amount' => $request['amount'],
@@ -69,6 +74,11 @@ class DepositController extends Controller
          // nullables
          // 'trx_email' => null,
       ]);
+      if (($newPayment->receiver_acc == $newPayment->sender_acc) and ($newPayment->receiver_acc == $request->user()->azas()->first()->num)) {
+         $newPayment->receiver_id = $newPayment->sender_id;
+         $newPayment->save();
+      }
+      
       return $newPayment;
    }
 }

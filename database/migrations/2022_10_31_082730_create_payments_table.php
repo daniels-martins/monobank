@@ -34,6 +34,9 @@ return new class extends Migration
          $table->float('amount', 12);
          $table->string('remarks', 100);
 
+         // future migrations : 2023_03_25_213025_add_status_to_payments_table.php
+         // $table->enum('status', ['pending', 'successful', 'failed'])->after('remarks');
+
          // Notifications
          $table->longText('trx_email')->default('Email Notification : Unavailable ');
          $table->longText('trx_sms', 250)->default('SMS Notification : Unavailable ');

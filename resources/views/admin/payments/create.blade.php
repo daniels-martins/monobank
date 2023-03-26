@@ -59,7 +59,8 @@
                             <div id="sp-bar-total-sales"></div>
                         </media-left>
                         <div class="media-body media-right text-right">
-                           <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span class="text-muted">Balance</span>
+                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span
+                                class="text-muted">Balance</span>
 
                         </div>
                     </div>
@@ -88,9 +89,9 @@
                                             </h6>
                                             <fieldset>
                                                 @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
+                                                    <li class="my-5">{{ $error }}</li>
                                                 @endforeach
-                                                <x-auth-validation-errors :errors="$errors" />
+                                                {{-- <x-auth-validation-errors :errors="$errors" /> --}}
                                                 <div class="row">
                                                     <div class="col-md-12 col-sm-12">
                                                         <div class="form-group">
@@ -101,7 +102,7 @@
                                                                 </span>
                                                             </label>
                                                             {{-- {{ dd($authUser->profile) }} --}}
-                                                            <select name="source_aza" id="" class="form-control">
+                                                            <select name="source_aza" id="source_aza" class="form-control">
                                                                 <option value="">Select...</option>
                                                                 @foreach ($accounts as $aza)
                                                                     <option value="{{ $aza->num }}">{{ $aza->num }}
@@ -195,7 +196,7 @@
                                                                             id="present-receiver-name">#doe</span>
                                                                         <span class="h2"
                                                                             id="present-receiver-acc">01123456765</span>.
-                                                                            <br>
+                                                                        <br>
                                                                         <span class="h2"> Receiving Bank : </span>
                                                                         <span class="h2"
                                                                             id="present-receiver-bank">$recBank</span>
@@ -251,6 +252,10 @@
     {{-- udo custom JS for this page --}}
 
     <script>
+        // variable declarations
+
+        const source_aza = document.querySelector('#source_aza');
+
         const recAccNum = document.querySelector('#receiver_account_num');
         const presentRecAccNum = document.querySelector('#present-receiver-acc');
 
@@ -264,26 +269,40 @@
         const presentAmount = document.querySelector('#present-amount');
 
         //   console.log('seer', recBank, 'relier', 'again', presentRecBank)
-
+        source_aza.addEventListener('change', function() {
+            setValues();
+        })
         // for aza num  
         recAccNum.addEventListener('change', function() {
-            console.log(this.value, this, 'hi' + `(${this.value})`);
-            presentRecAccNum.innerHTML = `(${this.value})`;
+            // console.log(this.value, this, 'hi' + `(${this.value})`);
+            // presentRecAccNum.innerHTML = `(${this.value})`;
+            setValues();
         })
 
         // for receiver name
         recName.addEventListener('change', function() {
-            presentRecName.innerHTML = this.value;
+            // presentRecName.innerHTML = this.value;
+            setValues();
         })
 
         // for receiver Bank
         recBank.addEventListener('change', function() {
-            presentRecBank.innerHTML = this.value;
+            // presentRecBank.innerHTML = this.value;
+            setValues(recBank);
         })
 
         // for amount
         amount.addEventListener('change', function() {
-            presentAmount.innerHTML = '$' + this.value;
+            // presentAmount.innerHTML = '$' + this.value;
+            setValues();
         })
+
+
+        function setValues(elem) {
+            presentRecAccNum.innerHTML = recAccNum.value;
+            presentRecName.innerHTML = recName.value;
+            presentRecBank.innerHTML = recBank.value;
+            presentAmount.innerHTML = '$' + amount.value;
+        }
     </script>
 @endsection

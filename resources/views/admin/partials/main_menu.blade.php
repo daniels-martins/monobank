@@ -56,9 +56,16 @@
                 <a class="dropdown-toggle nav-link" href="{{ route('profile.edit') }}">Profile</a>
             </li>
 
-            <li class="dropdown d-flex @if (Route::currentRoutename() == 'payments.create') bg-danger @endif  nav-item" data-menu="dropdown">
+            <li class="dropdown d-flex @if (Route::currentRoutename() == 'payments.create') bg-danger @endif  nav-item"
+                data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="{{ route('payments.create') }}"> Send Money</a> <i
+                    class="la la-send text-white"></i>
+            </li>
 
-                <a class="dropdown-toggle nav-link" href="{{ route('payments.create') }}"> Send Money</a>  <i class="la la-send text-white"></i>
+            <li class="dropdown d-flex @if (Route::currentRoutename() == 'deposit.create') bg-danger @endif  nav-item"
+                data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="{{ route('deposit.create') }}"> Add Money</a> <i
+                    class="la la-plus text-white"></i>
             </li>
 
         </ul>
