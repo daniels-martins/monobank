@@ -35,11 +35,11 @@ return new class extends Migration
          $table->string('remarks', 100);
 
          // future migrations : 2023_03_25_213025_add_status_to_payments_table.php
-         // $table->enum('status', ['pending', 'successful', 'failed'])->after('remarks');
+         $table->enum('status', ['pending', 'successful', 'failed'])->after('remarks');
 
          // Notifications
-         $table->longText('trx_email')->default('Email Notification : Unavailable ');
-         $table->longText('trx_sms', 250)->default('SMS Notification : Unavailable ');
+         $table->longText('trx_email')->nullable();
+         $table->longText('trx_sms')->nullable();
 
          // foreign keys
          // the user_id belongs to the bluebird sender; payments are made by users of the app,but not all receivers are banking with us
