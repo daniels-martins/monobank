@@ -72,10 +72,24 @@
                         <div class="rd-navbar-panel">
                             <button class="rd-navbar-toggle" data-custom-toggle=".rd-navbar-nav-wrap"
                                 data-custom-toggle-disable-on-blur="true">
-                                <span></span></button><a class="rd-navbar-brand brand"
+                                <span></span></button>
+
+                                <style>
+                                 .logo_img_welcome_page{
+                                    width: 70px !important;
+                                    
+                                   }
+
+                                   .mt-_5{
+                                    margin-top: -1.2em;
+                                   }
+                                   </style>
+                                                                   
+                                <a class="rd-navbar-brand brand mt-_5"
                                 href="http://livedemo00.template-help.com/wt_prod-20296/index.html">
-                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="80"
-                                    height="15" /></a>
+                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" class="logo_img_welcome_page"
+                                     /></a>
+
                         </div>
                         <div class="rd-navbar-nav-wrap">
                             <div class="rd-navbar-nav-inner">
