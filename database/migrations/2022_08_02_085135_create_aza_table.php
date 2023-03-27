@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             // $table->enum('type', ['savings', 'checking']);
             $table->string('num', 10)->unique();
-            $table->bool('status')->default(true);
+            $table->boolean('status')->default(true);
             $table->string('balance')->default(0);
 
             // foreign keys
