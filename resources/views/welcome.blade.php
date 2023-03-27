@@ -86,7 +86,7 @@
                                    </style>
                                                                    
                                 <a class="rd-navbar-brand brand mt-_5"
-                                href="http://livedemo00.template-help.com/wt_prod-20296/index.html">
+                                href="#">
                                 <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" class="logo_img_welcome_page"
                                      /></a>
 
@@ -737,7 +737,7 @@
                             discounts from our company.
                         </p>
                         <!-- RD Mailform-->
-                        <form class="rd-mailform rd-mailform-inline form-style-1"
+                        {{-- <form class="rd-mailform rd-mailform-inline form-style-1"
                             data-form-output="form-output-global" data-form-type="forms" method="post"
                             action="http://livedemo00.template-help.com/wt_prod-20296/bat/rd-mailform.php">
                             <div class="form-wrap">
@@ -748,7 +748,7 @@
                             <button class="button button-white button-width" type="submit">
                                 subscribe
                             </button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </div>
