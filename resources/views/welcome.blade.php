@@ -2,18 +2,18 @@
 <html class="wide wow-animation" lang="en">
 
 <head>
-    <title>Bluebird Mortgage Bank | Home</title>
-    <meta name="format-detection" content="telephone=no" />
+    <title>Bluebird Financial Bank | Home</title>
+    {{-- <meta name="format-detection" content="telephone=no" /> --}}
     <meta name="viewport"
         content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <script src="http://livedemo00.template-help.com/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
+    {{-- <script src="http://livedemo00.template-help.com/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script> --}}
     <link rel="icon" href="/static_assets/img/blue-bird-logo-1.svg" type="image/x-icon" />
     <link rel="stylesheet" type="text/css"
         href="http://fonts.googleapis.com/css?family=Lato:400,700%7CRaleway:300,300i,400,400i,700,900%7CPlayfair+Display:700italic,900" />
-    <link rel="stylesheet" href="http://livedemo00.template-help.com/wt_prod-20296/css/bootstrap.css" />
-    <link rel="stylesheet" href="http://livedemo00.template-help.com/wt_prod-20296/css/style.css" />
+    <link rel="stylesheet" href="/static_assets/css/bstrap.css" />
+    <link rel="stylesheet" href="/static_assets/css/style.css" />
 
     <style>
         a {
@@ -920,7 +920,8 @@
                             <label class="form-label" for="contact-email-2">Your e-mail</label>
                         </div>
                         <div class="form-wrap">
-                            <input class="form-input" id="contact-phone-2" type="tel" name="phone" maxlength="14" />
+                            <input class="form-input" id="contact-phone-2" type="tel" name="phone"
+                                maxlength="14" />
                             <label class="form-label" for="contact-phone-2">Phone</label>
                         </div>
                         <div class="form-wrap">
@@ -934,12 +935,12 @@
         </div>
     </div>
     <div class="snackbars" id="form-output-global"></div>
-    <script src="http://livedemo00.template-help.com/wt_prod-20296/js/core.min.js"></script>
-    <script src="http://livedemo00.template-help.com/wt_prod-20296/js/script.js"></script>
+    <script src="/static_assets/js/jquery_core.min.js"></script>
+    <script src="/static_assets/js/script.js"></script>
 
     <!--LIVEDEMO_00 -->
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(["_setAccount", "UA-7078796-5"]);
         _gaq.push(["_trackPageview"]);
@@ -954,12 +955,12 @@
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(ga, s);
         })();
-    </script>
+    </script> --}}
 
     <!-- coded by Ragnar-->
     <!-- Google Tag Manager --><noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-P9FT69"
             height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
-    <script>
+    {{-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -973,7 +974,7 @@
             j.src = "//www.googletagmanager.com/gtm.js?id=" + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, "script", "dataLayer", "GTM-P9FT69");
-    </script>
+    </script> --}}
     <!-- End Google Tag Manager -->
 </body>
 
