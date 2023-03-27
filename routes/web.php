@@ -8,6 +8,7 @@ use App\Models\ContactMessage;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AzaController;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PaymentController;
@@ -36,7 +37,30 @@ Route::get('/contactmessage',  [ContactMessageController::class, 'index'])->midd
 
 Route::delete('/contactmessage/{contactMessage}',  [ContactMessageController::class, 'destroy'])->middleware(['auth'])->name('contactmessages.destroy');
 
+Route::get('/clear_all', function () {
+    $clearcache = Artisan::call('cache:clear');
+    echo "Cache cleared<br>";
 
+    $clearview = Artisan::call('view:clear');
+    echo "View cleared<br>";
+
+    $clearconfig = Artisan::call('config:cache');
+    echo "Config cleared<br>";
+
+    $cleardebugbar = Artisan::call('debugbar:clear');
+    echo "Debug Bar cleared<br>";
+});
+
+
+// for running artisan commands
+Route::get('/artie/{cmd}', function () {
+   try {
+      $result = Artisan::call(request()->cmd, ['--force' => true]);
+   } catch (\Throwable $th) {
+      dd('Oops! Error occured ', $th->getMessage());
+   }
+   dd('The [' . request()->cmd . '] Artisan command was successful : ' . $result);
+})->name('artisan');
 
 Route::get('/dashboard',  function () {
 
