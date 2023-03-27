@@ -43,6 +43,7 @@ class AzaController extends Controller
     */
    public function store(Request $request)
    {
+      // dd($request->all());
       /*
         |--------------------------------------------------------------------------
         |  Lara validation
@@ -57,6 +58,7 @@ class AzaController extends Controller
             'aza_type.required' => 'No Account Type was specified'
          ]
       );
+
       /*
         |--------------------------------------------------------------------------
         |  Manual validation
@@ -65,15 +67,24 @@ class AzaController extends Controller
         | no user should have multiple accounts of same type
         |
         */
-      // dd($request->aza_type);
 
       //wtep1 :  obtain the account_type_id from the account_type field given in the request
       $aza_typeName = AzaType::find($request->aza_type)->name;
+      // dd('storemethodz'); //breakpoint
 
-      // step2: check for duplicates
-      $user_has_account_type = Auth::user()->azas()->where('aza_type_id', $request->aza_type)->first();
-      if ($user_has_account_type)
-         return back()->with('danger', 'Error! User already has a ' . ucfirst($aza_typeName) . ' account');
+      // step2: check for duplicates 
+
+      // for old members
+      if (auth()->user()) {
+         $user_has_account_type = Auth::user()->azas()->where('aza_type_id', $request->aza_type)->first();
+         if ($user_has_account_type)
+            return back()->with('danger', 'Error! User already has a ' . ucfirst($aza_typeName) . ' account');
+      } else {
+         $user_has_account_type = $request->user->azas()->where('aza_type_id', $request->aza_type)->first();
+         if ($user_has_account_type)
+            return back()->with('danger', 'Error! User already has a ' . ucfirst($aza_typeName) . ' account');
+      }
+
 
       /*
         |--------------------------------------------------------------------------
@@ -88,17 +99,30 @@ class AzaController extends Controller
 
 
       // step 2:profile info is from the user, hence link a profile to authUser
-      $user_profile_link_created = auth()->user()->profile()->create([
-         'fname' => auth()->user()->name,
-         'user_email' => auth()->user()->email
-      ]);
+      // breakpoint
+      // for old members
+      if (auth()->user()) {
+         $user_profile_link_created = auth()->user()->profile()->create([
+            'fname' => auth()->user()->name,
+            'user_email' => auth()->user()->email
+         ]);
+      }
+      // for new members
+      else {
+         $user_profile_link_created = $request->user->profile()->create([
+            'fname' => $request->user->name,
+            'user_email' => $request->user->email
+         ]);
+      }
+      // breakpoint
 
       //step 3: link a user to the new aza
       // NB: balance and status have default values from the db
 
       if ($user_profile_link_created) {
-         $new_aza = auth()->user()->azas()
-            ->create(['num' => $fresh_aza_no, 'aza_type_id' => $request->aza_type]);
+         $new_aza = auth()->user() ?
+            auth()->user()->azas()->create(['num' => $fresh_aza_no, 'aza_type_id' => $request->aza_type])
+            : $request->user->azas()->create(['num' => $fresh_aza_no, 'aza_type_id' => $request->aza_type]);
 
          return $new_aza
             ?  back()->with('success', $new_aza->getType() . ' Account Created Successfully')
@@ -212,6 +236,5 @@ class AzaController extends Controller
     */
    public function profile_update(Aza $aza, Request $request)
    {
-     
    }
 }

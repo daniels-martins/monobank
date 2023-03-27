@@ -51,11 +51,11 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+      //   dd('you got to redirect to ', RouteServiceProvider::HOME);
 
         
 
         Auth::login($user);
-
         return redirect(RouteServiceProvider::HOME);
     }
 }

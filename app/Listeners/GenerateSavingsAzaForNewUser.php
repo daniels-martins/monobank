@@ -41,8 +41,15 @@ class GenerateSavingsAzaForNewUser
 
       // create a new empty savings aza for this user
       $req = new Request();
-      $req['azatype'] = 'savings';
+      $req['aza_type'] = '1'; // 1 represents the savings id in the AzaType table
+      $req['user'] = $event->user; // 1 represents the savings id in the AzaType table
       (new AzaController())->store($req);
+
+      // try {
+      //    (new AzaController())->store($req);
+      // } catch (\Throwable $th) {
+      //    dd('Error', $req->all());
+      // }
 
       // create a cc for the new user
       (new CardSeeder)->run();

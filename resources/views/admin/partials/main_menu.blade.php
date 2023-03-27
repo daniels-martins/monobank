@@ -16,8 +16,15 @@
                     </li>
                 </ul>
             </li> --}}
-            <li class="dropdown nav-item @if (Route::currentRoutename() == 'accounts.index') bg-danger @endif" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="{{ route('accounts.index') }}">Account Information</a>
+
+            <style>
+                /* .text-white{
+                  color: white !important;
+               } */
+            </style>
+            <li class="nav-item @if (Route::currentRoutename() == 'accounts.index') bg-danger @endif">
+                <a class="nav-link  @if (Route::currentRoutename() == 'accounts.index') text-white @endif"
+                    href="{{ route('accounts.index') }}">Account Information</a>
             </li>
 
             {{-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#"
@@ -33,8 +40,9 @@
           </li> --}}
 
 
-            <li class="dropdown @if (Route::currentRoutename() == 'cards.index') bg-danger @endif nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="{{ route('cards.index') }}">Cards</a>
+            <li class=" @if (Route::currentRoutename() == 'cards.index') bg-danger @endif nav-item">
+                <a class=" nav-link @if (Route::currentRoutename() == 'cards.index') text-white @endif "
+                    href="{{ route('cards.index') }}">Cards</a>
             </li>
             {{-- <li class="dropdown nav-item" data-menu="dropdown">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="la la-dollar"></i><span
@@ -48,25 +56,30 @@
                         </li>
                     </ul>
                 </li> --}}
-            <li class="dropdown @if (Route::currentRoutename() == 'transactions.index') bg-danger @endif  nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="{{ route('transactions.index') }}">Transactions</a>
+            <li class="dropdown @if (Route::currentRoutename() == 'transactions.index') bg-danger @endif  nav-item">
+                <a class=" @if (Route::currentRoutename() == 'transactions.index') text-white @endif nav-link"
+                    href="{{ route('transactions.index') }}">Transactions</a>
             </li>
 
-            <li class="dropdown @if (Route::currentRoutename() == 'profile.edit') bg-danger @endif  nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="{{ route('profile.edit') }}">Profile</a>
-            </li>
+            <li class="@if (Route::currentRoutename() == 'profile.edit') bg-danger @endif  nav-item">
+               <a class=" nav-link @if (Route::currentRoutename() == 'profile.edit') text-white @endif"
+                   href="{{ route('profile.edit') }}">Profile</a>
+           </li>
 
-            <li class="dropdown d-flex @if (Route::currentRoutename() == 'payments.create') bg-danger @endif  nav-item"
-                data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="{{ route('payments.create') }}"> Send Money</a> <i
-                    class="la la-send text-white"></i>
-            </li>
+           <li class="@if (Route::currentRoutename() == 'payments.create') bg-danger @endif   nav-item">
+            <a class=" nav-link  @if (Route::currentRoutename() == 'payments.create') text-white @endif"
+                href="{{ route('payments.create') }}">Send Money</a>
+        </li>
 
-            <li class="dropdown d-flex @if (Route::currentRoutename() == 'deposit.create') bg-danger @endif  nav-item"
-                data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="{{ route('deposit.create') }}"> Add Money</a> <i
-                    class="la la-plus text-white"></i>
-            </li>
+
+            {{-- <li class="d-flex @if (Route::currentRoutename() == 'deposit.create') bg-danger @endif  nav-item">
+                <div class="ml-2"><i class=" mt-1 la la-plus text-white"></i>
+                </div>
+                <div class="pt-1">
+                    <a class="nav-link @if (Route::currentRoutename() == 'deposit.create') text-white @endif "
+                        href="{{ route('deposit.create') }}"> Add Money</a>
+                </div>
+            </li> --}}
 
         </ul>
     </div>
