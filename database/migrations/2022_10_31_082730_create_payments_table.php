@@ -35,7 +35,7 @@ return new class extends Migration
          $table->string('remarks', 100);
 
          // future migrations : 2023_03_25_213025_add_status_to_payments_table.php
-         $table->enum('status', ['pending', 'successful', 'failed'])->after('remarks');
+         $table->enum('status', ['pending', 'successful', 'failed']);
 
          // Notifications
          $table->longText('trx_email')->nullable();
