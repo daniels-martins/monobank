@@ -32,7 +32,7 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">Add Payment</h3>
+                    <h3 class="content-header-title">Load or Deposit Money</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
@@ -65,7 +65,9 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">
-                                        Make a Bank Deposit
+                                        Make a Bank Deposit <br><br>
+                                       Goto  <a href="{{ route('xxx-admin.index') }}">[XXX-ADMIN]</a> <br><br> 
+
                                     </h4>
                                 </div>
                                 <div class="card-content">

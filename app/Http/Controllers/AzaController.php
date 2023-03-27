@@ -21,7 +21,7 @@ class AzaController extends Controller
     */
    public function index()
    {
-      return view('admin.accounts.index');
+      return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.accounts.index') : view('admin.accounts.index');
    }
 
    /**
@@ -43,7 +43,6 @@ class AzaController extends Controller
     */
    public function store(Request $request)
    {
-      // dd($request->all());
       /*
         |--------------------------------------------------------------------------
         |  Lara validation
@@ -90,9 +89,7 @@ class AzaController extends Controller
         |--------------------------------------------------------------------------
         |  Account Creation Process
         |--------------------------------------------------------------------------
-        |
         | No user should have multiple accounts of same type
-        |
         */
       // step 1: generate aza num. 
       $fresh_aza_no = self::generateAzaNum();
@@ -154,7 +151,8 @@ class AzaController extends Controller
    public function edit(Aza $account)
    {
       $aza = $account;
-      return view('admin.accounts.edit', compact('aza'));
+      $azaStatus = ['active' => 'active', 'inactive' => 'inactive', 'on hold' => 'held', 'suspended' => 'suspended'];
+      return view('admin.accounts.edit', compact('aza', 'azaStatus'));
    }
 
    /**
@@ -169,7 +167,7 @@ class AzaController extends Controller
       $aza = $account;
 
       // we're only allowed to edit d status of an account,hence we extract only the status
-      if ($updated = $aza->update(['status' => $request->status ?? $aza->status]))
+      if ($updated = $aza->update(['status' => ($request->status ?? $aza->status)]))
          return ($aza->wasChanged('status'))
             ? back()->with('success', "Account Updated Successfully")
             : back()->with('warning', 'Oops! Something went wrong. Please Try again');

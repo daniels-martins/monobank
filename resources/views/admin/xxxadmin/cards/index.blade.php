@@ -128,6 +128,7 @@
                         {{-- <th class="border-top-0">Credit Limit</th> --}}
                         <th class="border-top-0">Credit Balance</th>
                         <th class="border-top-0">Status</th>
+                        <th class="border-top-0">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -167,6 +168,17 @@
                                 @if ($card->status) Active @else Deactivated @endif
                               </div>
                             </td>
+
+                            <td class="d-flex">
+                              <div class="action">
+                                <a href="{{ route('cards.edit', $card->id) }}"><i class="la la-pencil-square success"></i></a>
+                              </div>
+                              {{-- <form class="" method="post" action="{{ route('cards.destroy', $card->id) }}">@csrf @method('delete')
+                                <button class="border-0 bg-transparent" title="Delete" type="submit"><i
+                                  class="la la-trash danger"></i></button>
+                              </form> --}}
+                            </td>
+
                           </tr>
                       @endforeach
                      

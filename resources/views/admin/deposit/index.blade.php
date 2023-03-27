@@ -135,9 +135,9 @@
                         </td>
                         <td class="align-middle">
                           <div class="ac-status badge 
-                            @if ($account->status) badge-success @else badge-danger @endif 
+                            @if ($account->status  == 'active') badge-success @else badge-danger @endif 
                             badge-pill badge-sm">
-                            @if ($account->status) Active @else Inactive @endif
+                            @if ($account->status  == 'active') Active @else Inactive @endif
                           </div>
                         </td>
                         <td class="align-middle">

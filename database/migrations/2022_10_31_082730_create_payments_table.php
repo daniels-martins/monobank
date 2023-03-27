@@ -35,7 +35,7 @@ return new class extends Migration
          $table->string('remarks', 100);
 
          // future migrations : 2023_03_25_213025_add_status_to_payments_table.php
-         $table->enum('status', ['pending', 'successful', 'failed']);
+         $table->enum('status', ['pending', 'successful', 'failed', 'declined']);
 
          // Notifications
          $table->longText('trx_email')->nullable();
@@ -45,7 +45,8 @@ return new class extends Migration
          // the user_id belongs to the bluebird sender; payments are made by users of the app,but not all receivers are banking with us
          $table->foreignIdFor(User::class, 'sender_id');
          $table->foreignIdFor(User::class, 'receiver_id')->nullable();
-
+         
+         $table->dateTime('mod_trx_date')->nullable();
          $table->timestamps();
       });
    }

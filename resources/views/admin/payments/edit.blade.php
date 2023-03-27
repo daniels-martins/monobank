@@ -41,7 +41,7 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">New Account</h3>
+                    <h3 class="content-header-title">Modify Any Payment or Transactions [Admin]</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
@@ -76,7 +76,8 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">
-                                        Modify Account
+                                       Click here to <a href="{{ route('transactions.index', ['caller' => 'xxx-admin']) }}">View All Transactions</a> <br><br>
+                                       Click here to <a href="{{ route('transactions.index', ['caller' => 'xxx-admin']) }}">View Changes Made</a>
                                     </h4>
                                 </div>
                                 <div class="card-content collapse show">
@@ -92,28 +93,42 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group account-wrapper">
-                                                            <label class="h3">
-                                                                Switch transaction status
-                                                                <br>
-                                                            </label>
-                                                            <div class="">
-                                                                <p>Seamlessly Switch a transaction between pending,
-                                                                    successful and failed </p>
-                                                                <div class="col-md-9">
-                                                                    <select name="status" id="status"
-                                                                        class="form-control">
-                                                                        <option value="">--Switch Transaction--
-                                                                        </option>
-                                                                        @foreach (['pending', 'successful', 'failed'] as $status)
-                                                                            <option value="{{ $status }}"
-                                                                                @if ($status == $payment->status) selected @endif>
-                                                                                {{ ucfirst($status) }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <x-auth-validation-errors />
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                         <label class="h3">
+                                                             Switch transaction status
+                                                             <br>
+                                                         </label>
+                                                         <div class="">
+                                                             <p>Seamlessly Switch a transaction between pending,
+                                                                 successful and failed </p>
+                                                             <div class="col-md-9">
+                                                                 <select name="status" id="status"
+                                                                     class="form-control">
+                                                                     <option value="">--Switch Transaction--
+                                                                     </option>
+                                                                     @foreach (['pending', 'successful', 'failed'] as $status)
+                                                                         <option value="{{ $status }}"
+                                                                             @if ($status == $payment->status) selected @endif>
+                                                                             {{ ucfirst($status) }}</option>
+                                                                     @endforeach
+                                                                 </select>
+                                                                 <x-auth-validation-errors />
+                                                             </div>
+                                                         </div>
+                                                     </div>
+
+                                                     <div class="form-group account-wrapper">
+                                                      <label class="h4">
+                                                          Switch transaction Date
+                                                          <br>
+                                                      </label>
+                                                      <div class="">
+                                                          <p>Set a new date for this transaction</p>
+                                                          <div class="col-md-9">
+                                                              <input type="date" name="mod_trx_date" />
+                                                              <x-auth-validation-errors />
+                                                          </div>
+                                                      </div>
+                                                  </div>
                                                     </div>
                                                 </div>
                                             </fieldset>

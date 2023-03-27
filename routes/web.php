@@ -13,6 +13,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BackAdminController;
 use App\Http\Controllers\ContactMessageController;
 
 /*
@@ -38,17 +39,17 @@ Route::get('/contactmessage',  [ContactMessageController::class, 'index'])->midd
 Route::delete('/contactmessage/{contactMessage}',  [ContactMessageController::class, 'destroy'])->middleware(['auth'])->name('contactmessages.destroy');
 
 Route::get('/clear_all', function () {
-    $clearcache = Artisan::call('cache:clear');
-    echo "Cache cleared<br>";
+   $clearcache = Artisan::call('cache:clear');
+   echo "Cache cleared<br>";
 
-    $clearview = Artisan::call('view:clear');
-    echo "View cleared<br>";
+   $clearview = Artisan::call('view:clear');
+   echo "View cleared<br>";
 
-    $clearconfig = Artisan::call('config:cache');
-    echo "Config cleared<br>";
+   $clearconfig = Artisan::call('config:cache');
+   echo "Config cleared<br>";
 
-    $cleardebugbar = Artisan::call('debugbar:clear');
-    echo "Debug Bar cleared<br>";
+   $cleardebugbar = Artisan::call('debugbar:clear');
+   echo "Debug Bar cleared<br>";
 });
 
 
@@ -92,28 +93,6 @@ Route::get('/profile/edit/', [ProfileController::class, 'edit'])->middleware(['a
 Route::patch('/profile/{id}', [ProfileController::class, 'update'])->middleware(['auth'])->name('profile.update');
 
 
-// deposit route
-Route::get('/deposit', [DepositController::class, 'create'])->middleware(['auth'])->name('deposit.create');
-
-Route::post('/deposit', [DepositController::class, 'store'])->middleware(['auth'])->name('deposit.store');
-
-
-// Route::get('/accounts', [AzaController::class, 'index'])->middleware(['auth'])->name('accounts.index');
-
-// Route::get('/accounts/create', [AzaController::class, 'create'])->middleware(['auth'])->name('accounts.create');
-
-// Route::post('/accounts', [AzaController::class, 'store'])->middleware(['auth'])->name('accounts.store');
-
-// Route::get('/accounts/{aza}', [AzaController::class, 'edit'])->middleware(['auth'])->name('accounts.edit');
-
-// Route::patch('/accounts/{aza}', [AzaController::class, 'update'])->middleware(['auth'])->name('accounts.update');
-
-// Route::delete('/accounts/{aza}', [AzaController::class, 'destroy'])->middleware(['auth'])->name('accounts.destroy');
-
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Auth Routes
@@ -129,16 +108,20 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
       // 'plural form of resouce' => ControllerForResource
       'payments' => PaymentController::class,
       'accounts' => AzaController::class,
-
    ]);
 });
+
+
 
 Route::get('/transactions', function () {
    $all_trx = Payment::all();
    $allPendingTrx = Payment::where('status', 'pending')->get();
    $allSuccessfulTrx = Payment::where('status', 'successful')->get();
    $allFailedTrx = Payment::where('status', 'failed')->get();
-   return view('admin.transactions', compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx'));
+   $sendoffs = compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx');
+   return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.transactions', $sendoffs) :  view('admin.transactions', $sendoffs);
+
+   // return view('admin.transactions', compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx'));
 })->middleware(['auth'])->name('transactions.index');
 
 Route::get('/tinker', function () {
@@ -151,6 +134,16 @@ Route::get('/tinker', function () {
    // organiseTrxInDB(Payment::all());
    // return view('admin.tinker', compact('all_trx'));
 })->middleware(['auth'])->name('tinker.index');
+
+// xxx admin routes
+// Route::post('/backyard', [BackAdminController::class, 'index'])->middleware(['auth'])->name('backyard.index');
+
+Route::get('xxx-admin', [BackAdminController::class, 'index'])->middleware(['auth'])->name('xxx-admin.index');
+// deposit route
+Route::get('xxx-admin/deposit', [DepositController::class, 'create'])->middleware(['auth'])->name('deposit.create');
+
+Route::post('xxx-admin/deposit', [DepositController::class, 'store'])->middleware(['auth'])->name('deposit.store');
+
 
 require __DIR__ . '/auth.php';
 

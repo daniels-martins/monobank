@@ -88,6 +88,7 @@
                                                     <th class="border-top-0">Holder Name</th>
                                                     <th class="border-top-0">Status</th>
                                                     <th class="border-top-0">Balance</th>
+                                                    <th class="border-top-0">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -135,8 +136,8 @@
                                                         <td class="align-middle">
                                                             <div
                                                                 class="ac-status badge 
-                            @if ($account->status == 'active') badge-success @else badge-danger @endif 
-                            badge-pill badge-sm">
+@if ($account->status == 'active') badge-success @else badge-danger @endif 
+badge-pill badge-sm">
                                                                 {{ $account->status == 'held' ? 'On Hold' : ucfirst($account->status) }}
                                                                 {{-- @if ($account->status == 'active') Active @else Inactive @endif --}}
                                                             </div>
@@ -146,6 +147,21 @@
                                                                 <span>$</span>
                                                                 {{ $account->balance > 0 ? $account->balance : '0.00' }}
                                                             </div>
+                                                        </td>
+
+                                                        <td class="d-flex">
+                                                            <div>
+                                                                <a title="Edit"
+                                                                    href="{{ route('accounts.edit', $account->id) }}">
+                                                                    <i class="la la-pencil-square success"></i>
+                                                                </a>
+                                                            </div>
+
+                                                            {{-- <form class="action" method="post" action="{{ route('accounts.destroy', $account->id ) }}">
+                            @csrf @method('delete')
+                            <button class="border-0 bg-transparent" title="Delete" type="submit"><i
+                                class="la la-trash danger"></i></button>
+                          </form> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

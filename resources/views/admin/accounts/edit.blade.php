@@ -43,7 +43,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-        <h3 class="content-header-title">New Account</h3>
+        <h3 class="content-header-title">Modify Account [Admin]</h3>
         <div class="row breadcrumbs-top">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
@@ -77,7 +77,9 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">
-                  Modify Account
+                  Goto  <a href="{{ route('xxx-admin.index') }}">[XXX-ADMIN]</a> <br><br> 
+                  Click here to <a href="{{ route('accounts.index', ['caller' => 'xxx-admin']) }}">View All Accounts</a> <br><br>
+                  Click here to <a href="{{ route('accounts.index', ['caller' => 'xxx-admin']) }}">View Changes Made</a>
                 </h4>
               </div>
               <div class="card-content collapse show">
@@ -99,11 +101,12 @@
                             <div class="">
                               <p>Turn off your account for Debit Transactions</p>
                               <div class="col-md-9">
+                                 <div> Current Status : {{ $aza->status }}</div>
                                 <select name="status" id="" class="form-control">
                                   <option value="">--Switch Account--</option>
-
-                                  <option value="1">Active</option>
-                                  <option value="0">Inactive</option>
+                                 @foreach ($azaStatus as $key => $status)
+                                  <option value="{{ $status }}">{{ ucfirst($key) }}</option>
+                                 @endforeach
                                 </select>
                               </div>
                             </div>

@@ -249,11 +249,6 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="ft-user"></i> Edit
                                 Profile</a>
-                                <a class="dropdown-item" href="{{ route('contactmessages.index') }}"><i
-                                 class="ft-mail"></i>Messages</a>
-
-                                 <a class="dropdown-item" href="{{ route('deposit.create') }}"><i
-                                    class="ft-plus"></i>Add Money ($)</a>
 
                             {{-- <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
                             <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use Faker\Factory;
 use App\Models\Aza;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use GuzzleHttp\TransferStats;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
-use stdClass;
 
 class PaymentController extends Controller
 {
@@ -19,7 +20,8 @@ class PaymentController extends Controller
     */
    public function index()
    {
-      return view('admin.payments.index');
+      // not in use
+      // return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.payments.index') :  view('admin.payments.index');
    }
 
    /**
@@ -130,7 +132,11 @@ class PaymentController extends Controller
    public function update(Request $request, Payment $payment)
    {
       // dd($request->all(), $payment);
-      $request->validate(['status' => 'required']);
+      $request->validate(['status' => 'required', 'mod_trx_date' => 'sometimes']);
+      if ($request->mod_trx_date) {
+         $theDateTime = Carbon::make($request->mod_trx_date)->toDateString() . ' ' . now()->toTimeString();
+         $payment->mod_trx_date = $theDateTime;
+      }
       $payment->status = $request->status;
       return ($payment->save()) ? back()->with('success', 'Operation Successful') : back()->with('danger', 'Operation Failed');
    }

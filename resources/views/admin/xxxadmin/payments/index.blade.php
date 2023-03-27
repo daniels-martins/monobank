@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/admin_assets/app-assets/css/core/colors/palette-gradient.min.css">
     <link rel="stylesheet" type="text/css" href="/admin_assets/app-assets/css/pages/single-page.min.css">
     <!-- END: Page CSS-->
+
 @endsection
 
 @section('custom_css')
