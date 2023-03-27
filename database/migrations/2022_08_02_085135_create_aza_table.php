@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             // $table->enum('type', ['savings', 'checking']);
             $table->string('num', 10)->unique();
-            $table->binary('status')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->string('balance')->default(0);
 
             // foreign keys
