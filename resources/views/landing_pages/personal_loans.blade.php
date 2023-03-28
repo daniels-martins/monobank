@@ -815,7 +815,7 @@
             </div>
         </section>
 
-        @include('landing_pages.partials.footer')
+    @include('landing_pages.partials.footer')
     </div>
     <div class="modal modal-1" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">

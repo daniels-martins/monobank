@@ -106,12 +106,12 @@
                                     {{-- <div class="bg-primary my-3 p-3 rounded-sm">
                                         <span class="h2 "> <a href="#" class="text-white"> Modify
                                                 Profile</a></span>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="bg-primary my-3 p-3 rounded-sm">
                                         <span class="h2 "> <a href="{{ route('contactmessages.index') }}"
                                                 class="text-white"> View Messages </a></span>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>

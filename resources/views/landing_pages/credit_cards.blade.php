@@ -19,6 +19,13 @@
         a {
             cursor: pointer;
         }
+
+        .mt-5 {
+            margin-top: 5em;
+        }
+        .mt-10 {
+            margin-top: 10rem;
+        }
     </style>
     <!--[if lt IE 10]>
       <div
@@ -74,21 +81,20 @@
                                 data-custom-toggle-disable-on-blur="true">
                                 <span></span></button>
 
-                                <style>
-                                 .logo_img_welcome_page{
+                            <style>
+                                .logo_img_welcome_page {
                                     width: 70px !important;
-                                    
-                                   }
 
-                                   .mt-_5{
+                                }
+
+                                .mt-_5 {
                                     margin-top: -1.2em;
-                                   }
-                                   </style>
-                                                                   
-                                <a class="rd-navbar-brand brand mt-_5"
-                                href="#">
-                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" class="logo_img_welcome_page"
-                                     /></a>
+                                }
+                            </style>
+
+                            <a class="rd-navbar-brand brand mt-_5" href="#">
+                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt=""
+                                    class="logo_img_welcome_page" /></a>
 
                         </div>
                         <div class="rd-navbar-nav-wrap">
@@ -211,7 +217,7 @@
                                     <h2 class="slider-header" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="0s">
                                         The Best<br class="d-none d-lg-block" />
-                                        Loans for You
+                                        Credit Card Deals For You
                                     </h2>
                                     <p class="slider-text" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="300">
@@ -300,100 +306,10 @@
             </div>
         </section>
 
-        <section class="section-transform bg-transform bg-transform-first" id="about">
-            <div class="bg-transform-inner"></div>
-            <div class="container section-relative container-top-0 section-60 section-lg-top-80 section-lg-bottom-100">
-                <h2 class="text-spacing-50 text-white">About Us</h2>
-            </div>
-        </section>
 
-        <section class="section-60 section-lg-100 section-transform bg-transform context-dark">
-            <div class="container text-lg-left">
-                <div class="row row-30 justify-content-lg-between">
-                    <div class="col-lg-5">
-                        <h2>Better Rates</h2>
-                        <h5 class="offset-top-15">By using better data</h5>
-                        <p class="text-spacing-50 inset-xl-right-50">
-                            There's more to you than your credit score. Your education and
-                            job history help us understand more about your future.
-                        </p>
-                        <!--Select 2-->
-                        <form class="rd-mailform-inline" action="index.html#">
-                            <div class="select-2-white form-wrap">
-                                <select class="form-input select-filter" data-placeholder="I would like to"
-                                    data-minimum-results-for-search="Infinity">
-                                    <option value="2">$ 50 000</option>
-                                    <option value="3">$ 100 000</option>
-                                    <option value="4">$ 150 000</option>
-                                    <option value="5">$ 200 000</option>
-                                    <option value="6">$ 250 000</option>
-                                    <option value="7">$ 300 000</option>
-                                </select>
-                            </div>
-                            <button class="button button-link button-link-white" style="min-width: 174px">
-                                Check Your Rate
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-lg-6 col-lg-divider">
-                        <table class="table-transparent">
-                            <tr>
-                                <th></th>
-                                <th>
-                                    <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="160"
-                                        height="52" />
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>FICO score</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td>
-                                    <span class="icon icon-dust mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Years of credit</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td>
-                                    <span class="icon icon-dust mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Education</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td>
-                                    <span class="icon icon-dust mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Area of study</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Job history</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-transform-inner bg-image bg-image-1 bg-overlay-90"></div>
-        </section>
         <section class="section-75 section-lg-100 bg-wasip" id="services">
             <div class="container">
-                <h2>Services Overview</h2>
+                <h2>Credit Card Benefits Overview</h2>
                 <div class="row row-40">
                     <div class="col-md-6 col-xl-3 height-fill">
                         <article class="icon-box">
@@ -630,66 +546,34 @@
             </div>
         </section>
 
-        <!-- Testimonials-->
-        <!-- Material Parallax-->
-        <section class="section parallax-container bg-black bg-overlay-70" data-parallax-img="images/bg-about.jpg">
-            <div class="parallax-content">
-                <div class="section-75 section-lg-100 context-dark">
-                    <div class="container">
-                        <h2>Get a Loan In 3 Quick Steps</h2>
-                        <ul class="row row-30 row-offset-1 list-index">
-                            <li class="col-sm-6 col-lg-4">
-                                <div class="box-outline">
-                                    <div class="list-index-counter"></div>
-                                    <h5>Check your rate in 2 minutes</h5>
-                                    <p class="text-spacing-50">
-                                        Just answer a few quick questions about your education and
-                                        employment.
-                                    </p>
-                                    <span class="border-left-bottom"></span><span class="border-right-bottom"></span>
-                                </div>
-                            </li>
-                            <li class="col-sm-6 col-lg-4">
-                                <div class="box-outline">
-                                    <div class="list-index-counter"></div>
-                                    <h5>Get your money the next day</h5>
-                                    <p class="text-spacing-50">
-                                        After your application is approved, you'll have a chance
-                                        to review your loan.
-                                    </p>
-                                    <span class="border-left-bottom"></span><span class="border-right-bottom"></span>
-                                </div>
-                            </li>
-                            <li class="col-sm-6 col-lg-4">
-                                <div class="box-outline">
-                                    <div class="list-index-counter"></div>
-                                    <h5>Repay: set it and forget it</h5>
-                                    <p class="text-spacing-50">
-                                        It's easy to set up automated monthly payments without any
-                                        penalties.
-                                    </p>
-                                    <span class="border-left-bottom"></span><span class="border-right-bottom"></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
-        <!-- CTA-->
-        <section class="section-60 section-lg-100 bg-river">
-            <div class="container text-center text-lg-left">
-                <div class="row row-30 align-items-lg-center">
-                    <div class="col-lg-8 col-xl-9">
-                        <h3 class="text-spacing-50">
-                            A Wide Variety of Mortgage Solutions
-                        </h3>
+        <section class="bg-default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left">
+                        <h2>Easy Credit Card Application System</h2>
+                        <h5 class="text-spacing-50">
+                            We provide personalized credit services for all.
+                        </h5>
+                        <p class="text-spacing-50 text-gray">
+                            At Bluebird Bank, we understand the importance of having a reliable and convenient tool to
+                            manage your finances. Our credit cards are designed to provide you with the flexibility and
+                            convenience you need to make purchases, manage expenses, and even save money.
+
+
+                        </p>
+                        <p class="text-spacing-50 text-gray">
+                            Applying for a Bluebird Bank credit card is easy and straightforward. You can visit our
+                            website, fill out an application form, and receive a decision in minutes. If approved,
+                            you'll receive your card within a few business days, and you'll be ready to start using it
+                            for your purchases.
+                        </p>
+                        {{-- <a class="button button-secondary button-width" >read more</a> --}}
                     </div>
-                    <div class="col-lg-4 col-xl-3">
-                        <a class="button button-xl button-white-outline" data-toggle="modal"
-                            data-target="#exampleModal">Get a Quote</a>
+                    <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
+                        <img class="img-responsive center-block" src="/static_assets/lpage/ccs/cc2.jpeg"
+                            alt="" width="569" height="600" />
                     </div>
                 </div>
             </div>
@@ -698,28 +582,65 @@
         <section class="bg-default">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left">
-                        <h2>Mortgage Advice</h2>
+                    <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
+                        <img class="img-responsive center-block" src="/static_assets/lpage/ccs/cc1.jpeg"
+                            alt="" width="569" height="600" />
+                    </div>
+                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left mt-5">
+                        <h2 class="mt-5">Key Benefits of Using Credit Cards</h2>
                         <h5 class="text-spacing-50">
-                            We provide personalized mortgage services.
+                            We know how to make you profit from your credit cards.
                         </h5>
                         <p class="text-spacing-50 text-gray">
-                            Arranging a mortgage is one of the largest commitments most of
-                            us will ever make, even more reason to seek suitable mortgage
-                            advice which is individually tailored to your needs and
-                            requirements.
+                            One of the benefits of using a Bluebird Bank credit card is the ability to earn rewards and
+                            cashback on your purchases. Depending on the type of card you choose, you can earn points or
+                            cashback on every purchase you make. These rewards can add up quickly, and you can redeem
+                            them for travel, merchandise, or even statement credits, which can help you save money on
+                            future purchases.
                         </p>
                         <p class="text-spacing-50 text-gray">
-                            Bluebird is not tied to any specific lender, which means we can
-                            establish and recommend the best mortgage product. Our aim is to
-                            provide you with tailored and honest advice to help guide you
-                            through difficult decisions.
+                            In addition to earning rewards, using a credit card can also help you save money on interest
+                            charges. By using a credit card to make purchases instead of using cash or a debit card, you
+                            can take advantage of the interest-free period that most credit cards offer. As long as you
+                            pay your balance in full by the due date, you won't be charged any interest on your
+                            purchases.
+                        </p>
+                        {{-- <a class="button button-secondary button-width" >read more</a> --}}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="bg-default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left mt-10">
+                        <h2>A rewarding Credit Card Experience</h2>
+                        <h5 class="text-spacing-50">
+                            More Benefits To Consider
+                        </h5>
+                        <p class="text-spacing-50 text-gray">
+                            Another benefit of using a Bluebird Bank credit card is the ability to track and manage your
+                            expenses. Our credit card statements provide you with a clear breakdown of your purchases,
+                            which can help you identify areas where you can cut back on expenses and save money. You can
+                            also set up alerts and notifications to stay on top of your spending and avoid overspending.
+                            
+                        </p>
+                        <p class="text-spacing-50 text-gray">
+                           At Bluebird Bank, we're committed to providing our customers with the best possible credit
+                            card experience. Our credit cards offer competitive interest rates, no annual fees, and 24/7
+                            customer service support. Our credit card specialists are available to answer any questions
+                            you may have and provide you with the guidance and support you need to make informed
+                            financial decisions.
+
                         </p>
                         {{-- <a class="button button-secondary button-width" >read more</a> --}}
                     </div>
                     <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
                         <img class="img-responsive center-block"
-                            src="http://livedemo00.template-help.com/wt_prod-20296/images/image-2-569x600.jpg"
+                            src="/static_assets/lpage/ccs/cc3.jpg"
                             alt="" width="569" height="600" />
                     </div>
                 </div>
@@ -754,69 +675,9 @@
             </div>
         </section>
 
-        <section class="section-75 section-lg-100 bg-porcelain">
-            <div class="container">
-                <div class="row row-50 align-items-sm-center justify-content-lg-between">
-                    <div class="col-lg-6 col-xl-5 text-lg-left">
-                        <h2>
-                            Get Your Rate in<br class="d-none d-lg-blcok" />
-                            Just 2 Minutes
-                        </h2>
-                        <h5 class="offset-top-15 text-spacing-50">
-                            It won't affect your credit score!
-                        </h5>
-                        <form class="rd-mailform-inline" action="index.html#">
-                            <div class="form-wrap">
-                                <!--Select 2-->
-                                <select class="form-input select-filter" data-placeholder="I would like to"
-                                    data-minimum-results-for-search="Infinity">
-                                    <option value="2">$ 50 000</option>
-                                    <option value="3">$ 100 000</option>
-                                    <option value="4">$ 150 000</option>
-                                    <option value="5">$ 200 000</option>
-                                    <option value="6">$ 250 000</option>
-                                    <option value="7">$ 300 000</option>
-                                </select>
-                            </div>
-                            <button class="button button-link button-link-primary" style="min-width: 174px">
-                                Check Your Rate
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="section-dividers-white">
-                            <div class="row row-30">
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-3.png"
-                                            alt="" /></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-4.png"
-                                            alt="" /></div>
-                                </div>
-                            </div>
-                            <div class="row row-30 row-offset-5">
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-7.png"
-                                            alt="" /></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-8.png"
-                                            alt="" /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         @include('landing_pages.partials.footer')
     </div>
+
     <div class="modal modal-1" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

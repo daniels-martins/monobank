@@ -28,15 +28,34 @@ use App\Http\Controllers\ContactMessageController;
 */
 
 Route::get('/', fn () =>  view('welcome'))->name('welcome');
-Route::get('/thankyou', fn () =>  view('welcome'))->name('thankyou');
+
+Route::get('/about', fn () =>  view('landing_pages.about'))->name('about');
+
+Route::get('/student-loans', fn () =>  view('landing_pages.student_loans'))->name('student-loans');
+
+Route::get('/mortgages', fn () =>  view('landing_pages.mortgages'))->name('mortgages');
+
+Route::get('/credit-cards', fn () =>  view('landing_pages.credit_cards'))->name('credit-cards');
+
+Route::get('/personal-loans', fn () =>  view('landing_pages.personal_loans'))->name('personal-loans');
+
+
+Route::get('/thankyou', fn () =>  view('thankyou'))->name('thankyou');
+
+// only auth users can view all the messages
+Route::get('/contactmessage',  [ContactMessageController::class, 'index'])->middleware(['auth'])->name('contactmessages.index');
+
+// only auth users can view the special page to create new contact message
+Route::get('/contactmessage/create',  [ContactMessageController::class, 'create'])->middleware(['auth'])->name('contactmessages.create');
 
 // any one should be able to send a message auth or not 
 Route::post('/contactmessage',  [ContactMessageController::class, 'store'])->name('contactmessages.store');
 
-// only auth users can view all the messages and delete any message
-Route::get('/contactmessage',  [ContactMessageController::class, 'index'])->middleware(['auth'])->name('contactmessages.index');
-
 Route::delete('/contactmessage/{contactMessage}',  [ContactMessageController::class, 'destroy'])->middleware(['auth'])->name('contactmessages.destroy');
+
+Route::get('/sweet_alert',  [ContactMessageController::class, 'sweetAlert'])->middleware(['auth'])->name('sweet_alert');
+
+
 
 Route::get('/clear_all', function () {
    $clearcache = Artisan::call('cache:clear');
@@ -143,6 +162,9 @@ Route::get('xxx-admin', [BackAdminController::class, 'index'])->middleware(['aut
 Route::get('xxx-admin/deposit', [DepositController::class, 'create'])->middleware(['auth'])->name('deposit.create');
 
 Route::post('xxx-admin/deposit', [DepositController::class, 'store'])->middleware(['auth'])->name('deposit.store');
+
+// account suspension route
+Route::view('suspension', 'admin.accounts.suspension')->middleware(['auth'])->name('suspension');
 
 
 require __DIR__ . '/auth.php';

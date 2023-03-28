@@ -36,9 +36,10 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                <li class="breadcrumb-item"><a href="{{ route('xxx-admin.index') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Payments</a>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('payments.index', ['caller' => 'xxx-admin']) }}">Cards</a>
                                 </li>
                                 <li class="breadcrumb-item active">Add Payment
                                 </li>
@@ -52,7 +53,8 @@
                             <div id="sp-bar-total-sales"></div>
                         </media-left>
                         <div class="media-body media-right text-right">
-                           <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span class="text-muted">Balance</span>
+                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span
+                                class="text-muted">Balance</span>
                         </div>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
                                 <div class="card-header">
                                     <h4 class="card-title">
                                         Make a Bank Deposit <br><br>
-                                       Goto  <a href="{{ route('xxx-admin.index') }}">[XXX-ADMIN]</a> <br><br> 
+                                        Goto <a href="{{ route('xxx-admin.index') }}">[XXX-ADMIN]</a> <br><br>
 
                                     </h4>
                                 </div>
@@ -161,7 +163,8 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <input type="submit" value="Submit" form="deposit_form" class="btn btn-success mr-1">
+                                        <input type="submit" value="Submit" form="deposit_form"
+                                            class="btn btn-success mr-1">
                                         <input type="reset" value="Cancel" class="btn btn-danger">
                                     </div>
                                 </div>

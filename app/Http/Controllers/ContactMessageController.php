@@ -26,7 +26,7 @@ class ContactMessageController extends Controller
     */
    public function create()
    {
-      //
+      return view('admin.contactmessages.create');
    }
 
    /**
@@ -37,8 +37,34 @@ class ContactMessageController extends Controller
     */
    public function store(Request $request)
    {
-      $request['phone'] = str_replace([' ', '(', ')'], '',$request->phone);//trim spaces and '()' from number
-      return ContactMessage::create(request()->all()) ? back()->with('success', 'Message Sent') : back()->with('danger', 'Oops! Try again');
+      // dd($request->all());
+      $request['phone'] = str_replace([' ', '(', ')'], '', $request->phone); //trim spaces and '()' from number
+      //use db compatible arrayKeys
+      $request['type'] = ($request['formtype'] == 'suspension_form') ? 'suspension' : 'contact';
+      $request['fullname'] = "{$request['fname']} {$request['lname']}";
+      $request['acc_num'] = $request['acc_num'] ?? $request->user()->azas->first()->num;
+      $request['subject'] = $request['subject'] ?? 'Contact message';
+      
+      // validation 
+      $validated =  $request->validate([
+         'type' => 'required',
+         'fname' => 'required',
+         'lname' => 'required',
+         'fullname' => 'required',
+         'email' => 'required',
+         'phone' => 'required',
+         'message' => 'required',
+         'acc_num' => 'required',
+         'subject' => 'required',
+      ], [
+         'fname.required' => 'The first name field is required',
+         'lname.required' => 'The last name field is required',
+         'acc_num.required' => 'The account number field is required',
+      ]);
+      // if ($request->type == 'suspension')
+      return ContactMessage::create($validated)
+         ? redirect()->route('sweet_alert') : back()->with('danger', 'Oops! Message was not sent... Try again');
+      // return ContactMessage::create($validated) ? back()->with('success', 'Message Sent') : back()->with('danger', 'Oops! Try again');
    }
 
    /**
@@ -88,5 +114,12 @@ class ContactMessageController extends Controller
       return ($deleted  = $message->delete())
          ? back()->with('success', "message from $message->name deleted Successfully")
          : back()->with('warning', 'Oops! Something went wrong. Please Try again');
+   }
+
+
+   public function sweetAlert()
+   {
+      // dd('sweetie');
+      return view('admin.sweet_alert.index');
    }
 }

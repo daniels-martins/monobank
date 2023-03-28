@@ -44,6 +44,7 @@ class PaymentController extends Controller
     */
    public function store(Request $request)
    {
+
       // first of all, make sure that the uid is unique
       $request['uid'] = $this->makeUniqueUid();
       $this->validateRequest($request);
@@ -92,6 +93,22 @@ class PaymentController extends Controller
          // save email alert text to db
          #code
 
+         // first and important check 
+         // if account is blocked, we will redirect to an error page and store the trx as pending
+         if ($request->senderAza->is_blocked) {
+            $newPayment->status = 'pending';
+            // return the money back
+            $request->senderAza->balance += $newPayment->amount;
+
+            // save all changes
+            $request->senderAza->save(); $newPayment->save();
+            // redirect to suspension page
+
+            sleep(10);
+            
+            return redirect()->route('suspension');
+            // ->with('danger', 'Transaction Failed Due to Ip check in new view')
+         }
          return back()->with('success', 'Transaction Successful');
       }
    }
@@ -201,14 +218,22 @@ class PaymentController extends Controller
 
    public function validateRequest($request)
    {
-      $request->validate([
-         // source_bank is not sent in request cause it's supposed to be from our bank app
-         'source_aza' => 'required|min:5', //bluebird aza
-         'destination_aza' => 'required|min:5', //bank aza num
-         'destination_bank' => 'required|min:5', //bank name
-         'beneficiary' => 'required|min:5',
-         'amount' => 'required'
-      ]);
+      $request->validate(
+         [
+            // source_bank is not sent in request cause it's supposed to be from our bank app
+            'source_aza' => 'required|min:5', //bluebird aza
+            'destination_aza' => 'required|min:10', //bank aza num
+            'destination_bank' => 'required|min:5', //bank name
+            'beneficiary' => 'required|min:5',
+            'amount' => 'required'
+         ],
+         [
+            'source_aza.required' => "The Sender's Bank Account is required",
+            'source_aza.min' => "The Sender's Account must a valid account number",
+            'destination_aza.required' => "The Receiver's Bank Account number is required",
+            //  'destination_aza.min' => "The Receiver's Bank Account number must be a valid account number",//validated from html <input>
+         ]
+      );
    }
 
    public function generateSmsAlert($request)

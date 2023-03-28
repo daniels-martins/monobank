@@ -19,9 +19,8 @@ return new class extends Migration
         Schema::create('aza', function (Blueprint $table) {
             $table->id();
             $table->string('num', 10)->unique();
-            // $table->boolean('status')->default(true);
             $table->enum('status', ['active', 'inactive', 'held', 'suspended'])->default('active');
-
+            $table->boolean('is_blocked')->default(false);
             $table->string('balance')->default(0);
 
             // foreign keys

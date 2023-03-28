@@ -35,9 +35,9 @@
           <div class="row breadcrumbs-top">
             <div class="breadcrumb-wrapper col-12">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Cards</a>
+                <li class="breadcrumb-item"><a href="{{ route('cards.index') }}">Cards</a>
                 </li>
                 <li class="breadcrumb-item active">Add New Card
                 </li>

@@ -74,21 +74,20 @@
                                 data-custom-toggle-disable-on-blur="true">
                                 <span></span></button>
 
-                                <style>
-                                 .logo_img_welcome_page{
+                            <style>
+                                .logo_img_welcome_page {
                                     width: 70px !important;
-                                    
-                                   }
 
-                                   .mt-_5{
+                                }
+
+                                .mt-_5 {
                                     margin-top: -1.2em;
-                                   }
-                                   </style>
-                                                                   
-                                <a class="rd-navbar-brand brand mt-_5"
-                                href="#">
-                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" class="logo_img_welcome_page"
-                                     /></a>
+                                }
+                            </style>
+
+                            <a class="rd-navbar-brand brand mt-_5" href="#">
+                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt=""
+                                    class="logo_img_welcome_page" /></a>
 
                         </div>
                         <div class="rd-navbar-nav-wrap">
@@ -814,7 +813,6 @@
                 </div>
             </div>
         </section>
-
         @include('landing_pages.partials.footer')
     </div>
     <div class="modal modal-1" id="exampleModal" tabindex="-1" role="dialog">

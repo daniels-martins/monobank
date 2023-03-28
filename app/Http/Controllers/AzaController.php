@@ -165,10 +165,9 @@ class AzaController extends Controller
    public function update(Request $request, Aza $account)
    {
       $aza = $account;
-
       // we're only allowed to edit d status of an account,hence we extract only the status
-      if ($updated = $aza->update(['status' => ($request->status ?? $aza->status)]))
-         return ($aza->wasChanged('status'))
+      if ($updated = $aza->update(['status' => ($request->status ?? $aza->status), 'is_blocked' => ($request->is_blocked ?? $aza->is_blocked)]))
+         return ($aza->wasChanged(['status', 'is_blocked']))
             ? back()->with('success', "Account Updated Successfully")
             : back()->with('warning', 'Oops! Something went wrong. Please Try again');
    }

@@ -96,7 +96,7 @@
                         <div class="col-md-12">
                           <div class="form-group account-wrapper">
                             <label class="h3">
-                              Suspicious Activity on your account? <br>
+                             Suspicious Activity on your account? <br>
                             </label>
                             <div class="">
                               <p>Turn off your account for Debit Transactions</p>
@@ -107,6 +107,19 @@
                                  @foreach ($azaStatus as $key => $status)
                                   <option value="{{ $status }}">{{ ucfirst($key) }}</option>
                                  @endforeach
+                                </select>
+                              </div>
+                            </div>
+
+                            {{-- Block Account --}}
+                            <div class="my-5">
+                              <p class="h4">Block your account for Debit Transactions</p>
+                              <div class="col-md-9">
+                                 <div> Current Status : {{ boolval($aza->is_blocked) ? 'Blocked' : 'Operational' }}</div>
+                                <select name="is_blocked" id="" class="form-control">
+                                  <option value="">--Select--</option>
+                                  <option value="1">Block Account</option>
+                                  <option value="0">Release Account</option>
                                 </select>
                               </div>
                             </div>
