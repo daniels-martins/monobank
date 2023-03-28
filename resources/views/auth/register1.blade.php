@@ -77,14 +77,24 @@
               </fieldset>
 
               <fieldset class="form-group position-relative has-icon-left">
-                <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="user-name" placeholder="Your Email" required>
-                <div class="form-control-position">
-                  <i class="la la-user"></i>
-                </div>
-                @error('email')
-                <div class="error"><b>Oops! {{ $message }}</b></div>
-                @enderror
-              </fieldset>
+               <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="user-name" placeholder="Your Email" required>
+               <div class="form-control-position">
+                 <i class="la la-user"></i>
+               </div>
+               @error('email')
+               <div class="error"><b>Oops! {{ $message }}</b></div>
+               @enderror
+             </fieldset>
+
+             {{-- <fieldset class="form-group position-relative has-icon-left">
+               <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="user-name" placeholder="Your Email" required>
+               <div class="form-control-position">
+                 <i class="la la-user"></i>
+               </div>
+               @error('email')
+               <div class="error"><b>Oops! {{ $message }}</b></div>
+               @enderror
+             </fieldset> --}}
 
 
               <fieldset class="form-group position-relative has-icon-left">

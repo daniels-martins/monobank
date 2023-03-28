@@ -74,6 +74,16 @@ class User extends Authenticatable implements MustVerifyEmail
       // return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id)->sum('amount');
    }
 
+      /**
+    * only for viewing the list of all transactions (debit or credit) for the authUser
+    */
+    public function trxQuery()
+    {
+       // return $this->hasMany(Payment::class, 'sender_id', 'id');
+       return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id);
+       // return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id)->sum('amount');
+    }
+
   /**
     * returns the model collection of debit transactions for a given period of time, when time is not specified, 
     * it returns the alltime collection of debit transactions

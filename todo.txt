@@ -22,3 +22,14 @@ Trx:
 Declined
 soln: migrations for 'declined' status
 
+
+transaction source should include cheque, loan etc
+
+email verification upon registration
+only trx related to user
+reasons for blocking account should be given via an input field... (IP change)
+new account sees all the other transactions from previous users
+option for checking or savings account when opening an account ---active
+remove photo
+
+Bonus: email alert for every transaction

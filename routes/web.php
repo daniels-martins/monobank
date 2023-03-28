@@ -133,11 +133,13 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
 
 Route::get('/transactions', function () {
-   $all_trx = Payment::all();
-   $allPendingTrx = Payment::where('status', 'pending')->get();
-   $allSuccessfulTrx = Payment::where('status', 'successful')->get();
-   $allFailedTrx = Payment::where('status', 'failed')->get();
+   // $all_trx = Payment::all();
+   $all_trx = auth()->user()->trx();
+   $allPendingTrx = $all_trx->where('status', 'pending');
+   $allSuccessfulTrx = $all_trx->where('status', 'successful');
+   $allFailedTrx = $all_trx->where('status', 'failed');
    $sendoffs = compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx');
+   // dd($all_trx, $allPendingTrx, $allSuccessfulTrx, $allFailedTrx);
    return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.transactions', $sendoffs) :  view('admin.transactions', $sendoffs);
 
    // return view('admin.transactions', compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx'));
