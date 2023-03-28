@@ -76,6 +76,7 @@ class ContactMessageController extends Controller
    public function show(ContactMessage $contactMessage)
    {
       //
+      strstr()
    }
 
    /**
