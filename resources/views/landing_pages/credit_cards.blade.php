@@ -221,7 +221,7 @@
                                     </h2>
                                     <p class="slider-text" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="300">
-                                        Providing low-rate mortgage loans since 2000.
+                                        Providing low-rate credit facilities since 2000.
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
@@ -242,7 +242,7 @@
                                     <h2 class="slider-header" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="0s">
                                         Efficient<br class="d-none d-lg-block" />
-                                        Mortgage Financing
+                                        Credit Financing
                                     </h2>
                                     <p class="slider-text" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="300">
@@ -305,7 +305,6 @@
                 </div>
             </div>
         </section>
-
 
         <section class="section-75 section-lg-100 bg-wasip" id="services">
             <div class="container">
@@ -651,7 +650,7 @@
             <div class="parallax-content">
                 <div class="section-75 section-lg-100 context-dark">
                     <div class="container">
-                        <h3 class="text-spacing-50">Mortgage News and Updates</h3>
+                        <h3 class="text-spacing-50">Credit Card News and Updates</h3>
                         <p class="heading-subtext text-spacing-0">
                             Sign up to our newsletter and be the first to know about latest
                             news,<br class="d-none d-lg-block" />special offers, events, and
@@ -717,45 +716,8 @@
     <div class="snackbars" id="form-output-global"></div>
     <script src="/static_assets/js/jquery_core.min.js"></script>
     <script src="/static_assets/js/script.js"></script>
-
-    <!--LIVEDEMO_00 -->
-
-    {{-- <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(["_setAccount", "UA-7078796-5"]);
-        _gaq.push(["_trackPageview"]);
-        (function() {
-            var ga = document.createElement("script");
-            ga.type = "text/javascript";
-            ga.async = true;
-            ga.src =
-                ("https:" == document.location.protocol ?
-                    "https://ssl" :
-                    "http://www") + ".google-analytics.com/ga.js";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script> --}}
-
     <!-- coded by Ragnar-->
     <!-- Google Tag Manager --><noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-P9FT69"
             height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
-    {{-- <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                "gtm.start": new Date().getTime(),
-                event: "gtm.js"
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != "dataLayer" ? "&l=" + l : "";
-            j.async = true;
-            j.src = "//www.googletagmanager.com/gtm.js?id=" + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, "script", "dataLayer", "GTM-P9FT69");
-    </script> --}}
-    <!-- End Google Tag Manager -->
 </body>
-
 </html>

@@ -19,6 +19,14 @@
         a {
             cursor: pointer;
         }
+
+        .mt-5 {
+            margin-top: 5em;
+        }
+
+        .mt-10 {
+            margin-top: 10rem;
+        }
     </style>
     <!--[if lt IE 10]>
       <div
@@ -74,21 +82,20 @@
                                 data-custom-toggle-disable-on-blur="true">
                                 <span></span></button>
 
-                                <style>
-                                 .logo_img_welcome_page{
+                            <style>
+                                .logo_img_welcome_page {
                                     width: 70px !important;
-                                    
-                                   }
 
-                                   .mt-_5{
+                                }
+
+                                .mt-_5 {
                                     margin-top: -1.2em;
-                                   }
-                                   </style>
-                                                                   
-                                <a class="rd-navbar-brand brand mt-_5"
-                                href="#">
-                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" class="logo_img_welcome_page"
-                                     /></a>
+                                }
+                            </style>
+
+                            <a class="rd-navbar-brand brand mt-_5" href="#">
+                                <img src="/static_assets/img/blue-bird-logo-1.svg" alt=""
+                                    class="logo_img_welcome_page" /></a>
 
                         </div>
                         <div class="rd-navbar-nav-wrap">
@@ -210,12 +217,13 @@
                                 <div class="col-md-10 col-lg-9">
                                     <h2 class="slider-header" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="0s">
-                                        The Best<br class="d-none d-lg-block" />
-                                        Loans for You
+                                        Get the Cash You Need:<br class="d-none d-lg-block" />
+                                        Bluebird Bank Personal Loans
+
                                     </h2>
                                     <p class="slider-text" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="300">
-                                        Providing low-rate mortgage loans since 2000.
+                                        Providing low-rate credit facilities since 2000.
                                     </p>
                                     <div class="button-wrap" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="600">
@@ -236,7 +244,7 @@
                                     <h2 class="slider-header" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="0s">
                                         Efficient<br class="d-none d-lg-block" />
-                                        Mortgage Financing
+                                        Credit Financing
                                     </h2>
                                     <p class="slider-text" data-caption-animate="fadeInUpSmall"
                                         data-caption-delay="300">
@@ -300,100 +308,9 @@
             </div>
         </section>
 
-        <section class="section-transform bg-transform bg-transform-first" id="about">
-            <div class="bg-transform-inner"></div>
-            <div class="container section-relative container-top-0 section-60 section-lg-top-80 section-lg-bottom-100">
-                <h2 class="text-spacing-50 text-white">About Us</h2>
-            </div>
-        </section>
-
-        <section class="section-60 section-lg-100 section-transform bg-transform context-dark">
-            <div class="container text-lg-left">
-                <div class="row row-30 justify-content-lg-between">
-                    <div class="col-lg-5">
-                        <h2>Better Rates</h2>
-                        <h5 class="offset-top-15">By using better data</h5>
-                        <p class="text-spacing-50 inset-xl-right-50">
-                            There's more to you than your credit score. Your education and
-                            job history help us understand more about your future.
-                        </p>
-                        <!--Select 2-->
-                        <form class="rd-mailform-inline" action="index.html#">
-                            <div class="select-2-white form-wrap">
-                                <select class="form-input select-filter" data-placeholder="I would like to"
-                                    data-minimum-results-for-search="Infinity">
-                                    <option value="2">$ 50 000</option>
-                                    <option value="3">$ 100 000</option>
-                                    <option value="4">$ 150 000</option>
-                                    <option value="5">$ 200 000</option>
-                                    <option value="6">$ 250 000</option>
-                                    <option value="7">$ 300 000</option>
-                                </select>
-                            </div>
-                            <button class="button button-link button-link-white" style="min-width: 174px">
-                                Check Your Rate
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-lg-6 col-lg-divider">
-                        <table class="table-transparent">
-                            <tr>
-                                <th></th>
-                                <th>
-                                    <img src="/static_assets/img/blue-bird-logo-1.svg" alt="" width="160"
-                                        height="52" />
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>FICO score</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td>
-                                    <span class="icon icon-dust mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Years of credit</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td>
-                                    <span class="icon icon-dust mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Education</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td>
-                                    <span class="icon icon-dust mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Area of study</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Job history</td>
-                                <td>
-                                    <span class="icon icon-primary mdi mdi-check icon-md-smaller"></span>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-transform-inner bg-image bg-image-1 bg-overlay-90"></div>
-        </section>
         <section class="section-75 section-lg-100 bg-wasip" id="services">
             <div class="container">
-                <h2>Services Overview</h2>
+                <h2>Personal Loan Benefits Overview</h2>
                 <div class="row row-40">
                     <div class="col-md-6 col-xl-3 height-fill">
                         <article class="icon-box">
@@ -431,12 +348,12 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a>Quick and Easy</a></h5>
+                                    <h5><a>Flexibility</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
                                 <p class="text-gray text-spacing-50">
-                                    We offer lots of ways to quickly pay off your loans.
+                                 Personal loans allow borrowing for any purpose, making them ideal for unexpected expenses.
                                 </p>
                             </div>
                         </article>
@@ -515,7 +432,7 @@
                             </div>
                             <div class="box-body">
                                 <p class="text-gray text-spacing-50">
-                                    We have lower rates than most of our competitors.
+                                 Personal loans have lower rates than credit cards, consolidating debt saves money and repays faster.
                                 </p>
                             </div>
                         </article>
@@ -597,12 +514,12 @@
                                     </svg>
                                 </div>
                                 <div class="box-header">
-                                    <h5><a>Secure Process</a></h5>
+                                    <h5><a>No Collateral required</a></h5>
                                 </div>
                             </div>
                             <div class="box-body">
                                 <p class="text-gray text-spacing-50">
-                                    Complete loans on our site quickly and securely.
+                                 With personal loans, borrowers don't need collateral, reducing the risk of losing assets if payments are missed.
                                 </p>
                             </div>
                         </article>
@@ -630,66 +547,32 @@
             </div>
         </section>
 
-        <!-- Testimonials-->
-        <!-- Material Parallax-->
-        <section class="section parallax-container bg-black bg-overlay-70" data-parallax-img="images/bg-about.jpg">
-            <div class="parallax-content">
-                <div class="section-75 section-lg-100 context-dark">
-                    <div class="container">
-                        <h2>Get a Loan In 3 Quick Steps</h2>
-                        <ul class="row row-30 row-offset-1 list-index">
-                            <li class="col-sm-6 col-lg-4">
-                                <div class="box-outline">
-                                    <div class="list-index-counter"></div>
-                                    <h5>Check your rate in 2 minutes</h5>
-                                    <p class="text-spacing-50">
-                                        Just answer a few quick questions about your education and
-                                        employment.
-                                    </p>
-                                    <span class="border-left-bottom"></span><span class="border-right-bottom"></span>
-                                </div>
-                            </li>
-                            <li class="col-sm-6 col-lg-4">
-                                <div class="box-outline">
-                                    <div class="list-index-counter"></div>
-                                    <h5>Get your money the next day</h5>
-                                    <p class="text-spacing-50">
-                                        After your application is approved, you'll have a chance
-                                        to review your loan.
-                                    </p>
-                                    <span class="border-left-bottom"></span><span class="border-right-bottom"></span>
-                                </div>
-                            </li>
-                            <li class="col-sm-6 col-lg-4">
-                                <div class="box-outline">
-                                    <div class="list-index-counter"></div>
-                                    <h5>Repay: set it and forget it</h5>
-                                    <p class="text-spacing-50">
-                                        It's easy to set up automated monthly payments without any
-                                        penalties.
-                                    </p>
-                                    <span class="border-left-bottom"></span><span class="border-right-bottom"></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
-        <!-- CTA-->
-        <section class="section-60 section-lg-100 bg-river">
-            <div class="container text-center text-lg-left">
-                <div class="row row-30 align-items-lg-center">
-                    <div class="col-lg-8 col-xl-9">
-                        <h3 class="text-spacing-50">
-                            A Wide Variety of Mortgage Solutions
-                        </h3>
+        <section class="bg-default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left">
+                        <h2>Achieve Your Goals with Bluebird Bank Personal Loans</h2>
+                        <h5 class="text-spacing-50">
+                            Make Your Dreams a Reality Today
+                        </h5>
+                        <p class="text-spacing-50 text-gray">
+                            At Bluebird Bank, we understand that life can throw unexpected curveballs, and sometimes we
+                            need a little financial assistance to get us through. That's why we offer a range of
+                            personal loans designed to help you meet your immediate financial needs.
+                        </p>
+                        <p class="text-spacing-50 text-gray">
+                            Our personal loans are a convenient and affordable way to access funds for emergencies, home
+                            repairs, medical bills, or any other expense that requires immediate attention. With
+                            competitive interest rates and flexible repayment terms, our personal loans are tailored to
+                            suit your individual needs and financial circumstances.
+                        </p>
+                        {{-- <a class="button button-secondary button-width" >read more</a> --}}
                     </div>
-                    <div class="col-lg-4 col-xl-3">
-                        <a class="button button-xl button-white-outline" data-toggle="modal"
-                            data-target="#exampleModal">Get a Quote</a>
+                    <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
+                        <img class="img-responsive center-block" src="/static_assets/lpage/ploan/pl1.jpg"
+                            alt="" width="569" height="600" />
                     </div>
                 </div>
             </div>
@@ -698,28 +581,63 @@
         <section class="bg-default">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left">
-                        <h2>Mortgage Advice</h2>
+                    <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
+                        <img class="img-responsive center-block" src="/static_assets/lpage/ploan/pl4.jpg"
+                            alt="" width="569" height="600" />
+                    </div>
+                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left mt-5">
+                        <h2 class="mt-5">Turn Your Plans into Action with Bluebird Bank Personal Loans</h2>
                         <h5 class="text-spacing-50">
-                            We provide personalized mortgage services.
+                            Your Dream Life Awaits with Bluebird Bank Personal Loans
                         </h5>
                         <p class="text-spacing-50 text-gray">
-                            Arranging a mortgage is one of the largest commitments most of
-                            us will ever make, even more reason to seek suitable mortgage
-                            advice which is individually tailored to your needs and
-                            requirements.
+                            Our online personal loan page is designed to make the application process quick and easy.
+                            With just a few clicks, you can complete your application from the comfort of your own home,
+                            and receive a response in a matter of minutes. Our online application process is secure,
+                            easy to navigate, and available 24/7, so you can apply whenever it's convenient for you.
+
+
+
                         </p>
                         <p class="text-spacing-50 text-gray">
-                            Bluebird is not tied to any specific lender, which means we can
-                            establish and recommend the best mortgage product. Our aim is to
-                            provide you with tailored and honest advice to help guide you
-                            through difficult decisions.
+                            The application process is straightforward, and you'll need to provide basic personal and
+                            financial information, including your name, address, income, and employment details. Once
+                            you submit your application, our loan officers will review it, and you can expect a decision
+                            within minutes. If your application is approved, you'll receive your funds as soon as the
+                            next business day.
+                        </p>
+                        {{-- <a class="button button-secondary button-width" >read more</a> --}}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="bg-default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 section-75 section-lg-100 text-lg-left mt-10">
+                        <h2>Get Ahead Financially with Bluebird Bank Personal Loans</h2>
+                        <h5 class="text-spacing-50">
+                            The Financial Solution You've Been Looking for
+                        </h5>
+                        <p class="text-spacing-50 text-gray">
+                            At Bluebird Bank, we're committed to transparency and fairness, which is why we provide a
+                            clear breakdown of the loan terms and conditions upfront. There are no hidden fees or
+                            charges, and you'll know exactly what you're signing up for before you commit to the loan.
+
+                        </p>
+                        <p class="text-spacing-50 text-gray">
+                            Repayment terms are flexible, and you can choose a repayment schedule that suits your budget
+                            and lifestyle. Our loan officers will work with you to determine a repayment plan that works
+                            for you, so you can focus on repaying your loan without worrying about additional financial
+                            stress.
                         </p>
                         {{-- <a class="button button-secondary button-width" >read more</a> --}}
                     </div>
                     <div class="col-lg-6 d-none d-lg-block align-self-lg-end">
-                        <img class="img-responsive center-block"
-                            src="http://livedemo00.template-help.com/wt_prod-20296/images/image-2-569x600.jpg"
+                        <img class="img-responsive center-block" src="/static_assets/lpage/ploan/pl2.jpg"
                             alt="" width="569" height="600" />
                     </div>
                 </div>
@@ -730,7 +648,7 @@
             <div class="parallax-content">
                 <div class="section-75 section-lg-100 context-dark">
                     <div class="container">
-                        <h3 class="text-spacing-50">Mortgage News and Updates</h3>
+                        <h3 class="text-spacing-50">Personal loans News and Updates</h3>
                         <p class="heading-subtext text-spacing-0">
                             Sign up to our newsletter and be the first to know about latest
                             news,<br class="d-none d-lg-block" />special offers, events, and
@@ -754,69 +672,9 @@
             </div>
         </section>
 
-        <section class="section-75 section-lg-100 bg-porcelain">
-            <div class="container">
-                <div class="row row-50 align-items-sm-center justify-content-lg-between">
-                    <div class="col-lg-6 col-xl-5 text-lg-left">
-                        <h2>
-                            Get Your Rate in<br class="d-none d-lg-blcok" />
-                            Just 2 Minutes
-                        </h2>
-                        <h5 class="offset-top-15 text-spacing-50">
-                            It won't affect your credit score!
-                        </h5>
-                        <form class="rd-mailform-inline" action="index.html#">
-                            <div class="form-wrap">
-                                <!--Select 2-->
-                                <select class="form-input select-filter" data-placeholder="I would like to"
-                                    data-minimum-results-for-search="Infinity">
-                                    <option value="2">$ 50 000</option>
-                                    <option value="3">$ 100 000</option>
-                                    <option value="4">$ 150 000</option>
-                                    <option value="5">$ 200 000</option>
-                                    <option value="6">$ 250 000</option>
-                                    <option value="7">$ 300 000</option>
-                                </select>
-                            </div>
-                            <button class="button button-link button-link-primary" style="min-width: 174px">
-                                Check Your Rate
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="section-dividers-white">
-                            <div class="row row-30">
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-3.png"
-                                            alt="" /></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-4.png"
-                                            alt="" /></div>
-                                </div>
-                            </div>
-                            <div class="row row-30 row-offset-5">
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-7.png"
-                                            alt="" /></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="thumbnail-grayscale"><img
-                                            src="http://livedemo00.template-help.com/wt_prod-20296/images/clients-8.png"
-                                            alt="" /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    @include('landing_pages.partials.footer')
+        @include('landing_pages.partials.footer')
     </div>
+
     <div class="modal modal-1" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -856,45 +714,9 @@
     <div class="snackbars" id="form-output-global"></div>
     <script src="/static_assets/js/jquery_core.min.js"></script>
     <script src="/static_assets/js/script.js"></script>
-
-    <!--LIVEDEMO_00 -->
-
-    {{-- <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(["_setAccount", "UA-7078796-5"]);
-        _gaq.push(["_trackPageview"]);
-        (function() {
-            var ga = document.createElement("script");
-            ga.type = "text/javascript";
-            ga.async = true;
-            ga.src =
-                ("https:" == document.location.protocol ?
-                    "https://ssl" :
-                    "http://www") + ".google-analytics.com/ga.js";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script> --}}
-
     <!-- coded by Ragnar-->
     <!-- Google Tag Manager --><noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-P9FT69"
             height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
-    {{-- <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                "gtm.start": new Date().getTime(),
-                event: "gtm.js"
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != "dataLayer" ? "&l=" + l : "";
-            j.async = true;
-            j.src = "//www.googletagmanager.com/gtm.js?id=" + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, "script", "dataLayer", "GTM-P9FT69");
-    </script> --}}
-    <!-- End Google Tag Manager -->
 </body>
 
 </html>

@@ -16,9 +16,9 @@
                         <h6 class="page-footer-title">Products</h6>
                         <ul class="list">
                             <li><a href="{{ route('credit-cards') }}">Credit Cards</a></li>
-                            <li><a>Student Loans</a></li>
-                            <li><a>Mortgages</a></li>
-                            <li><a>Personal Loans</a></li>
+                            <li><a href="{{ route('student-loans') }}">Student Loans</a></li>
+                            <li ><a href="{{ route('mortgages') }}">Mortgages</a></li>
+                            <li><a href="{{ route('personal-loans') }}">Personal Loans</a></li>
                         </ul>
                     </div>
                     {{-- <div class="col-sm-6 col-lg-3">
