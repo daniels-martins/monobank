@@ -242,7 +242,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <span class="mr-1 user-name text-bold-700">{{ auth()->user()->name }}</span>
                             <span class="avatar avatar-online">
-                                <img src="/admin_assets/app-assets/images/portrait/small/avatar-s-19.png"
+                                <img src="/admin_assets/app-assets/images/icons/user_icon.png"
                                     alt="avatar">
                             </span>
                         </a>

@@ -164,10 +164,27 @@ class AzaController extends Controller
     */
    public function update(Request $request, Aza $account)
    {
+      $request->validate(
+         [
+            'reason_for_block' => 'required_if:is_blocked,1'
+         ],
+         [
+            'reason_for_block.required_if' => 'Oops! You did not provide a reason for blocking your account'
+
+         ]
+      );
       $aza = $account;
+      // dd($request->only(['status', 'is_blocked', 'reason_for_block']));
       // we're only allowed to edit d status of an account,hence we extract only the status
-      if ($updated = $aza->update(['status' => ($request->status ?? $aza->status), 'is_blocked' => ($request->is_blocked ?? $aza->is_blocked)]))
-         return ($aza->wasChanged(['status', 'is_blocked']))
+
+      // set default values to avoid sending null values
+      $parameters = [
+         'status' => ($request->status ?? $aza->status),
+         'is_blocked' => ($request->is_blocked ?? $aza->is_blocked),
+         'reason_for_block' => ($request->reason_for_block ?? $aza->reason_for_block),
+      ];
+      if ($updated = $aza->update($parameters))
+         return ($aza->wasChanged(['status', 'is_blocked', 'reason_for_block']))
             ? back()->with('success', "Account Updated Successfully")
             : back()->with('warning', 'Oops! Something went wrong. Please Try again');
    }

@@ -97,6 +97,9 @@
                             <div class="row skin skin-flat">
                               <div class="col-md-12">
                                 @foreach ($aza_types as $accType)
+                                @if (in_array($accType->name, ['joint']))
+                                    @continue
+                                @endif
                                 <div class="form-check">
                                   <input id="{{ $accType->name }}" name="aza_type" type="radio" value="{{ $accType->id }}">
                                   <label for="{{ $accType->name }}" class="text-capitalize">

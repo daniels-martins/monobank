@@ -71,10 +71,10 @@
                                         Accounts Summary
                                     </h4>
                                     <div class="float-right">
-                                        {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
-                    href="{{ route('accounts.create') }}">
-                    <i class="ft-plus white"></i>Add New Account
-                  </a> --}}
+                                        <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
+                                            href="{{ route('accounts.create') }}">
+                                            <i class="ft-plus white"></i>Add New Account
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="card-body mt-1">

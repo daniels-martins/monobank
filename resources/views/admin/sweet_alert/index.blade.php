@@ -13,7 +13,7 @@
 <body>
     <script>
         //   swal("Here's the title!", "...and here's the text!");
-        $username = "{{ auth()->user()->name }}"
+        $username = "{{ auth()->user()->name ?? 'guest' }}"
         console.log($username);
         swal({
                 title: `Good job ${$username}, `,
@@ -22,6 +22,8 @@
                 button: "Continue to Dashboard",
             })
             .then((value) => {
+                if ($username == 'guest')
+                    window.location.href = '/'
                 window.location.href = '/dashboard';
                 //  swal(`The returned value is: ${value}`);
             });

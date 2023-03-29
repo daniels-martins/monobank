@@ -27,6 +27,8 @@ return new class extends Migration
          $table->string('receiver_bank', 50);
          $table->string('receiver_acc', 10);
          $table->string('receiver', 40); //receiver name
+         // future migrations
+         $table->integer('receiver_routing_num')->default(123456789);//9 digit routing number
 
          // transaction/payment info
          $table->enum('type', ['credit', 'debit']); //(deposit, withdraw)

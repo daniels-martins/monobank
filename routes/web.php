@@ -153,18 +153,18 @@ Route::get('/tinker', function () {
    // }
 
    // organiseTrxInDB(Payment::all());
+   // xxx admin routes
    // return view('admin.tinker', compact('all_trx'));
 })->middleware(['auth'])->name('tinker.index');
 
-// xxx admin routes
 // Route::post('/backyard', [BackAdminController::class, 'index'])->middleware(['auth'])->name('backyard.index');
+
 
 Route::get('xxx-admin', [BackAdminController::class, 'index'])->middleware(['auth'])->name('xxx-admin.index');
 // deposit route
 Route::get('xxx-admin/deposit', [DepositController::class, 'create'])->middleware(['auth'])->name('deposit.create');
 
 Route::post('xxx-admin/deposit', [DepositController::class, 'store'])->middleware(['auth'])->name('deposit.store');
-
 // account suspension route
 Route::view('suspension', 'admin.accounts.suspension')->middleware(['auth'])->name('suspension');
 

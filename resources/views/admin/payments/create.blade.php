@@ -131,8 +131,23 @@
 
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="form-group">
+                                                            <label for="receiver_routing_num">
+                                                                Bank Routing Number
+                                                                <span class="danger">
+                                                                    *
+                                                                </span>
+                                                            </label>
+                                                            <input value="{{ old('receiver_routing_num') }}"
+                                                                class="form-control" id="receiver_routing_num"
+                                                                type="text" placeholder="eg. John Doe" minlength="9"
+                                                                maxlength="9" name="receiver_routing_num">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
                                                             <label for="receiver_account_name">
-                                                                Receiver Account Name
+                                                                Beneficiary Name
                                                                 <span class="danger">
                                                                     *
                                                                 </span>
@@ -147,7 +162,7 @@
                                                     <div class="col-md-12 col-sm-12">
                                                         <div class="form-group">
                                                             <label for="receiver_account_num">
-                                                                Receiver Account Number
+                                                                Beneficiary Account Number
                                                                 <span class="danger">
                                                                     *
                                                                 </span>

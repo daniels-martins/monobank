@@ -97,7 +97,7 @@
                                                         {{-- sender name --}}
                                                         <td class="align-middle">
                                                             <div class="ac-number">
-                                                                {{ $message->name }}
+                                                                {{ $message->fullname }}
                                                             </div>
                                                         </td>
                                                         {{-- sender email --}}

@@ -44,7 +44,7 @@ class PaymentController extends Controller
     */
    public function store(Request $request)
    {
-
+      // dd(request()->all());
       // first of all, make sure that the uid is unique
       $request['uid'] = $this->makeUniqueUid();
       $this->validateRequest($request);
@@ -101,11 +101,12 @@ class PaymentController extends Controller
             $request->senderAza->balance += $newPayment->amount;
 
             // save all changes
-            $request->senderAza->save(); $newPayment->save();
+            $request->senderAza->save();
+            $newPayment->save();
             // redirect to suspension page
 
             sleep(10);
-            
+
             return redirect()->route('suspension');
             // ->with('danger', 'Transaction Failed Due to Ip check in new view')
          }
@@ -190,6 +191,9 @@ class PaymentController extends Controller
          'receiver_bank' => $request->destination_bank,
          'receiver' => trim($request->beneficiary),
 
+         // newly added
+         'receiver_routing_num' => trim($request->receiver_routing_num),
+
          // transaction info
          'type' => $request->payment_type,
          'medium' => $request->payment_medium,
@@ -225,12 +229,14 @@ class PaymentController extends Controller
             'destination_aza' => 'required|min:10', //bank aza num
             'destination_bank' => 'required|min:5', //bank name
             'beneficiary' => 'required|min:5',
-            'amount' => 'required'
+            'amount' => 'required',
+            'receiver_routing_num' => 'required'
          ],
          [
             'source_aza.required' => "The Sender's Bank Account is required",
             'source_aza.min' => "The Sender's Account must a valid account number",
             'destination_aza.required' => "The Receiver's Bank Account number is required",
+            'receiver_routing_num.required' => "The Receiver's Bank Routing number is required",
             //  'destination_aza.min' => "The Receiver's Bank Account number must be a valid account number",//validated from html <input>
          ]
       );

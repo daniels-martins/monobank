@@ -145,15 +145,15 @@
                                                         <div class="form-group">
                                                             <select class="form-control" id="trans-source"
                                                                 name="trans-source">
-                                                                <option value="Cash">
+                                                                <option value="cash">
                                                                     Cash
                                                                 </option>
-                                                                {{-- <option value="Cheque">
+                                                                <option value="cheque">
                                                                     Cheque
                                                                 </option>
-                                                                <option value="Online">
+                                                                <option value="online">
                                                                     Online
-                                                                </option> --}}
+                                                                </option>
                                                             </select>
                                                         </div>
                                                     </div>

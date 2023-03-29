@@ -831,7 +831,7 @@
                     <form class="form-style-2" data-form-output="form-output-global" data-form-type="contact"
                         method="post" action="{{ route('contactmessages.store') }}"> @csrf
                         <div class="form-wrap">
-                            <input class="form-input" id="contact-name-2" type="text" name="name" />
+                            <input class="form-input" id="contact-name-2" type="text" name="fullname" />
                             <label class="form-label" for="contact-name-2">Your name</label>
                         </div>
                         <div class="form-wrap">
