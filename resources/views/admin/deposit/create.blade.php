@@ -82,8 +82,10 @@
                                                         <select name="source_aza" id="" class="form-control">
                                                             <option value="">Select...</option>
                                                             @foreach ($accounts as $aza)
-                                                                <option value="{{ $aza->num }}">{{ $aza->num }}
-                                                                    ({{ $aza->getType() }})
+                                                                <option value="{{ $aza->num }}" class="{{ $aza->is_blocked ? 'danger' : '' }}">{{ $aza->num }}
+                                                                    ({{ $aza->getType() }}) --- $ {{ $aza->balance }} 
+                                                                    
+                                                                    [{{ $aza->is_blocked ? 'Blocked' : 'Active' }}]
                                                                 </option>
                                                             @endforeach
                                                         </select>
