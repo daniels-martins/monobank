@@ -13,6 +13,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\BackAdminController;
 use App\Http\Controllers\ContactMessageController;
 
@@ -104,7 +105,6 @@ Route::post('/cards/store', [CardController::class, 'store'])->middleware(['auth
 Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware(['auth'])->name('cards.destroy');
 
 // 
-
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile.index');
 
 Route::get('/profile/edit/', [ProfileController::class, 'edit'])->middleware(['auth'])->name('profile.edit');
@@ -128,6 +128,10 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
       'payments' => PaymentController::class,
       'accounts' => AzaController::class,
    ]);
+
+   // Password Reset Routes
+   Route::get('/password/edit/', [PasswordController::class, 'edit'])->middleware(['auth'])->name('password.edit');
+   Route::patch('/password/', [PasswordController::class, 'update'])->middleware(['auth'])->name('new_password.update');
 });
 
 

@@ -62,14 +62,21 @@
             </li>
 
             <li class="@if (Route::currentRoutename() == 'profile.edit') bg-danger @endif  nav-item">
-               <a class=" nav-link @if (Route::currentRoutename() == 'profile.edit') text-white @endif"
-                   href="{{ route('profile.edit') }}">Profile</a>
-           </li>
+                <a class=" nav-link @if (Route::currentRoutename() == 'profile.edit') text-white @endif"
+                    href="{{ route('profile.edit') }}">Profile</a>
+            </li>
 
-           <li class="@if (Route::currentRoutename() == 'payments.create') bg-danger @endif   nav-item">
-            <a class=" nav-link  @if (Route::currentRoutename() == 'payments.create') text-white @endif"
-                href="{{ route('payments.create') }}">Transfer</a>
-        </li>
+            <li class="@if (Route::currentRoutename() == 'payments.create') bg-danger @endif   nav-item">
+                <a class=" nav-link  @if (Route::currentRoutename() == 'payments.create') text-white @endif"
+                    href="{{ route('payments.create') }}">Transfer</a>
+            </li>
+
+            <li class="nav-item @if (Route::currentRoutename() == 'password.edit') bg-danger @endif">
+               <a class="nav-link  @if (Route::currentRoutename() == 'password.edit') text-white @endif"
+                   href="{{ route('password.edit') }}">
+                   Change Password
+               </a>
+           </li>
 
 
             {{-- <li class="d-flex @if (Route::currentRoutename() == 'deposit.create') bg-danger @endif  nav-item">
