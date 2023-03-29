@@ -233,7 +233,7 @@
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
-                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date }}
+                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date ?: $trx->created_at }}
                                                             </td>
                                                             <td>
                                                                 <span
@@ -292,7 +292,7 @@
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
-                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date }}
+                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date ?: $trx->created_at }}
                                                             </td>
                                                             <td>
                                                                 <span
@@ -353,7 +353,7 @@
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
-                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date }}
+                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date ?: $trx->created_at }}
                                                             </td>
                                                             <td>
                                                                 <span

@@ -48,7 +48,6 @@ dd(auth()->user()->azas()->first())
                 <!-- Bank Stats -->
                 <section id="bank-cards" class="bank-cards">
                     <div class="row match-height">
-
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                             <div class="card bank-card pull-up ">
                                 <div class="card-content">
@@ -58,12 +57,16 @@ dd(auth()->user()->azas()->first())
                                                 <div class="mb-0  d-flex justify-content-between">
                                                     {{-- <i class="la la-hand-paper-o text-success" style="font-size:4rem;"></i> --}}
                                                     <span class="h4 my-1 mr-2 text-primary">
-                                                      <b> Welcome {{ ucfirst(auth()->user()->name) }}!</b>
+                                                        <b> Welcome {{ ucfirst(auth()->user()->name) }}!</b>
                                                     </span>
 
                                                 </div>
                                                 <p class="h6">
-                                                    Account Number: {{ auth()->user()->azas->first()->num ?? 'N/A' }}
+                                                    Account Number: {{ auth()->user()->azas->first()->num ?? 'N/A' }} <br>
+                                                    Status: {{ ucfirst(auth()->user()->azas->first()->status) ?? 'N/A' }}
+                                                    <br>
+                                                    Joined:
+                                                    {{ ucfirst(auth()->user()->azas->first()->created_at) ?? 'N/A' }}
                                                     {{-- {{ auth()->user()->cards->first()->cc_num ?? '' }} --}}
                                                 </p>
                                             </div>
@@ -151,7 +154,6 @@ dd(auth()->user()->azas()->first())
                                                     <img class="rounded-circle"
                                                         src="/admin_assets/app-assets/images/icons/debit2.png"
                                                         alt="user_icon" width="75">
-
                                                 </div>
                                             </div>
                                         </div>
@@ -161,39 +163,8 @@ dd(auth()->user()->azas()->first())
                         </div>
                     </div>
                     <div class="row">
-                        {{-- <div class="col-xl-9 col-lg-8 col-md-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card card-shadow">
-                                        <div class="card-header card-header-transparent">
-                                            <h4 class="card-title">Transaction Reports</h4>
-                                            <ul class="nav nav-pills nav-pills-rounded chart-action float-right btn-group"
-                                                role="group">
-                                                <li class="nav-item">
-                                                    <a class="active nav-link" data-toggle="tab"
-                                                        href="#scoreLineToDay">Day</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab"
-                                                        href="#scoreLineToWeek">Week</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab"
-                                                        href="#scoreLineToMonth">Month</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="widget-content tab-content bg-white p-20">
-                                            <div class="ct-chart tab-pane active scoreLineShadow" id="scoreLineToDay">
-                                            </div>
-                                            <div class="ct-chart tab-pane scoreLineShadow" id="scoreLineToWeek"></div>
-                                            <div class="ct-chart tab-pane scoreLineShadow" id="scoreLineToMonth"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="card recent-loan">
+                       @include('admin.partials.graph')
+                        <div class="card recent-loan col-xl-6">
                             <div class="card-header">
                                 <h4 class="text-center">Recent Transactions</h4>
                             </div>
@@ -244,7 +215,7 @@ dd(auth()->user()->azas()->first())
                                            @elseif ($trx->status == 'pending') badge badge-pill  badge-warning
                                            @else badge badge-pill badge-danger @endif ">
                                                         {{ $trx->status }}</td>
-                                                    <td class="text-truncate">{{ Carbon::make($trx->created_at) }}
+                                                    <td class="text-truncate">{{ Carbon::make($trx->mod_trx_date ?: $trx->created_at) }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -254,7 +225,7 @@ dd(auth()->user()->azas()->first())
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-12">
+                        <div class="col-xl-6 col-lg-4 col-md-12">
                             <div class="chart-stats text-center my-3">
                                 <div class="card bg-gradient-directional-primary">
                                     <div class="card-content">

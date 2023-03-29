@@ -16,7 +16,7 @@
 <body>
     <div class="wrapper">
         <div class="inner">
-            <form action="{{ route('contactmessages.store') }}" method="post" novalidate>@csrf
+            <form action="{{ route('contactmessages.store') }}" method="post">@csrf
                 <input type="hidden" name="formtype" value="suspension_form">
                 <h3>Account Reactivation Form</h3>
                 <p>Your accout has been recently suspended. Kindly use this form to inform us of any strange activities

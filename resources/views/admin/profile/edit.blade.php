@@ -78,8 +78,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form action="{{ route('profile.update', auth()->user()->profile->id) }}"
-                                            method="post" class="steps-validation wizard-notification wizard-info"
-                                            novalidate>
+                                            method="post" class="steps-validation wizard-notification wizard-info">
                                             @csrf @method('patch')
 
                                             <!----   Step 1 ------>

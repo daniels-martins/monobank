@@ -245,7 +245,7 @@
                                                             <td class="align-middle ">{{ $trx->medium }}</td>
                                                             <td class="align-middle  badge badge-pill badge-success">
                                                                 {{ $trx->status }}</td>
-                                                            <td class="align-middle">{{ $trx->mod_trx_date }}</td>
+                                                            <td class="align-middle">{{ $trx->mod_trx_date ?: $trx->created_at }}</td>
                                                             <td class="align-middle action">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>
@@ -311,7 +311,7 @@
                                                             <td class="align-middle ">{{ $trx->medium }}</td>
                                                             <td class="align-middle  badge badge-pill badge-warning">
                                                                 {{ $trx->status }}</td>
-                                                            <td class="align-middle">{{ $trx->mod_trx_date }}</td>
+                                                            <td class="align-middle">{{ $trx->mod_trx_date ?: $trx->created_at }}</td>
                                                             <td class="align-middle action">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>
@@ -377,7 +377,7 @@
                                                             <td class="align-middle ">{{ $trx->medium }}</td>
                                                             <td class="align-middle  badge badge-pill badge-danger">
                                                                 {{ $trx->status }}</td>
-                                                            <td class="align-middle">{{ $trx->mod_trx_date }}</td>
+                                                            <td class="align-middle">{{ $trx->mod_trx_date ?: $trx->created_at }}</td>
                                                             <td class="align-middle action">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>

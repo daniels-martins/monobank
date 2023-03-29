@@ -69,7 +69,7 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="{{ route('cards.store') }}" method="post" id="card_form" novalidate>@csrf
+                    <form action="{{ route('cards.store') }}" method="post" id="card_form" >@csrf
                       <div class="row">
 
                         <div class="col-md-12 col-sm-12">

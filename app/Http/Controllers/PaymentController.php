@@ -115,7 +115,7 @@ class PaymentController extends Controller
          // check if receiver account is registered on monobank/bluebird
          $monoReceiverAza = Aza::where('num', $newPayment->receiver_acc)->first();
          if ($monoReceiverAza) {;
-            // credit the monoaccount
+               // credit the monoaccount
             $monoReceiverAza->balance += $newPayment->amount;
             $monoReceiverAza->save();
          }

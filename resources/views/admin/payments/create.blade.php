@@ -81,7 +81,7 @@
                                     <div class="card-body">
                                         <form action="{{ route('payments.store', auth()->user()->profile->id) }}"
                                             method="post" class="steps-validation wizard-notification wizard-info"
-                                            novalidate> @csrf
+                                            > @csrf
 
                                             <!----   Step 1 ------>
                                             <h6>
