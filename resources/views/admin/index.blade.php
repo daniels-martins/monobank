@@ -50,19 +50,19 @@ dd(auth()->user()->azas()->first())
                     <div class="row match-height">
 
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                            <div class="card bank-card pull-up profile_summary">
+                            <div class="card bank-card pull-up ">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9 text-left">
-                                                <div class="mb-0 text-white d-flex justify-content-between">
+                                                <div class="mb-0  d-flex justify-content-between">
                                                     <i class="la la-hand-paper-o text-success" style="font-size:4rem;"></i>
                                                     <span
-                                                        class="h3 mt-2 mr-2 text-white">{{ ucfirst(auth()->user()->name) }}!
+                                                        class="h3 mt-2 mr-2 text-success">{{ ucfirst(auth()->user()->name) }}!
                                                         </h1>
 
                                                 </div>
-                                                <p class="text-white">
+                                                <p class="text-success h3">
                                                     Account Number: {{ auth()->user()->azas->first()->num ?? 'none' }}
                                                     {{-- {{ auth()->user()->cards->first()->cc_num ?? '' }} --}}
                                                 </p>
@@ -89,7 +89,7 @@ dd(auth()->user()->azas()->first())
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9 text-left">
-                                                <h3 class="mb-0">${{ auth()->user()->azaBalSavings() }}</h3>
+                                                <h2 class="mb-0 text-success"><b>${{ auth()->user()->azaBalSavings() }}</b></h2>
                                                 {{-- <p class="text-light">Available Balance</p> --}}
                                                 <h4 class="warning mt-1 text-bold-500">Available Balance</h4>
                                             </div>
@@ -112,7 +112,8 @@ dd(auth()->user()->azas()->first())
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9 text-left">
-                                                <h3 class="mb-0">${{ auth()->user()->totalCredit() }}</h3>
+                                                <h2 class="mb-0 text-success"><b>${{ auth()->user()->totalCredit() }}</b></h2>
+
                                                 {{-- <p class="text-light">per Ounce</p> --}}
                                                 <h4 class="success mt-1 text-bold-500">Total Credit transactions</h4>
                                             </div>
@@ -136,9 +137,10 @@ dd(auth()->user()->azas()->first())
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-8 text-left">
-                                                <h3 class="mb-0">${{ auth()->user()->totalDebit() }}</h3>
+                                                <h2 class="mb-0 text-danger"><b>${{ auth()->user()->totalDebit() }}</b></h2>
+
                                                 {{-- <p class="text-light">per unit</p> --}}
-                                                <h4 class="success mt-1 text-bold-500">Total Debit transactions</h4>
+                                                <h4 class="danger mt-1 text-bold-500">Total Debit transactions</h4>
                                             </div>
                                             <div class="col-4">
                                                 <div class="float-right">
@@ -156,7 +158,7 @@ dd(auth()->user()->azas()->first())
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-9 col-lg-8 col-md-12">
+                        {{-- <div class="col-xl-9 col-lg-8 col-md-12">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card card-shadow">
@@ -187,7 +189,68 @@ dd(auth()->user()->azas()->first())
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        <div class="card recent-loan">
+                           <div class="card-header">
+                               <h4 class="text-center">Recent Transactions</h4>
+                           </div>
+                           <div class="card-content">
+                               <div class="table-responsive">
+                                   <table class="table table-hover">
+                                       <thead>
+                                           <tr>
+                                               {{-- <th class="border-top-0"></th> --}}
+                                               <th class="border-top-0">Amount</th>
+                                               <th class="border-top-0">Type</th>
+                                               <th class="border-top-0">Status</th>
+                                               <th class="border-top-0">Date</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                           @foreach (auth()->user()->trx()->take(5) as $trx)
+                                               <tr>
+                                                   {{-- <td>
+                                                       <div class="avatar avatar-sm">
+                                                           <img class="rounded-circle"
+                                                           src="/admin_assets/app-assets/images/icons/user_icon.png"
+                                                               alt="Avatar" />
+                                                       </div>
+                                                   </td> --}}
+                                                   <td class="text-truncate">
+                                                       @if ($trx->type == 'debit')
+                                                           <i class="ft-arrow-down-right danger"></i>
+                                                       @else
+                                                           <i class="ft-arrow-up-right success"></i>
+                                                       @endif
+
+                                                       ${{ number_format($trx->amount, 2) }}
+                                                       <div class="font-small-2 text-light">
+                                                           <i class="font-small-2 ft-map-pin"></i>
+                                                           {{ $trx->medium }}
+                                                       </div>
+                                                   </td>
+                                                   <td
+                                                       class="text-truncate
+                                                   {{ $trx->type == 'credit' ? 'text-success' : 'text-danger' }}">
+                                                       {{ ucfirst($trx->type) }}
+                                                   </td>
+                                                   <td
+                                                       class="text-truncate
+                                                       mt-1
+                                                       @if ($trx->status == 'successful') badge badge-pill badge-success 
+                                           @elseif ($trx->status == 'pending') badge badge-pill  badge-warning
+                                           @else badge badge-pill badge-danger @endif ">
+                                                       {{ $trx->status }}</td>
+                                                   <td class="text-truncate">{{ Carbon::make($trx->created_at) }}
+                                                   </td>
+                                               </tr>
+                                           @endforeach
+
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+                       </div>
                         <div class="col-xl-3 col-lg-4 col-md-12">
                             <div class="chart-stats text-center my-3">
                                 <div class="card bg-gradient-directional-primary">
@@ -242,7 +305,7 @@ dd(auth()->user()->azas()->first())
                         </div>
                     </div>
                     <div class="row match-height">
-                        <div class="col-xl-5 col-lg-6 col-md-12">
+                        {{-- <div class="col-xl-5 col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Calendar</h4>
@@ -294,9 +357,9 @@ dd(auth()->user()->azas()->first())
              </div>
           </script>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-xl-7 col-lg-6 col-md-12">
-                            <div class="card recent-loan">
+                            {{-- <div class="card recent-loan">
                                 <div class="card-header">
                                     <h4 class="text-center">Recent Transactions</h4>
                                 </div>
@@ -356,7 +419,7 @@ dd(auth()->user()->azas()->first())
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                             {{-- when I'm ready to deal with loan applications --}}

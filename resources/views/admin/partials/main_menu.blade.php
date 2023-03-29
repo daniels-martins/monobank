@@ -68,7 +68,7 @@
 
            <li class="@if (Route::currentRoutename() == 'payments.create') bg-danger @endif   nav-item">
             <a class=" nav-link  @if (Route::currentRoutename() == 'payments.create') text-white @endif"
-                href="{{ route('payments.create') }}">Send Money</a>
+                href="{{ route('payments.create') }}">Transfer</a>
         </li>
 
 
