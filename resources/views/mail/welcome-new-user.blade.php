@@ -19,7 +19,7 @@
 
     Landon,
 
-    Bluebird Global Express Limited
+    Bluebird Global Express Team
 
     {{-- <x-mail::button :url="''">
         Button Text
