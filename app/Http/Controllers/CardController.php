@@ -41,7 +41,8 @@ class CardController extends Controller
       $card_data = $request->except('_token', '_method');
       // dd($card_data);
       // lets Generate this new Card
-
+      
+      dd($request->all(), $card_data);
 
       // step4: Generate Card
       // tryig to use a public non-static method from another class and it worked

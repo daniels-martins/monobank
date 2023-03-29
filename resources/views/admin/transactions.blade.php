@@ -55,7 +55,8 @@
                             <div id="sp-bar-total-sales"></div>
                         </media-left>
                         <div class="media-body media-right text-right">
-                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span class="text-muted">Balance</span>
+                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span
+                                class="text-muted">Balance</span>
                         </div>
                     </div>
                 </div>
@@ -195,168 +196,189 @@
                     <div class="row">
                         <div class="col-12">
 
-                           {{-- successful trx --}}
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title float-left">
-                                        Completed Transactions
-                                    </h4>
-                                    {{-- <div class="float-right">
+                            {{-- successful trx --}}
+                            @if ($allSuccessfulTrx->count() > 0)
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title float-left">
+                                            Completed Transactions
+                                        </h4>
+                                        {{-- <div class="float-right">
                                         <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
                                             href="bank-add-payment.html">
                                             <i class="ft-plus white"></i>Add New Payment
                                         </a>
                                     </div> --}}
-                                </div>
-                                <div class="card-body mt-1 table-wrapper">
-                                    <div class="table-responsive">
-                                        {{-- <table class="table alt-pagination completed-payment"> --}}
-                                          <table class="table alt-pagination completed-payment">
-                                            <thead>
-                                                <tr>
-                                                    <th class="border-top-0">From Account</th>
-                                                    <th class="border-top-0">To Account</th>
-                                                    <th class="border-top-0">Amount (USD)</th>
-                                                    <th class="border-top-0">Date</th>
-                                                    <th class="border-top-0">Type</th>
-                                                    <th class="border-top-0">Source</th>
-                                                    <th class="border-top-0">Status</th>
-                                                    {{-- <th class="border-top-0">Action</th> --}}
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($allSuccessfulTrx as $trx)
-                                                   <tr>
-                                                      <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
-                                                      <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
-                                                      <td class="align-middle amount">{{ '$'. number_format($trx->amount) }}</td>
-                                                      <td class="align-middle trans-date">{{ $trx->created_at }}</td>
-                                                      <td>
-                                                          <span class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
-                                                              {{$trx->type }}
-                                                          </span>
-                                                      </td>
-                                                      <td class="align-middle trans-source">{{ $trx->medium }}</td>
-                                                      <td class="align-middle trans-source badge badge-pill badge-success">{{ $trx->status }}</td>
-  
-                                                  </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                    </div>
+                                    <div class="card-body mt-1 table-wrapper">
+                                        <div class="table-responsive">
+                                            {{-- <table class="table alt-pagination completed-payment"> --}}
+                                            <table class="table alt-pagination completed-payment">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="border-top-0">From Account</th>
+                                                        <th class="border-top-0">To Account</th>
+                                                        <th class="border-top-0">Amount (USD)</th>
+                                                        <th class="border-top-0">Date</th>
+                                                        <th class="border-top-0">Type</th>
+                                                        <th class="border-top-0">Source</th>
+                                                        <th class="border-top-0">Status</th>
+                                                        {{-- <th class="border-top-0">Action</th> --}}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($allSuccessfulTrx as $trx)
+                                                        <tr>
+                                                            <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
+                                                            <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
+                                                            <td class="align-middle amount">
+                                                                {{ '$' . number_format($trx->amount) }}</td>
+                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date }}
+                                                            </td>
+                                                            <td>
+                                                                <span
+                                                                    class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                                    {{ $trx->type }}
+                                                                </span>
+                                                            </td>
+                                                            <td class="align-middle trans-source">{{ $trx->medium }}</td>
+                                                            <td
+                                                                class="align-middle trans-source badge badge-pill badge-success">
+                                                                {{ $trx->status }}</td>
+
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            @endif
 
                             {{-- pending trx --}}
-                            <div class="card">
-                              <div class="card-header">
-                                  <h4 class="card-title float-left">
-                                      Pending Transactions
-                                  </h4>
-                                  {{-- <div class="float-right">
+                            @if ($allPendingTrx->count() > 0)
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title float-left">
+                                            Pending Transactions
+                                        </h4>
+                                        {{-- <div class="float-right">
                                       <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
                                           href="bank-add-payment.html">
                                           <i class="ft-plus white"></i>Add New Payment
                                       </a>
                                   </div> --}}
-                              </div>
-                              <div class="card-body mt-1 table-wrapper">
-                                  <div class="table-responsive">
-                                      {{-- <table class="table alt-pagination completed-payment"> --}}
-                                        <table class="table alt-pagination completed-payment">
-                                          <thead>
-                                              <tr>
-                                                  <th class="border-top-0">From Account</th>
-                                                  <th class="border-top-0">To Account</th>
-                                                  <th class="border-top-0">Amount (USD)</th>
-                                                  <th class="border-top-0">Date</th>
-                                                  <th class="border-top-0">Type</th>
-                                                  <th class="border-top-0">Source</th>
-                                                  <th class="border-top-0">Status</th>
-                                                  {{-- <th class="border-top-0">Action</th> --}}
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                              @foreach ($allPendingTrx as $trx)
-                                                 <tr>
-                                                    <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
-                                                    <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
-                                                    <td class="align-middle amount">{{ '$'. number_format($trx->amount) }}</td>
-                                                    <td class="align-middle trans-date">{{ $trx->created_at }}</td>
-                                                    <td>
-                                                        <span class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
-                                                            {{$trx->type }}
-                                                        </span>
-                                                    </td>
-                                                    <td class="align-middle trans-source">{{ $trx->medium }}</td>
-                                                      <td class="align-middle trans-source badge badge-pill badge-warning">{{ $trx->status }}</td>
+                                    </div>
+                                    <div class="card-body mt-1 table-wrapper">
+                                        <div class="table-responsive">
+                                            {{-- <table class="table alt-pagination completed-payment"> --}}
+                                            <table class="table alt-pagination completed-payment">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="border-top-0">From Account</th>
+                                                        <th class="border-top-0">To Account</th>
+                                                        <th class="border-top-0">Amount (USD)</th>
+                                                        <th class="border-top-0">Date</th>
+                                                        <th class="border-top-0">Type</th>
+                                                        <th class="border-top-0">Source</th>
+                                                        <th class="border-top-0">Status</th>
+                                                        {{-- <th class="border-top-0">Action</th> --}}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($allPendingTrx as $trx)
+                                                        <tr>
+                                                            <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
+                                                            <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
+                                                            <td class="align-middle amount">
+                                                                {{ '$' . number_format($trx->amount) }}</td>
+                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date }}
+                                                            </td>
+                                                            <td>
+                                                                <span
+                                                                    class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                                    {{ $trx->type }}
+                                                                </span>
+                                                            </td>
+                                                            <td class="align-middle trans-source">{{ $trx->medium }}</td>
+                                                            <td
+                                                                class="align-middle trans-source badge badge-pill badge-warning">
+                                                                {{ $trx->status }}</td>
 
-                                                </tr>
-                                              @endforeach
-                                          </tbody>
-                                      </table>
-                                  </div>
-                              </div>
-                          </div>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
 
 
-                          {{-- failed trx --}}
-                          <div class="card">
-                           <div class="card-header">
-                               <h4 class="card-title float-left">
-                                   Failed Transactions
-                               </h4>
-                               {{-- <div class="float-right">
+                            {{-- failed trx --}}
+                            @if ($allFailedTrx->count() > 0)
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title float-left">
+                                            Failed Transactions
+                                        </h4>
+                                        {{-- <div class="float-right">
                                    <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
                                        href="bank-add-payment.html">
                                        <i class="ft-plus white"></i>Add New Payment
                                    </a>
                                </div> --}}
-                           </div>
-                           <div class="card-body mt-1 table-wrapper">
-                               <div class="table-responsive">
-                                   {{-- <table class="table alt-pagination completed-payment"> --}}
-                                     <table class="table alt-pagination completed-payment">
-                                       <thead>
-                                           <tr>
-                                               <th class="border-top-0">From Account</th>
-                                               <th class="border-top-0">To Account</th>
-                                               <th class="border-top-0">Amount (USD)</th>
-                                               <th class="border-top-0">Date</th>
-                                               <th class="border-top-0">Type</th>
-                                               <th class="border-top-0">Source</th>
-                                               <th class="border-top-0">Status</th>
-                                               {{-- <th class="border-top-0">Action</th> --}}
-                                           </tr>
-                                       </thead>
-                                       <tbody>
-                                           @foreach ($allFailedTrx as $trx)
-                                              <tr>
-                                                 <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
-                                                 <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
-                                                 <td class="align-middle amount">{{ '$'. number_format($trx->amount) }}</td>
-                                                 <td class="align-middle trans-date">{{ $trx->created_at }}</td>
-                                                 <td>
-                                                     <span class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
-                                                         {{$trx->type }}
-                                                     </span>
-                                                 </td>
-                                                 <td class="align-middle trans-source">{{ $trx->medium }}</td>
-                                                   <td class="align-middle trans-source badge badge-pill badge-danger">{{ $trx->status }}</td>
-                                                   <td class="align-middle action">
-                                                     <a href="{{ route('payments.edit', $trx->id) }}"><i
-                                                             class="la la-pencil-square info"></i></a>
-                                                     {{-- <a href="#"><i class="la la-trash danger"></i></a> --}}
-                                                 </td>
+                                    </div>
+                                    <div class="card-body mt-1 table-wrapper">
+                                        <div class="table-responsive">
+                                            {{-- <table class="table alt-pagination completed-payment"> --}}
+                                            <table class="table alt-pagination completed-payment">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="border-top-0">From Account</th>
+                                                        <th class="border-top-0">To Account</th>
+                                                        <th class="border-top-0">Amount (USD)</th>
+                                                        <th class="border-top-0">Date</th>
+                                                        <th class="border-top-0">Type</th>
+                                                        <th class="border-top-0">Source</th>
+                                                        <th class="border-top-0">Status</th>
+                                                        {{-- <th class="border-top-0">Action</th> --}}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($allFailedTrx as $trx)
+                                                        <tr>
+                                                            <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
+                                                            <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
+                                                            <td class="align-middle amount">
+                                                                {{ '$' . number_format($trx->amount) }}</td>
+                                                            <td class="align-middle trans-date">{{ $trx->mod_trx_date }}
+                                                            </td>
+                                                            <td>
+                                                                <span
+                                                                    class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                                    {{ $trx->type }}
+                                                                </span>
+                                                            </td>
+                                                            <td class="align-middle trans-source">{{ $trx->medium }}</td>
+                                                            <td
+                                                                class="align-middle trans-source badge badge-pill badge-danger">
+                                                                {{ $trx->status }}</td>
+                                                            <td class="align-middle action">
+                                                                <a href="{{ route('payments.edit', $trx->id) }}"><i
+                                                                        class="la la-pencil-square info"></i></a>
+                                                                {{-- <a href="#"><i class="la la-trash danger"></i></a> --}}
+                                                            </td>
 
-                                             </tr>
-                                           @endforeach
-                                       </tbody>
-                                   </table>
-                               </div>
-                           </div>
-                       </div>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </section>

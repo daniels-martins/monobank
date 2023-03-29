@@ -58,16 +58,16 @@
               <div class="card-header">
                 <h4 class="card-title float-left">My Cards</h4>
                 <div class="float-right">
-                  {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
+                  <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
                     <i class="ft-plus white"></i>
-                    Add New Card</a> --}}
+                    Add New Card</a>
                   <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <label class="modal-title text-text-bold-600" id="myModalLabel33">Credit Card Details</label>
                         </div>
-                        <form action="#">
+                        <form action="{{ route('cards.store') }}" method="post">@csrf
                           <div class="modal-body">
                             <label>Holder Name
                               <span class="danger">*</span>

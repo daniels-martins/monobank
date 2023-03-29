@@ -220,11 +220,11 @@
                                                         <th class="border-top-0">From Account</th>
                                                         <th class="border-top-0">To Account</th>
                                                         <th class="border-top-0">Amount (USD)</th>
-                                                        <th class="border-top-0">Date</th>
+                                                        {{-- <th class="border-top-0">Real Date</th> --}}
                                                         <th class="border-top-0">Type</th>
                                                         <th class="border-top-0">Source</th>
                                                         <th class="border-top-0">Status</th>
-                                                        <th class="border-top-0">Date</th>
+                                                        <th class="border-top-0">Modified Date</th>
                                                         <th class="border-top-0">Action</th>
                                                     </tr>
                                                 </thead>
@@ -235,7 +235,7 @@
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
-                                                            <td class="align-middle trans-date">{{ $trx->created_at }}</td>
+                                                            {{-- <td class="align-middle trans-date">{{ $trx->created_at }}</td> --}}
                                                             <td>
                                                                 <span
                                                                     class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
@@ -286,7 +286,7 @@
                                                         <th class="border-top-0">From Account</th>
                                                         <th class="border-top-0">To Account</th>
                                                         <th class="border-top-0">Amount (USD)</th>
-                                                        <th class="border-top-0">Date</th>
+                                                        {{-- <th class="border-top-0">Real Date</th> --}}
                                                         <th class="border-top-0">Type</th>
                                                         <th class="border-top-0">Source</th>
                                                         <th class="border-top-0">Status</th>
@@ -301,7 +301,7 @@
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
-                                                            <td class="align-middle trans-date">{{ $trx->created_at }}</td>
+                                                            {{-- <td class="align-middle trans-date">{{ $trx->created_at }}</td> --}}
                                                             <td>
                                                                 <span
                                                                     class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
@@ -351,7 +351,7 @@
                                                         <th class="border-top-0">From Account</th>
                                                         <th class="border-top-0">To Account</th>
                                                         <th class="border-top-0">Amount (USD)</th>
-                                                        <th class="border-top-0">Date</th>
+                                                        {{-- <th class="border-top-0">Date</th> --}}
                                                         <th class="border-top-0">Type</th>
                                                         <th class="border-top-0">Source</th>
                                                         <th class="border-top-0">Status</th>
@@ -366,7 +366,7 @@
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
-                                                            <td class="align-middle trans-date">{{ $trx->created_at }}
+                                                            {{-- <td class="align-middle trans-date">{{ $trx->created_at }} --}}
                                                             </td>
                                                             <td>
                                                                 <span
