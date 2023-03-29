@@ -33,7 +33,7 @@ class WelcomeNewUser extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: $this->username . 'Welcome to '. env('APP_NAME'),
+            subject: ucwords($this->username) . ', Welcome to '. env('APP_NAME'),
         );
     }
 
