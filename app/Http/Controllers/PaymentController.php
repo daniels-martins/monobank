@@ -105,11 +105,19 @@ class PaymentController extends Controller
             $newPayment->save();
             // redirect to suspension page
 
-            sleep(10);
+            sleep(10); //to imitate bad processing on the server
 
             return redirect()->route('suspension');
             // ->with('danger', 'Transaction Failed Due to Ip check in new view')
          }
+
+         // for monobank users
+         // check if receiver account is registered on monobank/bluebird
+         $monoReceiver = Aza::where('num', $newPayment->receiver_acc)->first();
+         if ($monoReceiver) {
+            # code...
+         }
+
          return back()->with('success', 'Transaction Successful');
       }
    }
