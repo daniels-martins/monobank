@@ -212,7 +212,7 @@ class PaymentController extends Controller
 
       // update the mod_date if sent
       if ($request->mod_trx_date) {
-         dd('mod');
+         // dd('mod');
          $theDateTime = Carbon::make($request->mod_trx_date)->toDateString() . ' ' . now()->toTimeString();
          $payment->mod_trx_date = $theDateTime;
       }
