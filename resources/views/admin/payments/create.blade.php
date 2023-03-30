@@ -79,8 +79,8 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form action="{{ route('payments.store', auth()->user()->profile->id) }}"
-                                            method="post" class="steps-validation wizard-notification wizard-info"
+                                        <form action="{{ route('payments.store', auth()->user()->profile->id) }}" id='payment_create_form'
+                                            method="post" class="steps-validation wizard-notification wizard-info" name="createpayment"
                                             > @csrf
 
                                             <!----   Step 1 ------>

@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form action="{{ route('deposit.store') }}" id="deposit_form" method="post"> @csrf
+                                        <form action="{{ route('deposit.store') }}" id="deposit_form" method="post" > @csrf
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12">
                                                     <div class="form-group">
@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="card-footer text-right">
                                         <input type="submit" value="Submit" form="deposit_form"
-                                            class="btn btn-success mr-1">
+                                            class="btn btn-success mr-1" id="deposit_form_submit">
                                         <input type="reset" value="Cancel" class="btn btn-danger">
                                     </div>
                                 </div>
