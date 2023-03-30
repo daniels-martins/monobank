@@ -40,3 +40,6 @@ option for checking or savings account when opening an account ---done
 remove photo --done
 
 Bonus: email alert for every transaction
+
+
+debit and pending == warning

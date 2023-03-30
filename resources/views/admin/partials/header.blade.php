@@ -7,12 +7,6 @@
                     <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="navbar-brand float-right" href="/">
-                        {{-- <x-application-logo /> --}}
-
-                    </a>
-                </li>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                         data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>
             </ul>
@@ -22,15 +16,22 @@
                 <ul class="nav navbar-nav mr-auto float-left">
                     <!-- <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li> -->
                     <li class="nav-item d-none d-lg-block">
-                        <a class="d-block block ml-_3" href="/"><x-application-logo /></a>
-                     </li>
+                        <a class="d-block block ml-_3" href="/">
+                            <x-application-logo />
+                        </a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <span class="user-name text-bold-700">{{ auth()->user()->name }}</span>
-                            <span class="avatar avatar-online">
-                                <img src="/admin_assets/app-assets/images/icons/user_icon.png" alt="avatar">
+
+                            <span class="avatar avatar-sm avatar-online">
+                                @if (Storage::exists(auth()->user()->dp))
+                                    <img src='{{ auth()->user()->presentPhoto() }}' />
+                                @else
+                                    <img src="/admin_assets/app-assets/images/icons/user_icon.png" alt="avatar">
+                                @endif
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

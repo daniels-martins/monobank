@@ -77,8 +77,9 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form action="{{ route('photo.store') }}" method="post" enctype="multipart/form-data"
-                                            class="steps-validation wizard-notification wizard-info" >
+                                        <form action="{{ route('photo.store') }}" method="post"
+                                            enctype="multipart/form-data"
+                                            class="steps-validation wizard-notification wizard-info">
                                             @csrf
 
                                             <!----Step 4---->
@@ -101,7 +102,9 @@
                                                     </div>
 
                                                     @if (auth()->user()->dp and Storage::exists(auth()->user()->dp))
-                                                       <img src='{{ auth()->user()->presentPhoto() }}' />
+                                                        <div class="img-container">
+                                                            <img src='{{ auth()->user()->presentPhoto() }}' />
+                                                        </div>
                                                     @endif
 
 

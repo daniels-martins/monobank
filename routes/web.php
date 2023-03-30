@@ -85,7 +85,6 @@ Route::get('/artie/{cmd}', function () {
 })->name('artisan');
 
 Route::get('/dashboard',  function () {
-
    return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
 
