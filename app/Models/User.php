@@ -46,6 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
    ];
 
 
+
+
    // relationships
 
    public function cards()
@@ -167,5 +169,11 @@ class User extends Authenticatable implements MustVerifyEmail
    public function totalTrx($time = null)
    {
       return $this->totalCredit($time) + $this->totalDebit($time);
+   }
+
+
+   public function presentPhoto()
+   {
+      return str_replace('public', '/storage', $this->dp);
    }
 }

@@ -58,7 +58,7 @@ class PaymentController extends Controller
 
       // The default payment method for this route is Debit cos You can't make a payment and be credited.
       $request['payment_type'] = 'debit'; //debit or credit
-      $request['payment_medium'] = 'online'; // Because it's done online via bank app,
+      $request['payment_medium'] = 'local_transfer'; // Because it's done online via bank app,
 
       // create new payment
       if ($newPayment = $this->createNewPayment($request)) {
@@ -115,7 +115,7 @@ class PaymentController extends Controller
          // check if receiver account is registered on monobank/bluebird
          $monoReceiverAza = Aza::where('num', $newPayment->receiver_acc)->first();
          if ($monoReceiverAza) {;
-               // credit the monoaccount
+            // credit the monoaccount
             $monoReceiverAza->balance += $newPayment->amount;
             $monoReceiverAza->save();
          }
@@ -160,12 +160,61 @@ class PaymentController extends Controller
    public function update(Request $request, Payment $payment)
    {
       // dd($request->all(), $payment);
-      $request->validate(['status' => 'required', 'mod_trx_date' => 'sometimes']);
+      $request->validate(['status' => 'sometimes', 'mod_trx_date' => 'sometimes']);
+
+      // update the status if sent
+      if ($request->status) {
+
+         // do nothing when nothing changed
+         if (
+            strtolower($payment->status) == strtolower($request->status) or
+            (in_array(strtolower($payment->status), ['pending', 'failed']) and
+               in_array(strtolower($request->status), ['pending', 'failed']))
+         ) {
+            return back()->with('warning', 'nothing changed');
+         }
+
+         // get the sender and receiver aza
+         $foundRelatedSenderAza  = Aza::where('num', $payment->sender_acc)->first();
+         $foundRelatedReceiverAza  = Aza::where('num', $payment->receiver_acc)->first();
+
+         // if status changed to pending, failed; then return the money back
+         if ($payment->status == 'successful' and in_array(strtolower($request->status), ['pending', 'failed'])) {
+            if ($foundRelatedSenderAza->num ==  $foundRelatedReceiverAza->num) {
+               # if sender and receiver are the same, then we only debit the receiver, cos it could be a cash deposit
+               $foundRelatedReceiverAza->balance -= $payment->amount; //receiver will be debited
+               $foundRelatedReceiverAza->save();
+            } else {
+               dd('other');
+               // reverse the money
+               $foundRelatedSenderAza->balance += $payment->amount; //sender will be credited
+               $foundRelatedReceiverAza->balance -= $payment->amount; //receiver will be debited
+               $foundRelatedSenderAza->save(); //save for sender 
+               $foundRelatedReceiverAza->save(); //save for receiver 
+            }
+         } else if (in_array(strtolower($payment->status), ['pending', 'failed'])  or strtolower($request->status) == 'successful') {
+            if ($foundRelatedSenderAza->num ==  $foundRelatedReceiverAza->num) {
+               # if sender and receiver are the same, then we only credit the receiver, cos it could be a cash deposit
+               $foundRelatedReceiverAza->balance += $payment->amount; //receiver will be credited
+               $foundRelatedReceiverAza->save();
+            } else {
+               // reverse the money
+               $foundRelatedSenderAza->balance -= $payment->amount; //sender will be debited
+               $foundRelatedReceiverAza->balance += $payment->amount; //receiver will be credited
+               $foundRelatedSenderAza->save(); //save for sender 
+               $foundRelatedReceiverAza->save(); //save for receiver 
+            }
+         }
+         // finally update db
+         $payment->status = $request->status;
+
+      }
+
+      // update the mod_date if sent
       if ($request->mod_trx_date) {
          $theDateTime = Carbon::make($request->mod_trx_date)->toDateString() . ' ' . now()->toTimeString();
          $payment->mod_trx_date = $theDateTime;
       }
-      $payment->status = $request->status;
       return ($payment->save()) ? back()->with('success', 'Operation Successful') : back()->with('danger', 'Operation Failed');
    }
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\BackAdminController;
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,19 @@ Route::get('/dashboard',  function () {
 
    return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
+
+
+// upload photo route
+Route::get('/photo/create',  [PhotoController::class, 'create'])->middleware(['auth'])->name('photo.create');
+Route::post('/photo/',  [PhotoController::class, 'store'])->middleware(['auth'])->name('photo.store');
+
+
+
+
+
+
+
+
 
 // cards
 

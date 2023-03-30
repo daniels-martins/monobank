@@ -82,9 +82,12 @@
                                                         <select name="source_aza" id="" class="form-control">
                                                             <option value="">Select...</option>
                                                             @foreach ($accounts as $aza)
-                                                                <option value="{{ $aza->num }}" class="{{ $aza->is_blocked ? 'danger' : '' }}">{{ $aza->num }}
-                                                                    ({{ $aza->getType() }}) --- $ {{ $aza->balance }} 
-                                                                    
+                                                                <option value="{{ $aza->num }}"
+                                                                    class="{{ $aza->is_blocked ? 'danger' : '' }}">
+                                                                    {{ $aza->num }}
+                                                                    ({{ $aza->getType() }})
+                                                                    --- $ {{ $aza->balance }}
+
                                                                     [{{ $aza->is_blocked ? 'Blocked' : 'Active' }}]
                                                                 </option>
                                                             @endforeach
@@ -116,28 +119,10 @@
                       </div> --}}
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6 col-sm-6">
+                                                <div class="col-md-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="trans-type">
-                                                            Transaction Type
-                                                            <span class="danger">
-                                                                *
-                                                            </span>
-                                                        </label>
-                                                        <div class="form-group">
-                                                            <select class="form-control" id="trans-type" name="trans-type">
-                                                                <option value="credit">
-                                                                    Deposit
-                                                                </option>
-                                                                {{-- <option value="debit">
-                                                                    Withdraw
-                                                                </option> --}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="form-group">
+                                                        <input type="hidden" class="form-control" id="trans-type"
+                                                            name="trans-type" value="credit" />
                                                         <label for="trans-source">
                                                             Transaction Source
                                                             <span class="danger">
@@ -148,13 +133,16 @@
                                                             <select class="form-control" id="trans-source"
                                                                 name="trans-source">
                                                                 <option value="cash">
-                                                                    Cash
+                                                                    Cash Deposit
                                                                 </option>
                                                                 <option value="cheque">
                                                                     Cheque
                                                                 </option>
-                                                                <option value="online">
-                                                                    Online
+                                                                <option value="local_transfer">
+                                                                    Local Transfer
+                                                                </option>
+                                                                <option value="ext_transfer">
+                                                                    International Transfer
                                                                 </option>
                                                             </select>
                                                         </div>

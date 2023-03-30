@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Modify Account')
+@section('title', 'Profile')
 @section('page_css')
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/admin_assets/app-assets/vendors/css/vendors.min.css">
@@ -22,17 +22,15 @@
     <link rel="stylesheet" type="text/css" href="/admin_assets/app-assets/css/pages/single-page.min.css">
     <!-- END: Page CSS-->
 
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/admin_assets/assets/css/style.css">
+    <!-- END: Custom CSS-->
 @endsection
 
 @section('custom_css')
-    {{--
-<link rel="stylesheet" type="text/css" href="/admin_assets/assets/css/"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="/admin_assets/assets/css/"> --}}
 @endsection
 
-
-{{-- session data --}}
-@if (Session::has('success'))
-@endif
 
 @section('content')
     <!-- BEGIN: Content-->
@@ -41,15 +39,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">Modify Any Payment or Transactions [Admin]</h3>
+                    <h3 class="content-header-title">Upload Photo</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('payments.index') }}">Payments</a>
+                                <li class="breadcrumb-item"><a href="{{ route('accounts.index') }}">Accounts</a>
                                 </li>
-                                <li class="breadcrumb-item active">Modify Account
+                                <li class="breadcrumb-item active">Upload Photo
                                 </li>
                             </ol>
                         </div>
@@ -61,8 +59,6 @@
                             <div id="sp-bar-total-sales"></div>
                         </media-left>
                         <div class="media-body media-right text-right">
-                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span
-                                class="text-muted">Balance</span>
 
                         </div>
                     </div>
@@ -70,70 +66,52 @@
             </div>
             <div class="content-body">
                 <!-- Form wizard with number tabs section start -->
-                <section id="validation">
+                <section id="">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">
-                                       Click here to <a href="{{ route('transactions.index', ['caller' => 'xxx-admin']) }}">View All Transactions</a> <br><br>
-                                       Click here to <a href="{{ route('transactions.index', ['caller' => 'xxx-admin']) }}">View Changes Made</a>
+                                        Upload Photo
                                     </h4>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form action="{{ route('payments.update', $payment->id) }}" method="post"
-                                            class="steps-validation wizard-notification wizard-info">@csrf @method('patch')
+                                        <form action="{{ route('photo.store') }}" method="post" enctype="multipart/form-data"
+                                            class="steps-validation wizard-notification wizard-info" >
                                             @csrf
-                                            <!----   Step 2 ------>
-                                            <h6>
-                                                Account Status
-                                            </h6>
+
+                                            <!----Step 4---->
                                             <fieldset>
                                                 <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group account-wrapper">
-                                                         <label class="h3">
-                                                             Switch transaction status
-                                                             <br>
-                                                         </label>
-                                                         <div class="">
-                                                             <p>Seamlessly Switch a transaction between pending,
-                                                                 successful and failed </p>
-                                                             <div class="col-md-9">
-                                                               Current status: {{ $payment->status }}
-                                                                 <select name="status" id="status"
-                                                                     class="form-control">
-                                                                     <option value="">--Switch Transaction--
-                                                                     </option>
-                                                                     @foreach (['pending', 'successful', 'failed'] as $status)
-                                                                         <option value="{{ $status }}"
-                                                                             @if ($status == $payment->status) selected @endif>
-                                                                             {{ ucfirst($status) }}</option>
-                                                                     @endforeach
-                                                                 </select>
-                                                                 <x-auth-validation-errors />
-                                                             </div>
-                                                         </div>
-                                                     </div>
-
-                                                     <div class="form-group account-wrapper">
-                                                      <label class="h4">
-                                                          Switch transaction Date
-                                                          <br>
-                                                      </label>
-                                                      <div class="">
-                                                          <p>Set a new date for this transaction</p>
-                                                          <div class="col-md-9">
-                                                              <input type="date" name="mod_trx_date" />
-                                                              <x-auth-validation-errors />
-                                                          </div>
-                                                      </div>
-                                                  </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="current_password">
+                                                                Choose Photo<span class="danger">*</span>
+                                                            </label>
+                                                            <input class="form-control" id="user_photo"
+                                                                placeholder="********" type="file" name="user_photo">
+                                                        </div>
                                                     </div>
+                                                    <div class="col-6 my-5">
+                                                        <div class="form-group">
+                                                            <input class=" btn btn-primary text-white" placeholder="*******"
+                                                                value="Upload Photo" type="submit" />
+                                                        </div>
+                                                    </div>
+
+                                                    @if (auth()->user()->dp and Storage::exists(auth()->user()->dp))
+                                                       <img src='{{ auth()->user()->presentPhoto() }}' />
+                                                    @endif
+
+
+                                                    @if ($errors->any())
+                                                        @foreach ($errors->all() as $error)
+                                                            <div>{{ $error }}</div>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </fieldset>
-
                                         </form>
                                     </div>
                                 </div>

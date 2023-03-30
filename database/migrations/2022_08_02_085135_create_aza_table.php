@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('num', 10)->unique();
             $table->enum('status', ['active', 'inactive', 'held', 'suspended'])->default('active');
             $table->boolean('is_blocked')->default(false);
+            $table->string('reason_for_block')->nullable();
             $table->string('balance')->default(0);
-
+            $table->integer('routing')->nullable();
             // foreign keys
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(AzaType::class); //['savings', 'checking']

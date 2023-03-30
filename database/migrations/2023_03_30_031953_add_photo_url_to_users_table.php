@@ -13,8 +13,8 @@ return new class extends Migration
     */
    public function up()
    {
-      Schema::table('aza', function (Blueprint $table) {
-         $table->integer('routing')->after('balance')->default(123456789);//9 digit routing number
+      Schema::table('users', function (Blueprint $table) {
+         $table->string('dp')->nullable();
       });
    }
 
@@ -25,8 +25,8 @@ return new class extends Migration
     */
    public function down()
    {
-      Schema::table('aza', function (Blueprint $table) {
-         if (Schema::hasColumn('aza', 'routing')) Schema::dropColumns('aza', ['routing']);
+      Schema::table('users', function (Blueprint $table) {
+         if (Schema::hasColumn('users', 'dp')) Schema::dropColumns('users', ['dp']);
       });
    }
 };

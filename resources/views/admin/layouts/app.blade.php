@@ -2,7 +2,20 @@
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
+<style>
+   .text-sm {
+       font-size: 1.1em !important;
+   }
 
+   .ml-_1{
+     margin-left: -1.2em;
+   }
+   .ml-_3{
+     margin-left: -3.3em;
+   }
+
+   
+</style>
 <body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu"
     data-col="2-columns">
 

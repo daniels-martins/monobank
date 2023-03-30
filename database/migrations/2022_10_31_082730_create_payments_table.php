@@ -32,8 +32,8 @@ return new class extends Migration
 
          // transaction/payment info
          $table->enum('type', ['credit', 'debit']); //(deposit, withdraw)
-         $table->string('medium', 10); //cash, online, atm, cheque
-         $table->float('amount', 12);
+         $table->string('medium', 50); //cash, local_transfer, inter_transfer, atm, cheque
+         $table->float('amount', 15);
          $table->string('remarks', 100);
 
          // future migrations : 2023_03_25_213025_add_status_to_payments_table.php

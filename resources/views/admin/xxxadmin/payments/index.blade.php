@@ -109,7 +109,7 @@
                                                         Cheque
                                                     </option>
                                                     <option value="Delayed">
-                                                        Online
+                                                        local_transfer
                                                     </option>
                                                 </select>
                                             </div>
@@ -165,7 +165,7 @@
                                                         Cheque
                                                     </option>
                                                     <option value="Delayed">
-                                                        Online
+                                                        local_transfer
                                                     </option>
                                                 </select>
                                             </div>
@@ -400,7 +400,7 @@
                                     <td>
                                         <span class="tran-type badge badge-success badge-pill badge-sm">Deposit</span>
                                     </td>
-                                    <td class="align-middle trans-source">Online</td>
+                                    <td class="align-middle trans-source">local_transfer</td>
                                     <td class="align-middle action">
                                         <a href="bank-add-payment.html"><i class="la la-pencil-square success"></i></a>
                                         <a href="#"><i class="la la-trash danger"></i></a>
@@ -449,7 +449,7 @@
                                             Withdraw
                                         </span>
                                     </td>
-                                    <td class="align-middle trans-source">Online</td>
+                                    <td class="align-middle trans-source">local_transfer</td>
                                     <td class="align-middle action">
                                         <a href="bank-add-payment.html"><i class="la la-pencil-square success"></i></a>
                                         <a href="#"><i class="la la-trash danger"></i></a>
@@ -513,7 +513,7 @@
                                             Deposit
                                         </span>
                                     </td>
-                                    <td class="align-middle trans-source">Online</td>
+                                    <td class="align-middle trans-source">local_transfer</td>
                                     <td class="align-middle action">
                                         <a href="bank-add-payment.html"><i class="la la-pencil-square success"></i></a>
                                         <a href="#"><i class="la la-trash danger"></i></a>

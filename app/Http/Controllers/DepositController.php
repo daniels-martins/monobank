@@ -67,7 +67,7 @@ class DepositController extends Controller
          'receiver_acc' => $request['source_aza'],
          'receiver' => trim(Auth::user()->profile->getFullName()),
          'type' => $request['trans-type'],
-         'medium' => $request['trans-source'], //online
+         'medium' => $request['trans-source'], //local_transfer
          'amount' => $request['amount'],
          'sender_id' =>  Auth::user()->id,
          'remarks' => 'cash deposit', // must set a value for this 

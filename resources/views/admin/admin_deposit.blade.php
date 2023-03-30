@@ -137,14 +137,14 @@
                           </label>
                           <div class="form-group">
                             <select class="form-control" id="trans-source" name="trans-source">
-                              <option value="Cash">
+                              <option value="cash">
                                 Cash
                               </option>
-                              <option value="Cheque">
+                              <option value="cheque">
                                 Cheque
                               </option>
-                              <option value="Online">
-                                Online
+                              <option value="local_transfer">
+                                Local transfer
                               </option>
                             </select>
                           </div>

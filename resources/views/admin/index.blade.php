@@ -54,31 +54,29 @@ dd(auth()->user()->azas()->first())
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9 text-left">
+                                              <span> Logged In: {{ Carbon::now()->dayName .' , ' . Carbon::now()->toFormattedDateString()?? 'N/A' }} </span><br>
                                                 <div class="mb-0  d-flex justify-content-between">
-                                                    {{-- <i class="la la-hand-paper-o text-success" style="font-size:4rem;"></i> --}}
-                                                    <span class="h4 my-1 mr-2 text-primary">
+                                                   
+                                                   <span class="h4 my-1 mr-2 text-primary">
                                                         <b> Welcome, {{ ucfirst(auth()->user()->name) }}.</b>
                                                     </span>
-
                                                 </div>
                                                 <p class="h6">
-                                                    Account Number: {{ auth()->user()->azas->first()->num ?? 'N/A' }} <br>
+                                                    Account Number: <b> {{ auth()->user()->azas->first()->num ?? 'N/A' }} </b><br>
                                                     Status: {{ ucfirst(auth()->user()->azas->first()->status) ?? 'N/A' }}
                                                     <br>
-                                                    {{-- Joined:
-                                                    {{ Carbon::make(auth()->user()->azas->first()->created_at)->toDateString() ?? 'N/A' }} --}}
-                                                    {{-- {{ auth()->user()->cards->first()->cc_num ?? '' }} --}}
+                                                    {{-- {{ auth()->user()->cards->first()->cc_num ?? '' }}
                                                 </p>
                                             </div>
                                             <div class="col-3">
                                                 {{-- necessary evil --}}
-                                                <div class="float-right ">
+                                                {{-- <div class="float-right ">
                                                     <canvas id="euro-chart" class="height-100 d-none"></canvas>
                                                     <img class="rounded-circle"
                                                         src="/admin_assets/app-assets/images/icons/female.png"
                                                         alt="user_icon" width="75">
 
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
