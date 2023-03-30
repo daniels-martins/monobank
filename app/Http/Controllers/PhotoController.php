@@ -21,10 +21,10 @@ class PhotoController extends Controller
       $path = $reqfile ->store('public/avatarz');
 
       // delete any old photos 
-      if (Storage::exists(auth()->user()->dp)){
+      if (Storage::exists(auth()->user()->dp ?? ' ')){
          Storage::delete(auth()->user()->dp);
       }
-      
+
       request()->user()->dp = $path;
       if(request()->user()->save()) return back()->with('success', 'Operation Successful');
       // Storage::putFile('photos', new File($reqfile), 'public');

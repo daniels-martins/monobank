@@ -27,7 +27,7 @@
                             <span class="user-name text-bold-700">{{ auth()->user()->name }}</span>
 
                             <span class="avatar avatar-sm avatar-online">
-                                @if (Storage::exists(auth()->user()->dp))
+                                @if (Storage::exists(auth()->user()->dp ?? ''))
                                     <img src='{{ auth()->user()->presentPhoto() }}' />
                                 @else
                                     <img src="/admin_assets/app-assets/images/icons/user_icon.png" alt="avatar">
