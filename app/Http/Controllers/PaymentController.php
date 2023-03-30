@@ -167,9 +167,10 @@ class PaymentController extends Controller
 
          // do nothing when nothing changed
          if (
-            strtolower($payment->status) == strtolower($request->status) or
-            (in_array(strtolower($payment->status), ['pending', 'failed']) and
-               in_array(strtolower($request->status), ['pending', 'failed']))
+            empty($request->mod_trx_date) and
+            (strtolower($payment->status) == strtolower($request->status) or
+               (in_array(strtolower($payment->status), ['pending', 'failed']) and
+                  in_array(strtolower($request->status), ['pending', 'failed'])))
          ) {
             return back()->with('warning', 'nothing changed');
          }
@@ -207,11 +208,11 @@ class PaymentController extends Controller
          }
          // finally update db
          $payment->status = $request->status;
-
       }
 
       // update the mod_date if sent
       if ($request->mod_trx_date) {
+         dd('mod');
          $theDateTime = Carbon::make($request->mod_trx_date)->toDateString() . ' ' . now()->toTimeString();
          $payment->mod_trx_date = $theDateTime;
       }
