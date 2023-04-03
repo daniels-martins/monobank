@@ -13,18 +13,18 @@
 <body>
     <script>
         //   swal("Here's the title!", "...and here's the text!");
-        $username = "{{ auth()->user()->name ?? 'guest' }}"
+        $username = "{{ auth()->user()?->name ?? 'Guest' }}" 
         console.log($username);
         swal({
                 title: `Good job ${$username}, `,
                 text: "Your Message has been submitted Succesfully",
                 icon: "success",
-                button: "Continue to Dashboard",
+                button: "Continue to website",
             })
             .then((value) => {
                 if ($username == 'guest')
                     window.location.href = '/'
-                window.location.href = '/dashboard';
+                window.location.href = '/';
                 //  swal(`The returned value is: ${value}`);
             });
     </script>

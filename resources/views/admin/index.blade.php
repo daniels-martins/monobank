@@ -185,13 +185,13 @@ dd(auth()->user()->azas()->first())
                                             @foreach (auth()->user()->trx()->take(5) as $trx)
                                                 <tr>
                                                     <td class="text-truncate">
-                                                        @if ($trx->type == 'debit')
+                                                        @unless ($trx->receiver_id == auth()->user()->id)
                                                             <i class="ft-arrow-down-right danger"></i>
                                                         @else
                                                             <i class="ft-arrow-up-right success"></i>
-                                                        @endif
-                                                        <SPAN class="{{ $trx->type == 'credit' ? 'success' : '' }}">
-                                                            {{ $trx->type == 'credit' ? '+' : '-' }}
+                                                        @endunless
+                                                        <SPAN class="{{ ($trx->receiver_id == auth()->user()->id) ? 'success' : '' }}">
+                                                            {{ ($trx->receiver_id == auth()->user()->id)  ? '+' : '-' }}
                                                             ${{ number_format($trx->amount, 2) }}
                                                         </SPAN>
                                                         <div class="font-small-2 text-light">
@@ -199,11 +199,7 @@ dd(auth()->user()->azas()->first())
                                                             {{ $trx->medium }}
                                                         </div>
                                                     </td>
-                                                    {{-- <td
-                                                        class="text-truncate
-                                                   {{ $trx->type == 'credit' ? 'text-success' : 'text-danger' }}">
-                                                        {{ ucfirst($trx->type) }}
-                                                    </td> --}}
+                                                    
                                                     <td
                                                         class="text-truncate
                                                        mt-1
@@ -276,222 +272,7 @@ dd(auth()->user()->azas()->first())
                         </div>
                     </div>
                     <div class="row match-height">
-                        {{-- <div class="col-xl-5 col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Calendar</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div id="bank-calendar" class="overflow-hidden bg-grey bg-lighten-3"></div>
-                                </div>
-                            </div>
-                            <div id="clndr" class="clearfix">
-                                <script type="text/template" id="bank-calendar-template">
-                                <div class="clndr-controls">
-                 <div class="clndr-previous-button">&lt;</div>
-                 <div class="clndr-next-button">&gt;</div>
-                 <div class="current-month">
-                     <%= month %>
-                     <%= year %>
-                 </div>
-
-             </div>
-             <div class="clndr-grid">
-                 <div class="days-of-the-week clearfix">
-                     <% _.each(daysOfTheWeek, function(day) { %>
-                         <div class="header-day">
-                             <%= day %>
-                         </div>
-                     <% }); %>
-                 </div>
-                 <div class="days">
-                     <% _.each(days, function(day) { %>
-                         <div class="<%= day.classes %>" id="<%= day.id %>"><span class="day-number"><%= day.day %></span></div>
-                     <% }); %>
-                 </div>
-             </div>
-             <div class="event-listing">
-                 <div class="event-listing-title">Event this month</div>
-                 <% _.each(eventsThisMonth, function(event) { %>
-                     <div class="event-item font-small-3">
-                         <div class="event-item-day font-small-2">
-                             <%= event.date %>
-                         </div>
-                         <div class="event-item-name text-bold-600">
-                             <%= event.title %>
-                         </div>
-                         <div class="event-item-location">
-                             <%= event.location %>
-                         </div>
-                     </div>
-                 <% }); %>
-             </div>
-          </script>
-                            </div>
-                        </div> --}}
                         <div class="col-xl-7 col-lg-6 col-md-12">
-                            {{-- <div class="card recent-loan">
-                                <div class="card-header">
-                                    <h4 class="text-center">Recent Transactions</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th class="border-top-0"></th>
-                                                    <th class="border-top-0">Amount</th>
-                                                    <th class="border-top-0">Type</th>
-                                                    <th class="border-top-0">Status</th>
-                                                    <th class="border-top-0">Date</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (auth()->user()->trx()->take(5) as $trx)
-                                                    <tr>
-                                                        <td>
-                                                            <div class="avatar avatar-sm">
-                                                                <img class="rounded-circle"
-                                                                    src="/admin_assets/app-assets/images/portrait/small/avatar-s-1.png"
-                                                                    alt="Avatar" />
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-truncate">
-                                                            @if ($trx->type == 'debit')
-                                                                <i class="ft-arrow-down-right danger"></i>
-                                                            @else
-                                                                <i class="ft-arrow-up-right success"></i>
-                                                            @endif
-
-                                                            ${{ number_format($trx->amount, 2) }}
-                                                            <div class="font-small-2 text-light">
-                                                                <i class="font-small-2 ft-map-pin"></i>
-                                                                {{ $trx->medium }}
-                                                            </div>
-                                                        </td>
-                                                        <td
-                                                            class="text-truncate
-                                                        {{ $trx->type == 'credit' ? 'text-success' : 'text-danger' }}">
-                                                            {{ ucfirst($trx->type) }}
-                                                        </td>
-                                                        <td
-                                                            class="text-truncate
-                                                            mt-1
-                                                            @if ($trx->status == 'successful') badge badge-pill badge-success 
-                                                @elseif ($trx->status == 'pending') badge badge-pill  badge-warning
-                                                @else badge badge-pill badge-danger @endif ">
-                                                            {{ $trx->status }}</td>
-                                                        <td class="text-truncate">{{ Carbon::make($trx->created_at) }}
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div> --}}
-
-
-                            {{-- when I'm ready to deal with loan applications --}}
-
-                            {{-- <div class="card recent-loan">
-                           <div class="card-header">
-                               <h4 class="text-center">Loan Applications</h4>
-                           </div>
-                           <div class="card-content">
-                               <div class="table-responsive">
-                                   <table class="table table-hover">
-                                       <thead>
-                                           <tr>
-                                               <th class="border-top-0"></th>
-                                               <th class="border-top-0">Loan Amount</th>
-                                               <th class="border-top-0">Date</th>
-                                           </tr>
-                                       </thead>
-                                       <tbody>
-                                           <tr>
-                                               <td>
-                                                   <div class="avatar avatar-sm">
-                                                       <img class="rounded-circle"
-                                                           src="/admin_assets/app-assets/images/portrait/small/avatar-s-4.png"
-                                                           alt="Avatar" />
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">
-                                                   <i class="ft-arrow-down-left success"></i> $20000
-                                                   <div class="font-small-2 text-light"><i
-                                                           class="font-small-2 ft-map-pin"></i> S.G.road,UK</div>
-                                               </td>
-                                               <td class="text-truncate">4:59p.m</td>
-                                           </tr>
-                                           <tr>
-                                               <td>
-                                                   <div class="avatar avatar-sm">
-                                                       <img class="rounded-circle"
-                                                           src="/admin_assets/app-assets/images/portrait/small/avatar-s-1.png"
-                                                           alt="Avatar" />
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">
-                                                   <i class="ft-arrow-up-right danger"></i> $500
-                                                   <div class="font-small-2 text-light"><i
-                                                           class="font-small-2 ft-map-pin"></i> P.stone,UK</div>
-                                               </td>
-                                               <td class="text-truncate">2:01p.m</td>
-                                           </tr>
-                                           <tr>
-                                               <td>
-                                                   <div class="avatar avatar-sm">
-                                                       <img class="rounded-circle"
-                                                           src="/admin_assets/app-assets/images/portrait/small/avatar-s-10.png"
-                                                           alt="Avatar" />
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">
-                                                   <i class="ft-arrow-down-left success"></i> $10000
-                                                   <div class="font-small-2 text-light">
-                                                       <i class="font-small-2 ft-map-pin"></i> Grod Street,UK
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">12:50p.m</td>
-                                           </tr>
-                                           <tr>
-                                               <td>
-                                                   <div class="avatar avatar-sm">
-                                                       <img class="rounded-circle"
-                                                           src="/admin_assets/app-assets/images/portrait/small/avatar-s-9.png"
-                                                           alt="Avatar" />
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">
-                                                   <i class="ft-arrow-up-right danger"></i> $2000
-                                                   <div class="font-small-2 text-light"><i
-                                                           class="font-small-2 ft-map-pin"></i> Malbourn,UK</div>
-                                               </td>
-                                               <td class="text-truncate">9:45a.m</td>
-                                           </tr>
-                                           <tr>
-                                               <td>
-                                                   <div class="avatar avatar-sm">
-                                                       <img class="rounded-circle"
-                                                           src="/admin_assets/app-assets/images/portrait/small/avatar-s-12.png"
-                                                           alt="Avatar" />
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">
-                                                   <i class="ft-arrow-up-right danger"></i> $1000
-                                                   <div class="font-small-2 text-light">
-                                                       <i class="font-small-2 ft-map-pin"></i> Scott Lane,UK
-                                                   </div>
-                                               </td>
-                                               <td class="text-truncate">8:22a.m</td>
-                                           </tr>
-                                       </tbody>
-                                   </table>
-                               </div>
-                           </div>
-                       </div> --}}
                         </div>
                     </div>
                     {{-- @include('admin.partials.cards.create_comp') --}}

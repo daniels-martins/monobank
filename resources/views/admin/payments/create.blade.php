@@ -39,7 +39,7 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">Transfer Money to Other Banks</h3>
+                    <h3 class="content-header-title">Transfer Money Domestically</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
@@ -70,7 +70,7 @@
                 <!-- Form wizard with number tabs section start -->
                 <section id="validation">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 col-sm-4 offset-sm-4 ">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">
@@ -79,9 +79,11 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form action="{{ route('payments.store', auth()->user()->profile->id) }}" id='payment_create_form'
+                                        <form action="{{ route('payments.store') }}" id='payment_create_form'
                                             method="post" class="steps-validation wizard-notification wizard-info" name="createpayment"
                                             > @csrf
+                                            <input required type="hidden" name="jurisdiction" value="domestic">
+                                            <input required type="hidden" name="is_foreign" value=0 >
 
                                             <!----   Step 1 ------>
                                             <h6>
@@ -102,7 +104,7 @@
                                                                 </span>
                                                             </label>
                                                             {{-- {{ dd($authUser->profile) }} --}}
-                                                            <select name="source_aza" id="source_aza" class="form-control">
+                                                            <select required name="source_aza" id="source_aza" class="form-control">
                                                                 <option value="">Select...</option>
                                                                 @foreach ($accounts as $aza)
                                                                     <option value="{{ $aza->num }}"
@@ -126,7 +128,7 @@
                                                                 </span>
                                                             </label>
                                                             {{-- {{ dd($authUser->profile) }} --}}
-                                                            <input value="{{ old('destination_bank') }}"
+                                                            <input required value="{{ old('destination_bank') }}"
                                                                 class="form-control" id="receiver_bank_name"
                                                                 placeholder="eg. Chase, Bank of America etc." type="text"
                                                                 name="destination_bank">
@@ -141,12 +143,32 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input value="{{ old('receiver_routing_num') }}"
+                                                            <input required value="{{ old('receiver_routing_num') }}"
                                                                 class="form-control" id="receiver_routing_num"
                                                                 type="text" placeholder="eg. John Doe" minlength="9"
                                                                 maxlength="9" name="receiver_routing_num">
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-12 col-sm-12">
+                                                      <div class="form-group">
+                                                          <label for="recipient_bank_account_type">
+                                                             Recipient's Bank Account Type
+                                                              <span class="danger">
+                                                                  *
+                                                              </span>
+                                                          </label>
+                                                          {{-- {{ dd($authUser->profile) }} --}}
+                                                          <select required name="recipient_bank_account_type" id="recipient_bank_account_type"
+                                                              class="form-control">
+                                                              <option value="">Select...</option>
+                                                              @foreach ($azaTypes as $aza)
+                                                                  <option value='{{ $aza->name }}'>{{ ucfirst($aza->name) }} </option>
+                                                                  {{-- <option value='checking'>Checking </option> --}}
+                                                              @endforeach
+                                                          </select>
+                                                      </div>
+                                                  </div>
 
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -156,7 +178,7 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input value="{{ old('beneficiary') }}" class="form-control"
+                                                            <input required value="{{ old('beneficiary') }}" class="form-control"
                                                                 id="receiver_account_name" type="text"
                                                                 placeholder="eg. John Doe" name="beneficiary">
                                                         </div>
@@ -171,7 +193,7 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input value="{{ old('destination_aza') }}"
+                                                            <input required value="{{ old('destination_aza') }}"
                                                                 class="form-control" type="number" maxlength="10"
                                                                 minlength="10" id="receiver_account_num"
                                                                 name="destination_aza" placeholder="0123456789">
@@ -187,7 +209,7 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input value="{{ old('amount') }}" class="form-control"
+                                                            <input required value="{{ old('amount') }}" class="form-control"
                                                                 type="number" maxlength="10" id="amount"
                                                                 name="amount" placeholder="Permanent amount">
                                                         </div>

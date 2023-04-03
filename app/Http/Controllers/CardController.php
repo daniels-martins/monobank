@@ -42,7 +42,7 @@ class CardController extends Controller
       // dd($card_data);
       // lets Generate this new Card
       
-      dd($request->all(), $card_data);
+      // dd($request->all(), $card_data);
 
       // step4: Generate Card
       // tryig to use a public non-static method from another class and it worked

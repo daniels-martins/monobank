@@ -50,13 +50,24 @@ class DepositController extends Controller
    }
 
    /**
-    *  in this scenario, the source aza represents both the sender_acc and the receiver_acc; denoting a self made cash deposit
+    *  in this scenario, the source aza represents both the sender_acc and the receiver_acc; denoting a self made local_transfer deposit
     * 
     */
    public function createDepositInDB($request)
    {
+      dd($request['trans-source']);
       // in this scenario, the source aza represents both the sender_acc and the receiver_acc; denoting a self made cash deposit
       // consult paymentcontroller for the uniqueID
+
+      // lets generate the remark
+      $remarks = '';
+      match($request['trans-source']){
+         'cash' => $remarks = 'cash deposit',
+         'cheque' => $remarks = 'cheque deposit',
+         'local_transfer' => $remarks = 'Transfer',
+         'ext_transfer' => $remarks = 'Wire Transfer ',
+      };
+
       $request['uid'] = (new PaymentController)->makeUniqueUid();
       $newPayment =  Payment::create([
          'uid' => $request['uid'],
@@ -70,7 +81,9 @@ class DepositController extends Controller
          'medium' => $request['trans-source'], //local_transfer
          'amount' => $request['amount'],
          'sender_id' =>  Auth::user()->id,
-         'remarks' => 'cash deposit', // must set a value for this 
+         'receiver_id' =>  Auth::user()->id,
+         'remarks' => '', // must set a value for this 
+         ''
          // nullables
          // 'trx_email' => null,
       ]);

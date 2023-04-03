@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <span class="user-name text-bold-700">{{ auth()->user()->name }}</span>
+                            <span class="user-name text-bold-700">Hi, {{ auth()->user()->profile->fname }}</span>
 
                             <span class="avatar avatar-sm avatar-online">
                                 @if (Storage::exists(auth()->user()->dp ?? ''))

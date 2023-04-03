@@ -71,22 +71,21 @@ class User extends Authenticatable implements MustVerifyEmail
     */
    public function trx()
    {
-      // return $this->hasMany(Payment::class, 'sender_id', 'id');
+      // get a list of all user related trx 
       return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id)->get();
+   }
+
+   /**
+    * only for viewing the list of all transactions (debit or credit) for the authUser
+    */
+   public function trxQuery()
+   {
+      // return $this->hasMany(Payment::class, 'sender_id', 'id');
+      return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id);
       // return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id)->sum('amount');
    }
 
-      /**
-    * only for viewing the list of all transactions (debit or credit) for the authUser
-    */
-    public function trxQuery()
-    {
-       // return $this->hasMany(Payment::class, 'sender_id', 'id');
-       return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id);
-       // return Payment::where('sender_id', $this->id)->orWhere('receiver_id', $this->id)->sum('amount');
-    }
-
-  /**
+   /**
     * returns the model collection of debit transactions for a given period of time, when time is not specified, 
     * it returns the alltime collection of debit transactions
     */
@@ -116,7 +115,20 @@ class User extends Authenticatable implements MustVerifyEmail
       return number_format($savingsBalance);
    }
 
-
+   /**
+    * Returns the savings account balance
+    */
+   public function azaBal($type = 'savings')
+   {
+      match ($type) {
+         'savings', '1' => $azaBalance  = $this->azas()->where('aza_type_id', 1)->first()?->balance,
+         'checking', '2' => $azaBalance  = $this->azas()->where('aza_type_id', 2)->first()?->balance,
+         'loan', '3' => $azaBalance  = $this->azas()->where('aza_type_id', 3)->first()?->balance,
+      };
+      // aza_type_id = 1 signifies savings account
+      // $azaBalance  = $this->azas()->where('aza_type_id', 1)->first()->balance;
+      return number_format($azaBalance);
+   }
    /**
     * returns the total credit transactions for a given period of time, when time is not specified, 
     * it returns the alltime value of total credit transactions
@@ -133,7 +145,7 @@ class User extends Authenticatable implements MustVerifyEmail
                ->sum('amount'),
          };
       } else {
-         $sumOfCreditTrxForUser = $this->trxAsReceiver()->where('type', 'credit')->sum('amount');
+         $sumOfCreditTrxForUser = $this->trxAsReceiver()->where('receiver_id', $this->id)->sum('amount');
          return number_format($sumOfCreditTrxForUser);
       }
 

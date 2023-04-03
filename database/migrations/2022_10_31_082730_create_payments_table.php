@@ -46,7 +46,7 @@ return new class extends Migration
          // foreign keys
          // the user_id belongs to the bluebird sender; payments are made by users of the app,but not all receivers are banking with us
          $table->foreignIdFor(User::class, 'sender_id');
-         $table->foreignIdFor(User::class, 'receiver_id')->nullable();
+         $table->foreignIdFor(User::class, 'receiver_id');
          
          $table->dateTime('mod_trx_date')->nullable();
          $table->timestamps();

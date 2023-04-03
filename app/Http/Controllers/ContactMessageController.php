@@ -37,8 +37,10 @@ class ContactMessageController extends Controller
     */
    public function store(Request $request)
    {
+      // dd($request->all());
       $request['phone'] = str_replace([' ', '(', ')'], '', $request->phone); //trim spaces and '()' from number
       //use db compatible arrayKeys
+
       $request['type'] = ($request['formtype'] == 'suspension_form') ? 'suspension' : 'contact';
       $request['fullname'] = $request['fullname'] ?? "{$request['fname']} {$request['lname']}";
 
@@ -51,13 +53,14 @@ class ContactMessageController extends Controller
       // or we could do so using the 'type' which represents the type of contact form that was filled. 
 
 
-      if ($request['subject'] == 'Contact Message') {
+      if ($request['subject'] == 'Contact Message' or  $request['type'] == 'contact') {
          # this means the request came from the contact form, hence, we use a different validation system
          $validated =  $request->validate([
             'type' => 'required', //value is coming from controller, not the form, its programmed 
             'fullname' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'subject' => 'required',
             'message' => 'required',
             // 'acc_num' => 'required',//guest users don't have account
             // 'subject' => 'required',//there is no subject field in the contact form sent.
@@ -65,6 +68,7 @@ class ContactMessageController extends Controller
             'fullname.required' => 'The name field is required',
          ]);
       } else {
+
          $validated =  $request->validate([
             'type' => 'required',
             'fname' => 'required', //these are prerequisites for the fullname in the db
@@ -82,10 +86,14 @@ class ContactMessageController extends Controller
          ]);
       }
 
-
+      // dd('we go');
       // if ($request->type == 'suspension')
-      return ContactMessage::create($validated)
-         ? redirect()->route('sweet_alert') : back()->with('danger', 'Oops! Message was not sent... Try again');
+      if (ContactMessage::create($validated)) {
+         return auth()->check()
+         ? redirect()->route('sweet_alert') : redirect()->route('sweet_alert1'); 
+         # code...
+      }
+      return back()->with('danger', 'Oops! Message was not sent... Try again');
       // return ContactMessage::create($validated) ? back()->with('success', 'Message Sent') : back()->with('danger', 'Oops! Try again');
    }
 

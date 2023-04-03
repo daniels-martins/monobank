@@ -20,7 +20,10 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('card_num');   
-            $table->string('pan', 10)->nullable();
+            
+            // for CCs only
+            $table->string('pan', 10)->nullable();//account num linked to CC
+            $table->string('balance', 15)->nullable();
             
             $table->string('pin', 4)->default('0000');
             $table->string('cvv', 4)->default('111');

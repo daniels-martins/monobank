@@ -63,138 +63,8 @@
             </div>
             <div class="content-body">
                 <section id="payments-details">
-                    {{-- <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title float-left">
-                                        Payment Status
-                                    </h4>
-                                    <div class="float-right">
-                                        <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
-                                            data-target="#deposit" data-toggle="modal">
-                                            <i class="ft-plus white"></i>Deposit
-                                        </a>
-                                        <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white mr-1"
-                                            data-target="#withdraw" data-toggle="modal">
-                                            <i class="ft-minus white"></i>Withdraw
-                                        </a>
-                                        <div aria-hidden="true" class="modal fade text-left" id="deposit" role="dialog"
-                                            tabindex="-1">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <label class="modal-title text-text-bold-600" id="myModalLabel33">
-                                                            Deposit Your Amount
-                                                        </label>
-                                                    </div>
-                                                    <form action="#">
-                                                        <div class="modal-body">
-                                                            <label>
-                                                                Enter Amount :
-                                                            </label>
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="dep-amt"
-                                                                    placeholder="Enter Amount" type="text">
-                                                            </div>
-                                                            <label for="source">
-                                                                Select Transaction Source
-                                                            </label>
-                                                            <div class="form-group">
-                                                                <select class="c-select form-control" id="source"
-                                                                    name="dep-source">
-                                                                    <option value="">
-                                                                        Select Source
-                                                                    </option>
-                                                                    <option value="Active">
-                                                                        Cash
-                                                                    </option>
-                                                                    <option value="Deactived">
-                                                                        Cheque
-                                                                    </option>
-                                                                    <option value="Delayed">
-                                                                        Online
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-success mr-1" type="submit">
-                                                                Submit
-                                                            </button>
-                                                            <button class="btn btn-danger mr-1" type="reset">
-                                                                Cancel
-                                                            </button>
-
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div aria-hidden="true" class="modal fade text-left" id="withdraw" role="dialog"
-                                            tabindex="-1">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <label class="modal-title text-text-bold-600" id="withdraw1">
-                                                            Withdraw Your Amount
-                                                        </label>
-                                                    </div>
-                                                    <form action="#">
-                                                        <div class="modal-body">
-                                                            <label>
-                                                                Enter Amount :
-                                                                <span class="danger">
-                                                                    *
-                                                                </span>
-                                                            </label>
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="with-amt"
-                                                                    placeholder="Enter Amount" type="text">
-                                                            </div>
-                                                            <label for="source">
-                                                                Select Transaction Source
-                                                                <span class="danger">
-                                                                    *
-                                                                </span>
-                                                            </label>
-                                                            <div class="form-group">
-                                                                <select class="c-select form-control" id="source1"
-                                                                    name="with-source">
-                                                                    <option value="">
-                                                                        Select Source
-                                                                    </option>
-                                                                    <option value="Active">
-                                                                        Cash
-                                                                    </option>
-                                                                    <option value="Deactived">
-                                                                        Cheque
-                                                                    </option>
-                                                                    <option value="Delayed">
-                                                                        Online
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-success mr-1" type="submit">
-                                                                Submit
-                                                            </button>
-                                                            <button class="btn btn-danger mr-1" type="reset">
-                                                                Cancel
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 col-sm-10 offset-sm-1">
 
                             {{-- successful trx --}}
                             @if ($allSuccessfulTrx->count() > 0)
@@ -228,8 +98,8 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($allSuccessfulTrx as $trx)
-                                                        <tr>
-                                                            <td class="align-middle ac-from">{{ $trx->sender_acc }}</td>
+                                                        <tr class="">
+                                                            <td class="p-2 align-middle ac-from">{{ $trx->sender_acc }}</td>
                                                             <td class="align-middle ac-to">{{ $trx->receiver_acc }}</td>
                                                             <td class="align-middle amount">
                                                                 {{ '$' . number_format($trx->amount) }}</td>
@@ -237,13 +107,13 @@
                                                             </td>
                                                             <td>
                                                                 <span
-                                                                    class="tran-type badge {{ $trx->type == 'credit' ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                                    class="tran-type badge {{ $trx->receiver_id == auth()->user()->id ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
                                                                     {{ $trx->type }}
                                                                 </span>
                                                             </td>
                                                             <td class="align-middle trans-source">{{ $trx->medium }}</td>
                                                             <td
-                                                                class="align-middle trans-source badge badge-pill badge-success">
+                                                                class="align-middle trans-source success">
                                                                 {{ $trx->status }}</td>
 
                                                         </tr>
@@ -257,7 +127,7 @@
 
                             {{-- pending trx --}}
                             @if ($allPendingTrx->count() > 0)
-                                <div class="card">
+                                <div class="card col-12">
                                     <div class="card-header">
                                         <h4 class="card-title float-left">
                                             Pending Transactions
@@ -318,17 +188,11 @@
                             {{-- failed trx --}}
                             @if ($allFailedTrx->count() > 0)
 
-                                <div class="card">
+                                <div class="card col-12">
                                     <div class="card-header">
                                         <h4 class="card-title float-left">
                                             Failed Transactions
                                         </h4>
-                                        {{-- <div class="float-right">
-                                   <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
-                                       href="bank-add-payment.html">
-                                       <i class="ft-plus white"></i>Add New Payment
-                                   </a>
-                               </div> --}}
                                     </div>
                                     <div class="card-body mt-1 table-wrapper">
                                         <div class="table-responsive">

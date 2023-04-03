@@ -29,18 +29,25 @@ use App\Http\Controllers\PhotoController;
 |
 */
 
-Route::get('/', fn () =>  view('welcome'))->name('welcome');
+Route::get('/', fn () =>  view('website/www-index'))->name('welcome');
 
-Route::get('/about', fn () =>  view('landing_pages.about'))->name('about');
+// Route::get('/about', fn () =>  view('landing_pages.about'))->name('about');
 
-Route::get('/student-loans', fn () =>  view('landing_pages.student_loans'))->name('student-loans');
+// Route::get('/student-loans', fn () =>  view('landing_pages.student_loans'))->name('student-loans');
 
-Route::get('/mortgages', fn () =>  view('landing_pages.mortgages'))->name('mortgages');
+// Route::get('/mortgages', fn () =>  view('landing_pages.mortgages'))->name('mortgages');
 
-Route::get('/credit-cards', fn () =>  view('landing_pages.credit_cards'))->name('credit-cards');
+// Route::get('/credit-cards', fn () =>  view('landing_pages.credit_cards'))->name('credit-cards');
 
-Route::get('/personal-loans', fn () =>  view('landing_pages.personal_loans'))->name('personal-loans');
+// Route::get('/personal-loans', fn () =>  view('landing_pages.personal_loans'))->name('personal-loans');
 
+Route::view('pub/about', 'website/www-about-us')->name('bank-about');
+
+Route::view('pub/index', 'website/www-index')->name('bank-homepage');
+
+Route::view('pub/contact', 'website/www-contact')->name('bank-contact');
+
+Route::view('pub/loans', 'website/www-loans')->name('bank-loan');
 
 Route::get('/thankyou', fn () =>  view('thankyou'))->name('thankyou');
 
@@ -56,6 +63,8 @@ Route::post('/contactmessage',  [ContactMessageController::class, 'store'])->nam
 Route::delete('/contactmessage/{contactMessage}',  [ContactMessageController::class, 'destroy'])->middleware(['auth'])->name('contactmessages.destroy');
 
 Route::get('/sweet_alert',  [ContactMessageController::class, 'sweetAlert'])->middleware(['auth'])->name('sweet_alert');
+
+Route::get('/sweet_alert1',  [ContactMessageController::class, 'sweetAlert'])->middleware(['guest'])->name('sweet_alert1');
 
 
 
@@ -84,8 +93,12 @@ Route::get('/artie/{cmd}', function () {
    dd('The [' . request()->cmd . '] Artisan command was successful : ' . $result);
 })->name('artisan');
 
-Route::get('/dashboard',  function () {
+Route::get('/dashboard1',  function () {
    return view('admin.index');
+})->middleware(['auth'])->name('dashboard1');
+
+Route::get('/dashboard',  function () {
+   return view('admin.new_dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
@@ -149,34 +162,23 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
 
 
-Route::get('/transactions', function () {
-   // $all_trx = Payment::all();
-   $all_trx = auth()->user()->trx();
-   $allPendingTrx = $all_trx->where('status', 'pending');
-   $allSuccessfulTrx = $all_trx->where('status', 'successful');
-   $allFailedTrx = $all_trx->where('status', 'failed');
-   $sendoffs = compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx');
-   // dd($all_trx, $allPendingTrx, $allSuccessfulTrx, $allFailedTrx);
-   return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.transactions', $sendoffs) :  view('admin.transactions', $sendoffs);
-
-   // return view('admin.transactions', compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx'));
-})->middleware(['auth'])->name('transactions.index');
+Route::get('/transactions', [PaymentController::class, 'index'])->middleware(['auth'])->name('transactions.index');
 
 Route::get('/tinker', function () {
-   // foreach (Payment::all()->skip(10)->take(10) as $trx) {
-   //    $trx->status = 'pending';
-   //    $trx->save();
-   //    echo $trx->status . '<Br>';
-   // }
-
-   // organiseTrxInDB(Payment::all());
-   // xxx admin routes
-   // return view('admin.tinker', compact('all_trx'));
 })->middleware(['auth'])->name('tinker.index');
 
-// Route::post('/backyard', [BackAdminController::class, 'index'])->middleware(['auth'])->name('backyard.index');
 
 
+/*
+|--------------------------------------------------------------------------
+| xxx admin routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 Route::get('xxx-admin', [BackAdminController::class, 'index'])->middleware(['auth'])->name('xxx-admin.index');
 // deposit route
 Route::get('xxx-admin/deposit', [DepositController::class, 'create'])->middleware(['auth'])->name('deposit.create');
@@ -184,6 +186,9 @@ Route::get('xxx-admin/deposit', [DepositController::class, 'create'])->middlewar
 Route::post('xxx-admin/deposit', [DepositController::class, 'store'])->middleware(['auth'])->name('deposit.store');
 // account suspension route
 Route::view('suspension', 'admin.accounts.suspension')->middleware(['auth'])->name('suspension');
+
+
+Route::view('loan-appy', 'admin.loan_apply')->middleware(['guest'])->name('loan_apply');
 
 
 require __DIR__ . '/auth.php';

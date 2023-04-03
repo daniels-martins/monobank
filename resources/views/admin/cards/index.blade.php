@@ -53,14 +53,15 @@
       <!-- Base style table -->
       <section id="base-style">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 col-sm-8 offset-sm-2">
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title float-left">My Cards</h4>
                 <div class="float-right">
                   <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
                     <i class="ft-plus white"></i>
-                    Add New Card</a>
+                    Add New Card
+                  </a>
                   <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -68,42 +69,30 @@
                           <label class="modal-title text-text-bold-600" id="myModalLabel33">Credit Card Details</label>
                         </div>
                         <form action="{{ route('cards.store') }}" method="post">@csrf
+                           <input type="hidden" name="originator" value="client">
+
                           <div class="modal-body">
-                            <label>Holder Name
+                           <label for="status">Choose Card
                               <span class="danger">*</span>
                             </label>
                             <div class="form-group">
-                              <input type="text" placeholder="Holder Name" name="holder-name" class="form-control">
-                            </div>
-
-                            <label>Card Number
-                              <span class="danger">*</span>
-                            </label>
-                            <div class="form-group">
-                              <input type="text" placeholder="Card Number" name="card-no" class="form-control">
-                            </div>
-
-                            {{-- <label>Credit Limit </label>
-                            <div class="form-group">
-                              <input type="text" placeholder="Credit Limit" name="limit" class="form-control">
-                            </div> --}}
-
-                            <label>Card Balance </label>
-                            <div class="form-group">
-                              <input type="text" placeholder="Credit Limit" name="limit" class="form-control" />
-                            </div>
-
-                            <label for="status">Card Status
-                              <span class="danger">*</span>
-                            </label>
-                            <div class="form-group">
-                              <select class="c-select form-control" id="status" name="card-status">
-                                <option value="Active">Active</option>
-                                <option value="Deactived">Deactived</option>
-                                <option value="Delayed">Delayed</option>
-                                <option value="Surrendered">Surrendered</option>
+                              <select class="c-select form-control" id="status" name="card-type" required>
+                                <option value="credit">Credit</option>
+                                <option value="debit">Debit</option>
                               </select>
                             </div>
+
+                            <label for="status">Card Merchant
+                              <span class="danger">*</span>
+                            </label>
+                            <div class="form-group">
+                              <select class="c-select form-control" id="status" name="card-group" required>
+                                <option value="visa">Visa</option>
+                                <option value="master card">Master</option>
+                                <option value="american express">American Express</option>
+                              </select>
+                            </div>
+
                           </div>
                           <div class="modal-footer">
                             <input type="submit" class="btn btn-success" value="Submit">

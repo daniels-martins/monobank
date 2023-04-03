@@ -68,7 +68,7 @@
                 <!-- Form wizard with number tabs section start -->
                 <section id="validation">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 col-sm-4 offset-sm-4">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">
@@ -78,7 +78,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form action="{{ route('profile.update', auth()->user()->profile->id) }}"
-                                            method="post" class="steps-validation wizard-notification wizard-info">
+                                            method="post" class="">
                                             @csrf @method('patch')
 
                                             <!----   Step 1 ------>
@@ -87,7 +87,7 @@
                                             </h6>
                                             <fieldset>
                                                 <div class="row">
-                                                    <div class="col-md-6 col-sm-12">
+                                                    <div class="col-md-12 my-1">
                                                         <div class="form-group">
                                                             <label for="fname">
                                                                 First Name
@@ -96,14 +96,14 @@
                                                                 </span>
                                                             </label>
                                                             {{-- {{ dd($authUser->profile) }} --}}
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->fname ?? old('fname') }}"
                                                                 id="fname" placeholder="First Name" type="text"
                                                                 name="fname">
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6 col-sm-12">
+                                                    <div class="col-md-12 my-1">
                                                         <div class="form-group">
                                                             <label for="lname">
                                                                 Last Name
@@ -111,14 +111,14 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->lname ?? old('lname') }}"
                                                                 id="lname" placeholder="lname" type="text"
                                                                 name="lname">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row my-1">
                                                     <div class="col-md-12 col-sm-12">
                                                         <div class="form-group">
                                                             <label for="address">
@@ -127,7 +127,7 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->address ?? old('address') }}"
                                                                 id="address" name="address"
                                                                 placeholder="Permanent Address">
@@ -136,18 +136,18 @@
 
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-4 col-sm-6">
+                                                    <div class="col-sm-12 my-1">
                                                         <div class="form-group">
                                                             <label for="dob">
                                                                 Date of Birth
                                                             </label>
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->dob ?? old('dob') }}"
                                                                 id="dob" type="date" value="2011-08-19"
                                                                 name="dob">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 col-sm-6">
+                                                    <div class="col-sm-12 my-1">
                                                         <div class="form-group">
                                                             <label for="phone">
                                                                 Mobile No.
@@ -155,28 +155,26 @@
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->phone ?? old('phone') }}"
                                                                 id="phone" placeholder="Mobile No." type="text"
                                                                 name="phone">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 col-sm-7">
+                                                    <div
+                                                        class="col-sm-12 my-1>
                                                         <div class="form-group">
-                                                            <label for="email">
-                                                                E-mail ID<span class="danger">
-                                                                    *
-                                                                </span>
-                                                            </label>
-                                                            <input class="form-control" id="email"
-                                                                placeholder="E-mail ID" type="email" name="email"
-                                                                value="{{ $authUser->email ?? ($authUser->email ?? old('email')) }}">
-                                                        </div>
+                                                        <label for="email">
+                                                            E-mail ID<span class="danger">
+                                                                *
+                                                            </span>
+                                                        </label>
+                                                        <input required class="form-control" id="email"
+                                                            placeholder="E-mail ID" type="email" name="email"
+                                                            value="{{ $authUser->email ?? ($authUser->email ?? old('email')) }}">
                                                     </div>
-                                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12 m-1">
                                                         <div class="form-group account-wrapper">
                                                             <label>
                                                                 Gender
@@ -184,14 +182,14 @@
                                                             <div class="row skin skin-flat">
                                                                 <div class="col-md-12">
                                                                     <div class="form-check">
-                                                                        <input id="male" name="sex"
+                                                                        <input required id="male" name="sex"
                                                                             type="radio" value="male" checked>
                                                                         <label for="male">
                                                                             Male
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check">
-                                                                        <input id="female" name="sex"
+                                                                        <input required id="female" name="sex"
                                                                             type="radio" value="female">
                                                                         <label for="female">
                                                                             Female
@@ -210,7 +208,7 @@
                                                             <div class="row skin skin-flat">
                                                                 <div class="col-md-12">
                                                                     <div class="form-check">
-                                                                        <input id="single" name="marital_status"
+                                                                        <input required id="single" name="marital_status"
                                                                             type="radio" value="single"
                                                                             @if ($authUser->profile)  @endif
                                                                             checked>
@@ -219,14 +217,14 @@
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check">
-                                                                        <input id="married" name="marital_status"
+                                                                        <input required id="married" name="marital_status"
                                                                             type="radio" value="married">
                                                                         <label for="married">
                                                                             Married
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check">
-                                                                        <input id="others" name="marital_status"
+                                                                        <input required id="others" name="marital_status"
                                                                             type="radio" value="others">
                                                                         <label for="others">
                                                                             Others
@@ -236,73 +234,85 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
-                                            </fieldset>
 
 
-                                            <!----Step 4---->
-                                            <h6>
-                                                Nominee Details
-                                            </h6>
-                                            <fieldset>
+                                                <h6 class="my-4">
+                                                    Next of Kin Information
+                                                </h6>
+
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="nok_name">
-                                                                Nominee Name<span class="danger">*</span>
+                                                                Next of Kin Name<span class="danger">*</span>
                                                             </label>
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->nok_name ?? old('nok_name') }}"
-                                                                id="nok_name" placeholder="Nominee Name" type="text"
-                                                                name="nok_name">
+                                                                id="nok_name" placeholder="Next of Kin Name"
+                                                                type="text" name="nok_name">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="relation">
-                                                                Nominee Relationship<span class="danger">*</span>
-                                                            </label>
-                                                            <input class="form-control"
-                                                                value="{{ $authUser->profile->nok_relationship ?? old('nok_relationship') }}"
-                                                                id="relation" placeholder="Relationship with Nominee"
-                                                                type="text" name="nok_relationship">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
+
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="nom-add">
-                                                                Nominee Address<span class="danger">*</span>
+                                                                Next of Kin Address<span class="danger">*</span>
                                                             </label>
-                                                            <input class="form-control"
+                                                            <input required class="form-control"
                                                                 value="{{ $authUser->profile->nok_address ?? old('nok_address') }}"
-                                                                id="nok_address" placeholder="Nominee Address"
+                                                                id="nok_address" placeholder="Next of Kin Address"
                                                                 name="nok_address">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+
+
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="nok_phone">
-                                                                Nominee Contact Number<span class="danger">*</span>
+                                                            <label for="relation">
+                                                                Next of Kin Relationship<span class="danger">*</span>
                                                             </label>
                                                             <input class="form-control"
-                                                                value="{{ $authUser->profile->nok_phone ?? old('nok_phone') }}"
-                                                                id="nok_phone" placeholder="Nominee Contact Number"
-                                                                name="nok_phone">
+                                                                value="{{ $authUser->profile->nok_relationship ?? old('nok_relationship') }}"
+                                                                id="relation" placeholder="Relationship with Next of Kin"
+                                                                type="text" name="nok_relationship">
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-12">
+                                                      <div class="form-group">
+                                                          <label for="nok_phone">
+                                                              Next of Kin Contact Number<span class="danger">*</span>
+                                                          </label>
+                                                          <input class="form-control"
+                                                              value="{{ $authUser->profile->nok_phone ?? old('nok_phone') }}"
+                                                              id="nok_phone" placeholder="Next of Kin Contact Number"
+                                                              name="nok_phone">
+                                                      </div>
+                                                  </div>
+
+                                                  <div class=" col-12 col-md-4 col-sm-12 my-2">
+                                                   <div class="form-group">
+                                                       <input class="form-control  btn btn-primary text-white"  type="submit" value="Save"
+                                                           value="{{ $authUser->profile->nok_phone ?? old('nok_phone') }}" />
+                                                   </div>
+                                               </div>
+
+
                                                 </div>
-                                            </fieldset>
-                                        </form>
                                     </div>
+
+                                    </fieldset>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
             </div>
+            </section>
         </div>
+    </div>
     </div>
     <!-- END: Content-->
 

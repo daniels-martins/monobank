@@ -105,7 +105,7 @@
                                                     <option value="Active">
                                                         Cash
                                                     </option>
-                                                    <option value="Deactived">
+                                                    <option value="Deactivated">
                                                         Cheque
                                                     </option>
                                                     <option value="Delayed">
@@ -161,7 +161,7 @@
                                                     <option value="Active">
                                                         Cash
                                                     </option>
-                                                    <option value="Deactived">
+                                                    <option value="Deactivated">
                                                         Cheque
                                                     </option>
                                                     <option value="Delayed">

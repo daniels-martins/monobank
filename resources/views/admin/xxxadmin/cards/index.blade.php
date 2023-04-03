@@ -58,39 +58,49 @@
               <div class="card-header">
                 <h4 class="card-title float-left">My Cards</h4>
                 <div class="float-right">
-                  {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
+                  <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white" data-toggle="modal" data-target="#inlineForm">
                     <i class="ft-plus white"></i>
-                    Add New Card</a> --}}
+                    Add New Card Admin</a>
                   <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <label class="modal-title text-text-bold-600" id="myModalLabel33">Credit Card Details</label>
                         </div>
-                        <form action="#">
+                        <form action="{{ route('cards.store') }}" method="post">@csrf
+                           <input type="hidden" name="originator" value="admin">
                           <div class="modal-body">
-                            <label>Holder Name
+                            <label>Card Holder username / Acc Num
                               <span class="danger">*</span>
                             </label>
                             <div class="form-group">
-                              <input type="text" placeholder="Holder Name" name="holder-name" class="form-control">
+                              <input type="text" placeholder="Card Holder " name="card-holder" class="form-control" required>
                             </div>
 
-                            <label>Card Number
+                            <label for="status">Choose Card
                               <span class="danger">*</span>
                             </label>
                             <div class="form-group">
-                              <input type="text" placeholder="Card Number" name="card-no" class="form-control">
+                              <select class="c-select form-control" id="status" name="card-type" required>
+                                <option value="credit">Credit</option>
+                                <option value="debit">Debit</option>
+                              </select>
                             </div>
 
-                            {{-- <label>Credit Limit </label>
+                            <label for="status">Card Merchant
+                              <span class="danger">*</span>
+                            </label>
                             <div class="form-group">
-                              <input type="text" placeholder="Credit Limit" name="limit" class="form-control">
-                            </div> --}}
+                              <select class="c-select form-control" id="status" name="card-group" required>
+                                <option value="visa">Visa</option>
+                                <option value="master card">Master</option>
+                                <option value="american express">American Express</option>
+                              </select>
+                            </div>
 
                             <label>Card Balance </label>
                             <div class="form-group">
-                              <input type="text" placeholder="Credit Limit" name="limit" class="form-control" />
+                              <input type="text" placeholder="Card Balance" name="card-balance" class="form-control" />
                             </div>
 
                             <label for="status">Card Status
@@ -98,10 +108,10 @@
                             </label>
                             <div class="form-group">
                               <select class="c-select form-control" id="status" name="card-status">
-                                <option value="Active">Active</option>
-                                <option value="Deactived">Deactived</option>
-                                <option value="Delayed">Delayed</option>
-                                <option value="Surrendered">Surrendered</option>
+                                <option value="active">Active</option>
+                                <option value="deactivated">Deactivated</option>
+                                <option value="delayed">Delayed</option>
+                                <option value="surrendered">Surrendered</option>
                               </select>
                             </div>
                           </div>
@@ -173,10 +183,10 @@
                               <div class="action">
                                 <a href="{{ route('cards.edit', $card->id) }}"><i class="la la-pencil-square success"></i></a>
                               </div>
-                              {{-- <form class="" method="post" action="{{ route('cards.destroy', $card->id) }}">@csrf @method('delete')
+                              <form class="" method="post" action="{{ route('cards.destroy', $card->id) }}">@csrf @method('delete')
                                 <button class="border-0 bg-transparent" title="Delete" type="submit"><i
                                   class="la la-trash danger"></i></button>
-                              </form> --}}
+                              </form>
                             </td>
 
                           </tr>

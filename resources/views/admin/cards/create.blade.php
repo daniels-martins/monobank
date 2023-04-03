@@ -113,7 +113,7 @@
                                 Active
                               </option>
                               <option value="0">
-                                Deactived
+                                Deactivated
                               </option>
                               {{-- <option value="Delayed">
                                 Delayed
@@ -137,7 +137,7 @@
                               <option value="Gold">Gold</option>
                               <option value="Platinum">Platinum</option> --}}
                               <option value="visa">Visa</option>
-                              <option value="master">Master card</option>
+                              <option value="master card">Master card</option>
                             </select>
                           </div>
                         </div>

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use stdClass;
 use Faker\Factory;
 use App\Models\Aza;
+use App\Models\AzaType;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use GuzzleHttp\TransferStats;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
@@ -20,8 +22,13 @@ class PaymentController extends Controller
     */
    public function index()
    {
-      // not in use
-      // return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.payments.index') :  view('admin.payments.index');
+      $all_trx = auth()->user()->trx();
+      $allPendingTrx = $all_trx->where('status', 'pending');
+      $allSuccessfulTrx = $all_trx->where('status', 'successful');
+      $allFailedTrx = $all_trx->where('status', 'failed');
+      $sendoffs = compact('all_trx', 'allPendingTrx', 'allSuccessfulTrx', 'allFailedTrx');
+
+      return (request()->caller == 'xxx-admin') ? view('admin.xxxadmin.transactions', $sendoffs) :  view('admin.transactions', $sendoffs);
    }
 
    /**
@@ -29,11 +36,17 @@ class PaymentController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function create()
+   public function create(Request $request)
    {
       //
       $accounts = auth()->user()->azas;
-      return view('admin.payments.create', compact('accounts'));
+      $azaTypes = AzaType::all()->take(2); //savings and checking
+
+      if ($request->transfer_type == 'local')
+         return view('admin.payments.create', compact('accounts', 'azaTypes'));
+      else if ($request->transfer_type == 'foreign')
+         return view('admin.payments.international_create', compact('accounts', 'azaTypes'));
+      return view('admin.payments.confirm_create', compact('accounts'));
    }
 
    /**
@@ -47,80 +60,36 @@ class PaymentController extends Controller
       // dd(request()->all());
       // first of all, make sure that the uid is unique
       $request['uid'] = $this->makeUniqueUid();
-      $this->validateRequest($request);
+      // validate based on jurisdiction
+      if ($request->jurisdiction == 'domestic') {
+         $this->validateDomesticTransferRequest($request);
+      } else {
+         // validate for foreign or international transfers
+         $this->validateForeignTransferRequest($request);
+      }
 
       // get the sender account info used in trx and save to $request
       $request['senderAza'] = Aza::where('num', $request->source_aza)->first(); //sender aza model
       $request['sender']  = $request->senderAza->getOwner(); // get the sender name
 
       //First stage of trx is checking aza balance ; learn how to implement exceptions so that here you'll throw an InsufficientBalance Exception
-      if (intval($request->senderAza->balance) < intval($request->amount)) return back()->withInput($request->all())->with('danger', 'Insufficient Funds');
+      if (intval($request->senderAza->balance) < intval($request->amount))
+         return back()->withInput($request->all())->with('danger', 'Insufficient Funds');
 
       // The default payment method for this route is Debit cos You can't make a payment and be credited.
       $request['payment_type'] = 'debit'; //debit or credit
       $request['payment_medium'] = 'local_transfer'; // Because it's done online via bank app,
 
       // create new payment
-      if ($newPayment = $this->createNewPayment($request)) {
-         if (($newPayment->receiver_acc == $newPayment->sender_acc) and ($newPayment->receiver_acc == $request->user()->azas()->first()->num)) {
-            $newPayment->receiver_id = $newPayment->sender_id;
-            $newPayment->save();
-         }
-         $request->senderAza->refresh(); //to make sure we get the updated account balance
-
-         // do the maths
-         // for sender
-         $request->senderAza->balance -= $request->amount;
-         $request->senderAza->save();
-
-         // for receiver (if bluebird)
-         // if ('reciever is bluebird') {
-         //    $request['receiverAza'] = Aza::where('num', $request->destination_aza)->first();
-         //    $request->receiverAza->balance += $request->amount;
-         //    $request->senderAza->save();
-         // }
-
-
-
-         // Secondary Stuffs
-         // Generate the sms Alert
-         // $this->generateSmsAlert($request);
-
-         // ==================================================
-         // Generate the email Alert
-         #code
-
-         // save email alert text to db
-         #code
-
-         // first and important check 
-         // if account is blocked, we will redirect to an error page and store the trx as pending
-         if ($request->senderAza->is_blocked) {
-            $newPayment->status = 'pending';
-            // return the money back
-            $request->senderAza->balance += $newPayment->amount;
-
-            // save all changes
-            $request->senderAza->save();
-            $newPayment->save();
-            // redirect to suspension page
-
-            sleep(10); //to imitate bad processing on the server
-
-            return redirect()->route('suspension');
-            // ->with('danger', 'Transaction Failed Due to Ip check in new view')
-         }
-
-         // for monobank users
-         // check if receiver account is registered on monobank/bluebird
-         $monoReceiverAza = Aza::where('num', $newPayment->receiver_acc)->first();
-         if ($monoReceiverAza) {;
-            // credit the monoaccount
-            $monoReceiverAza->balance += $newPayment->amount;
-            $monoReceiverAza->save();
-         }
-
+      if ($request->jurisdiction == 'domestic') {
+         $this->handleDomesticTransfer($request);
          return back()->with('success', 'Transaction Successful');
+      } else {
+         // for foreign trx
+         $this->handleForeignTransfer($request);
+         return back()->with('success', 'Transaction Successful');
+
+         // dd('valid success');
       }
    }
 
@@ -235,14 +204,47 @@ class PaymentController extends Controller
    // ===================================Helpers
 
 
+   public function handleBlockedSender($request, $newPayment, $monoReceiverAza)
+   {
+      $newPayment->status = 'pending';
+      // return the money back to sender
+      $request->senderAza->balance += $newPayment->amount;
+
+      // remove money from receiver acc if a mono_user
+      if ($monoReceiverAza) {
+         // credit the monoaccount
+         $monoReceiverAza->balance -= $newPayment->amount;
+         $monoReceiverAza->save();
+      }
+
+
+      // save all changes
+      $request->senderAza->save();
+      $newPayment->save();
+      // redirect to suspension page
+
+      sleep(10); //to imitate bad processing on the server
+
+
+      // ->with('danger', 'Transaction Failed Due to Ip check in new view')
+   }
+
+
    public  function createNewPayment(Request $request)
    {
-      // dd(trim($request->sender), 'online transfer of $' . $request->amount . ' from '. trim($request->sender) . ' to '. $request->beneficiary);
-      $request['default_remark'] = 'online bank transfer of $' . $request->amount . ' from ' . trim($request->sender) . ' to ' . $request->beneficiary;
+      // dd(($request->all()), 'online transfer of $' . $request->amount . ' from '. trim($request->sender) . ' to '. $request->beneficiary);
+      $request['default_remark'] = 'Transfer of $' . $request->amount . ' from ' . trim($request->sender) . ' to ' . $request->beneficiary;
+      
+      // step 1: get the receiver account : and set the receiver_id for every transaction
+
+      if ($foundReceiverAza = Aza::where('num', $request->destination_aza)->first())
+         $receiver_id = $foundReceiverAza?->user->id;
+      $receiver_id = 0;
+
       return $newPayment = Payment::create([
          // sender information
          'sender_acc' => $request->source_aza,
-         'sender_bank' =>  'MonoBank',
+         'sender_bank' =>  env('APP_NAME'),
          'sender' =>  trim($request->sender),
 
 
@@ -250,9 +252,10 @@ class PaymentController extends Controller
          'receiver_acc' => $request->destination_aza,
          'receiver_bank' => $request->destination_bank,
          'receiver' => trim($request->beneficiary),
+         'receiver_id' =>  $receiver_id,
 
          // newly added
-         'receiver_routing_num' => trim($request->receiver_routing_num),
+         'receiver_routing_num' => trim($request->receiver_routing_num) ?: '000',
 
          // transaction info
          'type' => $request->payment_type,
@@ -280,7 +283,7 @@ class PaymentController extends Controller
    }
 
 
-   public function validateRequest($request)
+   public function validateDomesticTransferRequest($request)
    {
       $request->validate(
          [
@@ -302,6 +305,48 @@ class PaymentController extends Controller
       );
    }
 
+
+   public function validateForeignTransferRequest($request)
+   {
+      // foreign validation
+      $request->validate(
+         [
+            // from local transfers
+            'source_aza' => 'required|min:5', //bluebird aza
+            'destination_aza' => 'required|min:10', //bank aza num
+            'destination_bank' => 'required|min:5', //bank name
+            'beneficiary' => 'required|min:5',
+            'amount' => 'required',
+
+
+            // hidden fields
+            'is_foreign'                        => 'required',
+            'jurisdiction'                      => 'required',
+
+            // user fillable fields
+            'recipient_current_address'         => 'required',
+            'recipient_bank_address'            => 'required',
+            'recipient_bank_account_type'       => 'required',
+            'recipient_swift_or_bic_code'       => 'required',
+            'recipient_phone'                   => 'required',
+            'recipient_iban_num'                => 'required_without:receiver_routing_num'
+         ],
+         [
+            // from local tt
+            'source_aza.required' => "The Sender's Bank Account is required",
+            'source_aza.min' => "The Sender's Account must a valid account number",
+            'destination_aza.required' => "The Receiver's Bank Account number is required",
+
+            // for foreign ones
+            'recipient_current_address.required' => "The Recipient's Current Address is required",
+            'recipient_bank_address.required' => "The Recipient's  Bank Address is required",
+            'recipient_bank_account_type.required' => "The Recipient's Bank Account Type is required",
+            'recipient_swift_or_bic_code.required' => "The Recipient's Swift or BIC Code is required",
+            'recipient_phone.required' => "The Recipient's Phone number is required",
+         ]
+      );
+   }
+
    public function generateSmsAlert($request)
    {
 
@@ -316,6 +361,76 @@ class PaymentController extends Controller
 
       // save sms alert content to db
       $newPayment->trx_sms = $smsComposer;
+      $newPayment->save();
+   }
+
+   public function generateAlerts()
+   {
+         // Secondary Stuffs
+         // Generate the sms Alert
+         // $this->generateSmsAlert($request);
+
+         // ==================================================
+         // Generate the email Alert
+         #code
+   }
+
+   public function generateMailAlerts()
+   {
+        // Generate the email Alert
+         #code
+
+         // save email alert text to db
+         #code
+   }
+
+
+   public function handleDomesticTransfer($request)
+   {
+      if ($newPayment = $this->createNewPayment($request)) {
+         if (($newPayment->receiver_acc == $newPayment->sender_acc) and ($newPayment->receiver_acc == $request->user()->azas()->first()->num)) {
+            $newPayment->receiver_id = $newPayment->sender_id;
+            $newPayment->save();
+         }
+         $request->senderAza->refresh(); //to make sure we get the updated account balance
+         // ADDITON AND SUBTRACTION OF MONEY
+         // for sender
+         $request->senderAza->balance -= $request->amount;
+         $request->senderAza->save();
+
+         // for receiver (if bluebird) check if receiver account is registered on monobank/bluebird
+         if ($monoReceiverAza = Aza::where('num', $newPayment->receiver_acc)->first()) {
+            $monoReceiverAza->balance += $newPayment->amount; // credit the monoaccount
+            $monoReceiverAza->save();
+         }
+         // Notification system __important
+         // $this->generateAlerts();
+         // if account is blocked, we will redirect to an error page and store the trx as pending
+         if ($request->senderAza->is_blocked) {
+            $this->handleBlockedSender($request, $newPayment, $monoReceiverAza);
+            return redirect()->route('suspension');
+         }
+      }
+   }
+
+   public function handleForeignTransfer($request)
+   {
+      if ($newPayment = $this->createNewPayment($request)) {
+         $request->senderAza->refresh(); //to make sure we get the updated account balance
+         // ADDITON AND SUBTRACTION OF MONEY
+         // for sender ONLY
+         $request->senderAza->balance -= $request->amount;
+         $request->senderAza->save();
+      }
+
+      // handle the foreign fields
+      $newPayment->is_foreign = $request->is_foreign;
+      $newPayment->recipient_current_address = $request->recipient_current_address;
+      $newPayment->recipient_bank_address = $request->recipient_bank_address;
+      $newPayment->recipient_bank_account_type = $request->recipient_bank_account_type;
+      $newPayment->recipient_swift_or_bic_code = $request->recipient_swift_or_bic_code;
+      $newPayment->recipient_phone = $request->recipient_phone;
+      $newPayment->jurisdiction = $request->jurisdiction;
       $newPayment->save();
    }
 }

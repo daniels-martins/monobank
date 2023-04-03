@@ -109,7 +109,7 @@
                                                                     <option value="Active">
                                                                         Cash
                                                                     </option>
-                                                                    <option value="Deactived">
+                                                                    <option value="Deactivated">
                                                                         Cheque
                                                                     </option>
                                                                     <option value="Delayed">
@@ -167,7 +167,7 @@
                                                                     <option value="Active">
                                                                         Cash
                                                                     </option>
-                                                                    <option value="Deactived">
+                                                                    <option value="Deactivated">
                                                                         Cheque
                                                                     </option>
                                                                     <option value="Delayed">
@@ -249,7 +249,7 @@
                                                             <td class="align-middle action">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>
-                                                                {{-- <a href="#"><i class="la la-trash danger"></i></a> --}}
+                                                                <a href="#"><i class="la la-trash danger"></i></a>
                                                             </td>
 
                                                         </tr>
@@ -315,7 +315,7 @@
                                                             <td class="align-middle action">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>
-                                                                {{-- <a href="#"><i class="la la-trash danger"></i></a> --}}
+                                                                <a href="#"><i class="la la-trash danger"></i></a>
                                                             </td>
 
                                                         </tr>
@@ -381,7 +381,7 @@
                                                             <td class="align-middle action">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>
-                                                                {{-- <a href="#"><i class="la la-trash danger"></i></a> --}}
+                                                                <a href="#"><i class="la la-trash danger"></i></a>
                                                             </td>
 
                                                         </tr>

@@ -43,3 +43,31 @@ Bonus: email alert for every transaction
 
 
 debit and pending == warning
+
+
+
+amount
+
+us BASED BANKS USE ROUTING(9) , EUROPE USES IBAN(34+)
+
+recipient’s full legal name *
+receipient's current address. ?
+(An address and name for the recipient’s bank or transfer service provider.)
+ recipient’s bank Address ?
+  recipient’s bank Name *
+The recipient’s bank account number *
+The recipient’s bank account type (savings, checking) ?
+A SWIFT or BIC bank code for the recipient (where applicable). ?
+Your purpose for the transfer. *
+Your driver’s license or other form of Government-approved ID if sending from your bank branch. ?
+Your mobile phone may be needed for a one time passcode. ?
+
+International Transfer
+fields:
+
+recipient's fullname
+recipient's fullname
+
+
+
+perfect the moving of funds from savings to checkings aza, with alerts for both accounts.

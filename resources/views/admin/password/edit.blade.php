@@ -89,7 +89,7 @@
                                                             <label for="current_password">
                                                                 Current Password<span class="danger">*</span>
                                                             </label>
-                                                            <input class="form-control" id="current_password"
+                                                            <input required class="form-control" id="current_password"
                                                                 placeholder="********" type="password"
                                                                 name="current_password">
                                                         </div>
@@ -100,7 +100,7 @@
                                                             <label for="password">
                                                                 New Password<span class="danger">*</span>
                                                             </label>
-                                                            <input class="form-control" id="password"
+                                                            <input required class="form-control" id="password"
                                                                 placeholder="*******" type="password" name="password" />
                                                         </div>
                                                     </div>
@@ -111,7 +111,7 @@
                                                             <label for="password_confirmation">
                                                                 Confirm Password<span class="danger">*</span>
                                                             </label>
-                                                            <input class="form-control" id="password_confirmation"
+                                                            <input required class="form-control" id="password_confirmation"
                                                                 placeholder="*******" type="password"
                                                                 name="password_confirmation" />
                                                         </div>

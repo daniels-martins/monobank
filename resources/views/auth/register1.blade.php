@@ -60,8 +60,7 @@
          </div>
         </div>
         <div class="card-content">
-          <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span>Using Email Account
-              Details</span></p>
+          <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span>Sign Up for Bluebird Online Banking</span></p>
           <div class="card-body">
 
             <form class="form-horizontal" method="post" action="{{ route('register.store') }}"validate>@csrf
@@ -79,7 +78,7 @@
               <fieldset class="form-group position-relative has-icon-left">
                <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="user-name" placeholder="Your Email" required>
                <div class="form-control-position">
-                 <i class="la la-user"></i>
+                 <i class="la la-envelope"></i>
                </div>
                @error('email')
                <div class="error"><b>Oops! {{ $message }}</b></div>

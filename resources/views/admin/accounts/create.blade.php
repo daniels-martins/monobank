@@ -95,9 +95,9 @@
                           <div class="form-group account-wrapper">
                             <label>Account Type</label>
                             <div class="row skin skin-flat">
-                              <div class="col-md-12">
+                              <div class="col-md-12 mt-4">
                                 @foreach ($aza_types as $accType)
-                                @if (in_array($accType->name, ['joint']))
+                                @if (in_array($accType->name, ['joint', 'loan', 'fixed']))
                                     @continue
                                 @endif
                                 <div class="form-check">

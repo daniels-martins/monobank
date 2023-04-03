@@ -29,4 +29,14 @@ class Aza extends Model
     {
         return ucfirst(AzaType::find($this->aza_type_id)->name);
     }
+
+
+    public function maskedNum()
+    {
+      $firsThreeNos = substr($this->num,0,3);
+      $lastTwoNos = substr($this->num,-2);
+      $appender = '*****';
+      return $firsThreeNos . $appender . $lastTwoNos; //e.g 123*****90
+
+    }
 }

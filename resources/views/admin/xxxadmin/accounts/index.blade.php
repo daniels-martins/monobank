@@ -71,10 +71,10 @@
                                         Accounts Summary
                                     </h4>
                                     <div class="float-right">
-                                        {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
-                    href="{{ route('accounts.create') }}">
-                    <i class="ft-plus white"></i>Add New Account
-                  </a> --}}
+                                        <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
+                                            href="{{ route('accounts.create') }}">
+                                            <i class="ft-plus white"></i>Add New Account
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="card-body mt-1">
@@ -157,11 +157,13 @@ badge-pill badge-sm">
                                                                 </a>
                                                             </div>
 
-                                                            {{-- <form class="action" method="post" action="{{ route('accounts.destroy', $account->id ) }}">
-                            @csrf @method('delete')
-                            <button class="border-0 bg-transparent" title="Delete" type="submit"><i
-                                class="la la-trash danger"></i></button>
-                          </form> --}}
+                                                            <form class="action" method="post"
+                                                                action="{{ route('accounts.destroy', $account->id) }}">
+                                                                @csrf @method('delete')
+                                                                <button class="border-0 bg-transparent" title="Delete"
+                                                                    type="submit"><i
+                                                                        class="la la-trash danger"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach
