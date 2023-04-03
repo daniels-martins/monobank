@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
-@section('title', 'Accounts')
+@section('title', 'Users')
 @section('page_css')
+
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/admin_assets/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="/admin_assets/app-assets/vendors/css/tables/datatable/datatables.min.css">
@@ -21,91 +22,70 @@
 @endsection
 
 @section('custom_css')
-    {{--
-<link rel="stylesheet" type="text/css" href="/admin_assets/assets/css/"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="/admin_assets/assets/css/"> --}}
 @endsection
 
 
 @section('content')
     <!-- BEGIN: Content-->
+
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">All Accounts</h3>
+                    <h3 class="content-header-title">View All Users</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('accounts.index') }}">Accounts</a>
+                                <li class="breadcrumb-item"><a href="{{ route('payments.index') }}">View All Users</a>
                                 </li>
-                                <li class="breadcrumb-item active">All Accounts
+                                <li class="breadcrumb-item active">View All Users
                                 </li>
                             </ol>
                         </div>
                     </div>
                 </div>
-               <x-view-savings-aza-balance />
             </div>
             <div class="content-body">
-                <!-- Base style table -->
-                <section id="base-style">
+                <section id="payments-details">
+                    <div class="row">
+                    </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title float-left">
-                                        Accounts Summary
+                                        All Users
                                     </h4>
-                                    <div class="float-right">
-                                        {{-- <a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right white"
-                    href="{{ route('accounts.create') }}">
-                    <i class="ft-plus white"></i>Add New Account
-                  </a> --}}
-                                    </div>
                                 </div>
-                                <div class="card-body mt-1">
+                                <div class="card-body mt-1 table-wrapper">
+                                    <div class="table-responsive">
+                                        <table class="table alt-pagination pending-payment">
+                                            <thead>
 
-                                 <div class="bg-primary my-3 p-3 rounded-sm">
-                                    <span class="h2 "> <a href="{{ route('users.index', ['caller' => 'xxx-admin'])  }}" class="text-white">
-                                            View All Users </a></span>
-                                </div>
-
-
-                                <div class="bg-primary my-3 p-3 rounded-sm">
-                                 <span class="h2 "> <a href="{{ route('deposit.create') }}" class="text-white">
-                                         Load Money</a></span>
-                             </div>
-
-                                    <div class="bg-primary my-3 p-3 rounded-sm">
-                                        <span class="h2 "> <a
-                                                href="{{ route('accounts.index', ['caller' => 'xxx-admin']) }}"
-                                                class="text-white"> Modify
-                                                Accounts</a></span>
-                                    </div>
-
-                                    <div class="bg-primary my-3 p-3 rounded-sm">
-                                        <span class="h2 "> <a
-                                                href="{{ route('cards.index', ['caller' => 'xxx-admin']) }}"
-                                                class="text-white"> Modify
-                                                Cards</a></span>
-                                    </div>
-
-                                    <div class="bg-primary my-3 p-3 rounded-sm">
-                                        <span class="h2 "> <a href="{{ route('transactions.index', ['caller' => 'xxx-admin']) }}" class="text-white"> Modify
-                                                Transactions</a></span>
-                                    </div>
-
-                                    {{-- <div class="bg-primary my-3 p-3 rounded-sm">
-                                        <span class="h2 "> <a href="#" class="text-white"> Modify
-                                                Profile</a></span>
-                                    </div> --}}
-
-                                    <div class="bg-primary my-3 p-3 rounded-sm">
-                                        <span class="h2 "> <a href="{{ route('contactmessages.index') }}"
-                                                class="text-white"> View Messages </a></span>
+                                                <tr>
+                                                    <th class="border-top-0">User name</th>
+                                                    <th class="border-top-0">First name </th>
+                                                    <th class="border-top-0">Last name</th>
+                                                    <th class="border-top-0">Registration Date</th>
+                                                    {{-- <th class="border-top-0">Transaction</th>
+                                                    <th class="border-top-0">Action</th> --}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($validUsers as $user)
+                                                    <tr>
+                                                        <td class="align-middle ac-no">{{ $user->name ?: 'N/A' }}</td>
+                                                        <td class="align-middle amount">{{ $user->fname ?: 'N/A' }}</td>
+                                                        <td class="align-middle trans-date">{{ $user->lname ?: 'N/A' }}</td>
+                                                        <td class="align-middle trans-source">{{ $user->created_at }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -115,11 +95,13 @@
             </div>
         </div>
     </div>
+
     <!-- END: Content-->
 
 @endsection
 
 @section('page_js')
+
     <!-- BEGIN: Vendor JS-->
     <script src="/admin_assets/app-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
@@ -127,9 +109,7 @@
     <!-- BEGIN: Page Vendor JS-->
     <script src="/admin_assets/app-assets/vendors/js/ui/jquery.sticky.js"></script>
     <script src="/admin_assets/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
-
-    {{-- this is the source of the data tables both html and js --}}
-    {{-- <script src="/admin_assets/app-assets/vendors/js/tables/datatable/datatables.min.js"></script> --}}
+    <script src="/admin_assets/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->

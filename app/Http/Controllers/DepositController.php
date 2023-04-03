@@ -55,7 +55,7 @@ class DepositController extends Controller
     */
    public function createDepositInDB($request)
    {
-      dd($request['trans-source']);
+      // dd($request['trans-source']);
       // in this scenario, the source aza represents both the sender_acc and the receiver_acc; denoting a self made cash deposit
       // consult paymentcontroller for the uniqueID
 

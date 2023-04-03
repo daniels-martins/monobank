@@ -187,7 +187,14 @@
                                 <button class="border-0 bg-transparent" title="Delete" type="submit"><i
                                   class="la la-trash danger"></i></button>
                               </form>
-                            </td>
+                           
+                              <form class="action ml-4" method="post"
+                                  action="{{ route('cards.empty', $card->id) }}">
+                                  @csrf
+                                  <button class="border-0 bg-transparent btn btn-danger"
+                                      title="Delete" type="submit">Empty Card</button>
+                              </form>
+                          </td>
 
                           </tr>
                       @endforeach

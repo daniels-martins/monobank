@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AzaController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\BackAdminController;
 use App\Http\Controllers\ContactMessageController;
-use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -163,6 +165,13 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
 
 Route::get('/transactions', [PaymentController::class, 'index'])->middleware(['auth'])->name('transactions.index');
+
+Route::post('aza/empty/{aza}', [AzaController::class, 'empty'])->middleware(['auth'])->name('accounts.empty');
+
+Route::post('card/empty/{card}', [CardController::class, 'empty'])->middleware(['auth'])->name('cards.empty');
+
+Route::get('/users', [UserController::class, 'index'])->middleware(['auth'])->name('users.index');
+
 
 Route::get('/tinker', function () {
 })->middleware(['auth'])->name('tinker.index');

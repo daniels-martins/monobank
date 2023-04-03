@@ -111,7 +111,7 @@ class User extends Authenticatable implements MustVerifyEmail
    public function azaBalSavings()
    {
       // aza_type_id = 1 signifies savings account
-      $savingsBalance  = $this->azas()->where('aza_type_id', 1)->first()->balance;
+      $savingsBalance  = $this->azas()->where('aza_type_id', 1)->first()?->balance;
       return number_format($savingsBalance);
    }
 

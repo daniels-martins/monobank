@@ -198,19 +198,26 @@ class AzaController extends Controller
    public function destroy(Aza $account)
    {
       $aza = $account;
-
+      // dd($account->balance);
       if ($aza->balance <= 0) {
          return ($deleted  = $aza->delete())
             ? back()->with('success', "$aza->num deleted Successfully")
             : back()->with('warning', 'Oops! Something went wrong. Please Try again');
       } else {
-         back()->with('warning', 'Oops! Account Removal Failed : Account has funds in it');
+       return  back()->with('warning', 'Oops! Account Removal Failed : Account has funds in it');
       }
    }
 
 
-
-
+   public function empty(Aza $aza)
+   {
+      if ($aza->balance > 0) {
+         $aza->balance = 0;
+         return ($aza->save() and empty($aza->balance))
+            ? back()->with('success', "$aza->num has been emptied Successfully")
+            : back()->with('warning', 'Oops! Something went wrong. Please Try again');
+      }
+   }
    // Helpers
    public static function generateAzaNum(): string
    {

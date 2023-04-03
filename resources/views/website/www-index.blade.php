@@ -54,11 +54,13 @@
                         <i class="flaticon-012-24-hours"></i>
                     </div>
                     <div class="ib-text">
-                        <h5>Money in 1 Hour!</h5>
+                        <h5> Access to funding!</h5>
                         <p>
-                            Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed
-                            do eiusmod tem por incididunt ut labore et dolore mag na
-                            aliqua.
+
+                            Our loan institution can provide individuals and businesses with the necessary funds to
+                            finance various projects or endeavors. This can be especially beneficial for those who don't
+                            have access to traditional bank loans or other sources of funding.
+
                         </p>
                     </div>
                 </div>
@@ -69,11 +71,12 @@
                         <i class="flaticon-036-customer-service"></i>
                     </div>
                     <div class="ib-text">
-                        <h5>Helpfull Staff</h5>
+                        <h5> Competitive interest rates</h5>
                         <p>
-                            Class aptent taciti sociosqu ad litora torquent per conubia
-                            nostra, per incep-tos himenaeos. Suspendisse potenti. Ut
-                            gravida mattis.
+                            Bluebird typically offer competitive interest rates compared to other types of lenders, such
+                            as credit cards or payday lenders. This can make it easier and more affordable for borrowers
+                            to repay their loans over time.
+
                         </p>
                     </div>
                 </div>
@@ -84,11 +87,12 @@
                         <i class="flaticon-039-info"></i>
                     </div>
                     <div class="ib-text">
-                        <h5>Credit History Considered</h5>
+                        <h5>Flexible repayment terms</h5>
                         <p>
-                            Conubia nostra, per inceptos himenae os. Suspendisse potenti.
-                            Ut gravida mattis magna, non varius lorem sodales nec. In
-                            libero orci.
+                            We offer a variety of repayment terms to suit the needs of different borrowers. This can
+                            include longer or shorter repayment periods, fixed or variable interest rates, and various
+                            payment schedules. This flexibility can help borrowers choose a loan that fits their unique
+                            financial situation and goals.
                         </p>
                     </div>
                 </div>
@@ -119,12 +123,11 @@
                     <div class="feature-text">
                         <h2>Get a personal loan from just 8.5% APR</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tem por incididunt ut labore et dolore mag na
-                            aliqua. Class aptent taciti sociosqu ad litora torquent per
-                            conubia nostra, per inceptos himenaeos. Suspendisse potenti.
-                            Ut gravida mattis magna, non varius lorem sodales nec. In
-                            libero orci, ornare non nisl.
+                            Looking for a low-interest personal loan? You're in luck! With our latest offer, you can get
+                            a personal loan starting from just 8.5% APR. Whether you need to consolidate debt, cover
+                            unexpected expenses, or fund a major purchase, our affordable loan options can help make it
+                            happen. Don't wait – apply now and get the funds you need with a payment plan that fits your
+                            budget.
                         </p>
                         {{-- <a href="{{ route('bank-loan') }}" class="readmore">Apply for a loan now <img
                                 src="/static_assets/website/img/arrow.png" alt="" /></a> --}}
@@ -141,12 +144,10 @@
                     <div class="feature-text">
                         <h2>Get aproved in minutes after you apply online</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tem por incididunt ut labore et dolore mag na
-                            aliqua. Class aptent taciti sociosqu ad litora torquent per
-                            conubia nostra, per inceptos himenaeos. Suspendisse potenti.
-                            Ut gravida mattis magna, non varius lorem sodales nec. In
-                            libero orci, ornare non nisl.
+                            Say goodbye to the long wait times and paperwork hassles of traditional loan applications!
+                            With our online loan application process, you can get approved for a loan in just minutes.
+                            Our quick and easy online process makes it convenient for you to get the funds you need when
+                            you need them. Apply today and get approved in minutes!
                         </p>
                         {{-- <a href="{{ route('bank-loan') }}" class="readmore">Apply for a loan now <img
                                 src="/static_assets/website/img/arrow.png" alt="" /></a> --}}

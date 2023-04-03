@@ -13,49 +13,50 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('auth.register1');
-    }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request)
-    {        
-        $request->validate(
-            [
-                'name' => ['required', 'string', 'max:255', 'unique:users'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            ],
-            array(
-                'name.unique' => 'username already taken'
-            )
-        );
+   /**
+    * Display the registration view.
+    *
+    * @return \Illuminate\View\View
+    */
+   public function create()
+   {
+      return view('auth.register1');
+   }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+   /**
+    * Handle an incoming registration request.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\RedirectResponse
+    *
+    * @throws \Illuminate\Validation\ValidationException
+    */
+   public function store(Request $request)
+   {
+      $request->validate(
+         [
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+         ],
+         array(
+            'name.unique' => 'username already taken'
+         )
+      );
 
-        event(new Registered($user));
+      $user = User::create([
+         'name' => $request->name,
+         'email' => $request->email,
+         'password' => Hash::make($request->password),
+      ]);
+
+      event(new Registered($user));
       //   dd('you got to redirect to ', RouteServiceProvider::HOME);
 
-        
 
-        Auth::login($user);
-        return redirect(RouteServiceProvider::HOME);
-    }
+
+      Auth::login($user);
+      return redirect(RouteServiceProvider::HOME);
+   }
 }

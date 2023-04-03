@@ -64,6 +64,11 @@
             <div class="content-body">
                 <section id="payments-details">
                     <div class="row">
+                     <div class="col-12">
+                        @if ($all_trx->count() <= 0)
+                        <h2> You have not made any transactions </h2>
+                     @endif
+                     </div>
                         <div class="col-12 col-sm-10 offset-sm-1">
 
                             {{-- successful trx --}}

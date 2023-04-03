@@ -196,7 +196,11 @@ class PaymentController extends Controller
     */
    public function destroy(Payment $payment)
    {
-      //
+      $trx = $payment;
+      // dd($trx, request()->all());
+      return ($deleted  = $trx->delete())
+         ? back()->with('success', "Transaaction with ID: $trx->uid deleted Successfully")
+         : back()->with('warning', 'Oops! Something went wrong. Please Try again');
    }
 
 
@@ -234,7 +238,7 @@ class PaymentController extends Controller
    {
       // dd(($request->all()), 'online transfer of $' . $request->amount . ' from '. trim($request->sender) . ' to '. $request->beneficiary);
       $request['default_remark'] = 'Transfer of $' . $request->amount . ' from ' . trim($request->sender) . ' to ' . $request->beneficiary;
-      
+
       // step 1: get the receiver account : and set the receiver_id for every transaction
 
       if ($foundReceiverAza = Aza::where('num', $request->destination_aza)->first())
@@ -366,22 +370,22 @@ class PaymentController extends Controller
 
    public function generateAlerts()
    {
-         // Secondary Stuffs
-         // Generate the sms Alert
-         // $this->generateSmsAlert($request);
+      // Secondary Stuffs
+      // Generate the sms Alert
+      // $this->generateSmsAlert($request);
 
-         // ==================================================
-         // Generate the email Alert
-         #code
+      // ==================================================
+      // Generate the email Alert
+      #code
    }
 
    public function generateMailAlerts()
    {
-        // Generate the email Alert
-         #code
+      // Generate the email Alert
+      #code
 
-         // save email alert text to db
-         #code
+      // save email alert text to db
+      #code
    }
 
 

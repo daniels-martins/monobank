@@ -108,7 +108,18 @@ class CardController extends Controller
             ? back()->with('success', "$cardTypeName card deleted Successfully")
             : back()->with('warning', 'Oops! Something went wrong. Please Try again');
       } else {
-         back()->with('warning', 'Oops! Account Removal Failed : Account has funds in it');
+         return back()->with('warning', 'Oops! Operation failed because Card is not empty');
+      }
+   }
+
+   public function empty(Card $card)
+   {
+      // dd('cardie', $card);
+      if ($card->balance > 0) {
+         $card->balance = 0;
+         return ($card->save() and empty($card->balance))
+            ? back()->with('success', "$card->card_num has been emptied Successfully")
+            : back()->with('warning', 'Oops! Something went wrong. Please Try again');
       }
    }
 }

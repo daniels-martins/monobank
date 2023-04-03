@@ -47,18 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-header-right col-md-6 col-12">
-                    <div class="media width-250 float-right">
-                        <media-left class="media-middle">
-                            <div id="sp-bar-total-sales"></div>
-                        </media-left>
-                        <div class="media-body media-right text-right">
-                            <h3 class="m-0">${{ auth()->user()->azaBalSavings() }}</h3><span
-                                class="text-muted">Balance</span>
-
-                        </div>
-                    </div>
-                </div>
+               <x-view-savings-aza-balance />
             </div>
             <div class="content-body">
                 <!-- Base style table -->
@@ -163,6 +152,14 @@ badge-pill badge-sm">
                                                                 <button class="border-0 bg-transparent" title="Delete"
                                                                     type="submit"><i
                                                                         class="la la-trash danger"></i></button>
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                            <form class="action ml-4" method="post"
+                                                                action="{{ route('accounts.empty', $account->id) }}">
+                                                                @csrf
+                                                                <button class="border-0 bg-transparent btn btn-danger"
+                                                                    title="Delete" type="submit">Empty Account</button>
                                                             </form>
                                                         </td>
                                                     </tr>

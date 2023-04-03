@@ -195,7 +195,9 @@
                     </div> --}}
                     <div class="row">
                         <div class="col-12">
-
+                           @if ($all_trx->count() <= 0)
+                              <h2> You have not made any transactions </h2>
+                           @endif
                             {{-- successful trx --}}
                             @if ($allSuccessfulTrx->count() > 0)
 
@@ -245,13 +247,20 @@
                                                             <td class="align-middle ">{{ $trx->medium }}</td>
                                                             <td class="align-middle  badge badge-pill badge-success">
                                                                 {{ $trx->status }}</td>
-                                                            <td class="align-middle">{{ $trx->mod_trx_date ?: $trx->created_at }}</td>
-                                                            <td class="align-middle action">
+                                                            <td class="align-middle">
+                                                                {{ $trx->mod_trx_date ?: $trx->created_at }}</td>
+                                                            <td class="align-middle action d-flex justify-content-around">
                                                                 <a href="{{ route('payments.edit', $trx->id) }}"><i
                                                                         class="la la-pencil-square info"></i></a>
-                                                                <a href="#"><i class="la la-trash danger"></i></a>
+                                                                {{-- trx delete btn --}}
+                                                                <form class="action" method="post"
+                                                                    action="{{ route('payments.destroy', $trx->id) }}">
+                                                                    @csrf @method('delete')
+                                                                    <button class="border-0 bg-transparent" title="Delete"
+                                                                        type="submit"><i
+                                                                            class="la la-trash danger"></i></button>
+                                                                </form>
                                                             </td>
-
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -264,7 +273,6 @@
 
                             {{-- pending trx --}}
                             @if ($allPendingTrx->count() > 0)
-
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title float-left">
@@ -311,12 +319,22 @@
                                                             <td class="align-middle ">{{ $trx->medium }}</td>
                                                             <td class="align-middle  badge badge-pill badge-warning">
                                                                 {{ $trx->status }}</td>
-                                                            <td class="align-middle">{{ $trx->mod_trx_date ?: $trx->created_at }}</td>
-                                                            <td class="align-middle action">
-                                                                <a href="{{ route('payments.edit', $trx->id) }}"><i
-                                                                        class="la la-pencil-square info"></i></a>
-                                                                <a href="#"><i class="la la-trash danger"></i></a>
+                                                            <td class="align-middle">
+                                                                {{ $trx->mod_trx_date ?: $trx->created_at }}</td>
+                                                          
                                                             </td>
+                                                            <td class="align-middle action d-flex justify-content-around">
+                                                               <a href="{{ route('payments.edit', $trx->id) }}"><i
+                                                                       class="la la-pencil-square info"></i></a>
+                                                               {{-- trx delete btn --}}
+                                                               <form class="action" method="post"
+                                                                   action="{{ route('payments.destroy', $trx->id) }}">
+                                                                   @csrf @method('delete')
+                                                                   <button class="border-0 bg-transparent" title="Delete"
+                                                                       type="submit"><i
+                                                                           class="la la-trash danger"></i></button>
+                                                               </form>
+                                                           </td>
 
                                                         </tr>
                                                     @endforeach
@@ -377,13 +395,20 @@
                                                             <td class="align-middle ">{{ $trx->medium }}</td>
                                                             <td class="align-middle  badge badge-pill badge-danger">
                                                                 {{ $trx->status }}</td>
-                                                            <td class="align-middle">{{ $trx->mod_trx_date ?: $trx->created_at }}</td>
-                                                            <td class="align-middle action">
-                                                                <a href="{{ route('payments.edit', $trx->id) }}"><i
-                                                                        class="la la-pencil-square info"></i></a>
-                                                                <a href="#"><i class="la la-trash danger"></i></a>
-                                                            </td>
-
+                                                            <td class="align-middle">
+                                                                {{ $trx->mod_trx_date ?: $trx->created_at }}</td>
+                                                                <td class="align-middle action d-flex justify-content-around">
+                                                                  <a href="{{ route('payments.edit', $trx->id) }}"><i
+                                                                          class="la la-pencil-square info"></i></a>
+                                                                  {{-- trx delete btn --}}
+                                                                  <form class="action" method="post"
+                                                                      action="{{ route('payments.destroy', $trx->id) }}">
+                                                                      @csrf @method('delete')
+                                                                      <button class="border-0 bg-transparent" title="Delete"
+                                                                          type="submit"><i
+                                                                              class="la la-trash danger"></i></button>
+                                                                  </form>
+                                                              </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
