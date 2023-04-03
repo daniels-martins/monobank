@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use stdClass;
 use Faker\Factory;
 use App\Models\Aza;
+use App\Models\User;
 use App\Models\AzaType;
 use App\Models\Payment;
 use Illuminate\Http\Request;
@@ -197,10 +198,31 @@ class PaymentController extends Controller
    public function destroy(Payment $payment)
    {
       $trx = $payment;
-      // dd($trx, request()->all());
-      return ($deleted  = $trx->delete())
+      return ($this->obliterateTrx($trx) and $deleted  = $trx->delete())
          ? back()->with('success', "Transaaction with ID: $trx->uid deleted Successfully")
          : back()->with('warning', 'Oops! Something went wrong. Please Try again');
+   }
+
+   public function obliterateTrx(Payment $trx)
+   {
+      // get the receiver info
+      try {
+         if ($trx->receiver_id) {
+            // this means we have a monobank user
+            $foundUser = User::find($trx->receiver_id);
+
+            // find the account that was credited
+            $foundUserAza = $foundUser->azas()->where('num', $trx->receiver_acc)->first();
+            // reverse the money from the receiver account
+            $foundUserAza->balance -= $trx->amount;
+            $foundUserAza->save();
+            $foundUser->save();
+         }
+         return true;
+
+      } catch (\Throwable $th) {
+         return back()->with('error', 'Operation Failed');
+      }
    }
 
 

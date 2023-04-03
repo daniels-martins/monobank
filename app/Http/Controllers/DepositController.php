@@ -82,7 +82,7 @@ class DepositController extends Controller
          'amount' => $request['amount'],
          'sender_id' =>  Auth::user()->id,
          'receiver_id' =>  Auth::user()->id,
-         'remarks' => '', // must set a value for this 
+         'remarks' => $remarks, // must set a value for this 
          ''
          // nullables
          // 'trx_email' => null,

@@ -55,7 +55,7 @@
 
 
                             <td>
-                                <h6>{{ $trx->desc() }}</h6>
+                                <h6>{{ $trx->desc() ?: 'deposit' }}</h6>
                                 {{-- <p>company type</p> --}}
                             </td>
 

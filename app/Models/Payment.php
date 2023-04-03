@@ -44,16 +44,17 @@ class Payment extends Model
 
    public function desc()
    {
+      return $this->remarks;
       $desc = '';
       // for self trx
       if ($this->sender == $this->receiver) $desc = $this->remarks;
 
       // if user is the sender
-      else if ($this->sender_id == auth()->user()->id) $desc = "Sent to " . $this->receiver;
+      else if ($this->sender_id == auth()->user()->id) $desc = "Sent to " . $this->receiver ;
 
       // if user is the receiver
       else if ($this->receiver_id == auth()->user()->id) $desc = "Received from " . $this->sender;
 
-      return $desc;
+      return $desc ?? $this->remarks;
    }
 }
