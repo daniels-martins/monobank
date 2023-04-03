@@ -32,17 +32,16 @@
            <h2>Contact Information</h2>
            <p>
              <i class="flaticon-015-worldwide-1"></i>
-             2130 Fulton Street, San Diego, <br />
-             CA 94117-1080 USA
+             P.O Box 63, Winslow, NY 46540, USA
            </p>
            <p>
              <i class="flaticon-029-telephone-1"></i>
-             1-800-1234-567
+             (619) 483-2333
            </p>
 
            <p>
              <i class="flaticon-036-customer-service"></i>
-             admin@bluebirdglobalexpres.com
+             info@bluebirdglobalexpres.com
            </p>
          </div>
        </div>

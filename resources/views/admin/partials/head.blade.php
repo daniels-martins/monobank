@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
     <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT"> -->
-    <title>Bank Dashboard - @yield('title')</title>
+    <title>Bluebird Bank | Dashboard - @yield('title')</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/static_assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static_assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static_assets/favicon_io/favicon-16x16.png">
