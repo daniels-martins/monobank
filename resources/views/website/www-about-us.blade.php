@@ -47,7 +47,7 @@
                     <h2>We are here to help you</h2>
                     <p>
                         Whether you're looking to buy a new car, start a business, or consolidate your debt, our team of
-                        loan advisors is here to help. They will guide you through the loan application process, answer
+                        Bluebird loan advisors is here to help. They will guide you through the loan application process, answer
                         any questions you may have, and ensure that you get the best possible interest rate and terms.
 
                         We believe that everyone deserves access to affordable credit, and we're committed to making the

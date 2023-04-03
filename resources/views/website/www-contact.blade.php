@@ -24,11 +24,9 @@
                         Please fill out the form below to get in touch with us, and we will respond to your inquiry as
                         soon as possible. We appreciate your feedback and look forward to hearing from you!</p>
                     <ul>
-                        <li><i class="flaticon-032-placeholder"></i>1525 Loans Lane, Los Angeles, CA</li>
-                        <li><i class="flaticon-029-telephone-1"></i>+1 (603)535-4592</li>
-                        <li><i class="flaticon-025-arroba"></i><a href="../../cdn-cgi/l/email-protection.html"
-                                class="__cf_email__"
-                                data-cfemail="e28a878e8e8da29b8d9790878f838b8ecc818d8f">[email&#160;protected]</a></li>
+                        <li><i class="flaticon-032-placeholder"></i>PO Box 63, Winslow, NY 46540</li>
+                        <li><i class="flaticon-029-telephone-1"></i>(619) 483-2333</li>
+                        <li><i class="flaticon-025-arroba"></i>info@bluebirdglobals.com</li>
                         <li><i class="flaticon-038-wall-clock"></i>Everyday: 06:00 -22:00</li>
                     </ul>
                     {{-- <div class="social-links">

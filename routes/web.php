@@ -33,6 +33,16 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', fn () =>  view('website/www-index'))->name('welcome');
 
+Route::view('/about', 'website/www-about-us')->name('bank-about');
+
+Route::view('/index', 'website/www-index')->name('bank-homepage');
+
+Route::view('/contact', 'website/www-contact')->name('bank-contact');
+
+Route::view('/loans', 'website/www-loans')->name('bank-loan');
+
+Route::get('/thankyou', fn () =>  view('thankyou'))->name('thankyou');
+
 // Route::get('/about', fn () =>  view('landing_pages.about'))->name('about');
 
 // Route::get('/student-loans', fn () =>  view('landing_pages.student_loans'))->name('student-loans');
@@ -43,15 +53,7 @@ Route::get('/', fn () =>  view('website/www-index'))->name('welcome');
 
 // Route::get('/personal-loans', fn () =>  view('landing_pages.personal_loans'))->name('personal-loans');
 
-Route::view('pub/about', 'website/www-about-us')->name('bank-about');
 
-Route::view('pub/index', 'website/www-index')->name('bank-homepage');
-
-Route::view('pub/contact', 'website/www-contact')->name('bank-contact');
-
-Route::view('pub/loans', 'website/www-loans')->name('bank-loan');
-
-Route::get('/thankyou', fn () =>  view('thankyou'))->name('thankyou');
 
 // only auth users can view all the messages
 Route::get('/contactmessage',  [ContactMessageController::class, 'index'])->middleware(['auth'])->name('contactmessages.index');

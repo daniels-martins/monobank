@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <title>Bluebird | Affordable Loans For You</title>
     <meta charset="UTF-8" />
-    <meta name="description" content="loans HTML Template" />
-    <meta name="keywords" content="loans, html" />
+    <meta name="description" content="Bluebird Global Express" />
+    <meta name="keywords" content="banks, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{-- favicons --}}

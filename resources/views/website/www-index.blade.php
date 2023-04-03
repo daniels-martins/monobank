@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="hs-text">
-                    <h2>Looking for a same day loan?</h2>
+                    <h2>Looking for a Bank that gives same day loan?</h2>
                     <p>
-                        If you're looking for a same day loan, you've come to the right place. At our bank, we
+                        If you're looking for a same day loan, you've come to the right place. At Bluebird, we
                         understand that unexpected expenses can arise at any time, and sometimes you need quick access
                         to cash to cover them.
                     </p>
@@ -57,7 +57,7 @@
                         <h5> Access to funding!</h5>
                         <p>
 
-                            Our loan institution can provide individuals and businesses with the necessary funds to
+                            Bluebird's loan infrastructure can provide individuals and businesses with the necessary funds to
                             finance various projects or endeavors. This can be especially beneficial for those who don't
                             have access to traditional bank loans or other sources of funding.
 
@@ -121,9 +121,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="feature-text">
-                        <h2>Get a personal loan from just 8.5% APR</h2>
+                        <h2>Get a Bluebird personal loan from just 8.5% APR</h2>
                         <p>
-                            Looking for a low-interest personal loan? You're in luck! With our latest offer, you can get
+                            Looking for a credible bank for a low-interest personal loan? You're in luck! With our latest offer, you can get
                             a personal loan starting from just 8.5% APR. Whether you need to consolidate debt, cover
                             unexpected expenses, or fund a major purchase, our affordable loan options can help make it
                             happen. Don't wait – apply now and get the funds you need with a payment plan that fits your
@@ -142,9 +142,9 @@
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="feature-text">
-                        <h2>Get aproved in minutes after you apply online</h2>
+                        <h2>Get aproved by Bluebird in minutes after you apply online</h2>
                         <p>
-                            Say goodbye to the long wait times and paperwork hassles of traditional loan applications!
+                           With Bluebird, you can say goodbye to the long wait times and paperwork hassles of traditional loan applications!
                             With our online loan application process, you can get approved for a loan in just minutes.
                             Our quick and easy online process makes it convenient for you to get the funds you need when
                             you need them. Apply today and get approved in minutes!
@@ -166,20 +166,20 @@
         <div class="row">
             <div class="col-md-6">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tem por incididunt ut labore et dolore mag na aliqua.
-                    Class aptent taciti sociosqu ad litora torquent per conubia
-                    nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida
-                    mattis magna, non varius lorem sodales nec.
+                  In addition to the Financial Wellness Program, Bluebird Bank has several other initiatives that
+                  demonstrate its commitment to helping its customers. For example, the bank offers low-interest
+                  loans to qualified customers who need financial assistance. These loans are designed to help
+                  customers pay for unexpected expenses, such as medical bills or home repairs, without incurring
+                  high-interest rates or fees.
                 </p>
             </div>
             <div class="col-md-6">
                 <p>
-                    Sit amet, consectetur adipiscing elit, sed do eiusmod tem por
-                    incididunt ut labore et dolore mag na aliqua. Class aptent taciti
-                    sociosqu ad litora torquent per conubia nostra, per inceptos
-                    himenaeos. Suspendisse potenti. Ut gravida mattis magna, non
-                    varius lorem sodales nec. In libero orci, ornare non nisl.
+                  Furthermore, the bank has a customer service team that is dedicated
+                  to answering customer questions and concerns promptly. This team is available 24/7, ensuring
+                  that customers can always get the help they need when they need it. Overall, Bluebird Bank is an
+                  institution that truly values its customers' financial well-being and is committed to helping
+                  them achieve their financial goals.
                 </p>
             </div>
         </div>
@@ -223,15 +223,17 @@
                     <h2>We’re here to help</h2>
                     <h5>Monday to Thursday (8am to 8pm), and Friday (8am to 5pm).</h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tem por incididunt ut labore et dolore mag na aliqua.
-                        Class aptent taciti sociosqu ad litora torquent per conubia
-                        nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida
-                        mattis magna, non varius lorem sodales nec. In libero orci,
-                        ornare non nisl.
+                        Bluebird Bank is a financial institution that truly cares about its customers. The bank
+                        understands that people's financial well-being is a top priority, and therefore, it has
+                        developed several programs and initiatives to help its customers in different ways. One such
+                        program is the Bluebird Bank Financial Wellness Program, which is designed to help customers
+                        manage their finances more effectively. The program provides access to financial education
+                        resources and tools, such as budgeting tips, credit counseling, and debt management plans. The
+                        bank also offers free financial consultations to customers who need assistance in creating a
+                        personalized financial plan.
                     </p>
                     <ul>
-                        <li>+34 56873 2246</li>
+                        <li>(619) 483-2333</li>
                         {{-- <li>
                             <a href="../../cdn-cgi/l/email-protection.html" class="__cf_email__"
                                 data-cfemail="5e3d31302a3f3d2a1e32313f302d6c3931703d3133">[email&#160;protected]</a>
