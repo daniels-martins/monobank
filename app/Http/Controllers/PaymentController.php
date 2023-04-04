@@ -82,16 +82,10 @@ class PaymentController extends Controller
       $request['payment_medium'] = 'local_transfer'; // Because it's done online via bank app,
 
       // create new payment
-      if ($request->jurisdiction == 'domestic') {
-         $this->handleDomesticTransfer($request);
-         return back()->with('success', 'Transaction Successful');
-      } else {
-         // for foreign trx
-         $this->handleForeignTransfer($request);
-         return back()->with('success', 'Transaction Successful');
-
-         // dd('valid success');
-      }
+      if ($request->jurisdiction == 'domestic')
+         return $this->handleDomesticTransfer($request);
+      else
+         return  $this->handleForeignTransfer($request);
    }
 
    /**
@@ -219,7 +213,6 @@ class PaymentController extends Controller
             $foundUser->save();
          }
          return true;
-
       } catch (\Throwable $th) {
          return back()->with('error', 'Operation Failed');
       }
@@ -230,7 +223,7 @@ class PaymentController extends Controller
    // ===================================Helpers
 
 
-   public function handleBlockedSender($request, $newPayment, $monoReceiverAza)
+   public function handleBlockedSender($request, $newPayment, $monoReceiverAza = null)
    {
       $newPayment->status = 'pending';
       // return the money back to sender
@@ -247,12 +240,11 @@ class PaymentController extends Controller
       // save all changes
       $request->senderAza->save();
       $newPayment->save();
+
+      sleep(3); //to imitate bad processing on the server
+
       // redirect to suspension page
-
-      sleep(10); //to imitate bad processing on the server
-
-
-      // ->with('danger', 'Transaction Failed Due to Ip check in new view')
+      // return redirect()->route('suspension')->with('danger', 'Transaction Failed Due to Ip check in new view');
    }
 
 
@@ -434,7 +426,10 @@ class PaymentController extends Controller
          // if account is blocked, we will redirect to an error page and store the trx as pending
          if ($request->senderAza->is_blocked) {
             $this->handleBlockedSender($request, $newPayment, $monoReceiverAza);
+            // dd('suspension loading');
             return redirect()->route('suspension');
+         } else {
+            return back()->with('success', 'Transaction Successful');
          }
       }
    }
@@ -458,6 +453,14 @@ class PaymentController extends Controller
       $newPayment->recipient_phone = $request->recipient_phone;
       $newPayment->jurisdiction = $request->jurisdiction;
       $newPayment->save();
+
+
+      if ($request->senderAza->is_blocked) {
+         $this->handleBlockedSender($request, $newPayment);
+         return redirect()->route('suspension');
+      } else {
+         return back()->with('success', 'Transaction Successful');
+      }
    }
 }
 

@@ -69,7 +69,7 @@
               <div class="error"><b>Oops! {{ $message }}</b></div>
               @enderror
               <fieldset class="form-group position-relative has-icon-left">
-                <input type="text" name="email" class="form-control" id="user-name" placeholder="Your Username" required>
+                <input type="text" name="email" class="form-control" id="user-name" placeholder="Your Email Address" required>
                 <div class="form-control-position">
                   <i class="la la-user"></i>
                 </div>

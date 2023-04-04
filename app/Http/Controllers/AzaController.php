@@ -164,13 +164,13 @@ class AzaController extends Controller
     */
    public function update(Request $request, Aza $account)
    {
+      // dd($request->all());
       $request->validate(
          [
             'reason_for_block' => 'required_if:is_blocked,1'
          ],
          [
             'reason_for_block.required_if' => 'Oops! You did not provide a reason for blocking your account'
-
          ]
       );
       $aza = $account;
@@ -183,10 +183,15 @@ class AzaController extends Controller
          'is_blocked' => ($request->is_blocked ?? $aza->is_blocked),
          'reason_for_block' => ($request->reason_for_block ?? $aza->reason_for_block),
       ];
-      if ($updated = $aza->update($parameters))
-         return ($aza->wasChanged(['status', 'is_blocked', 'reason_for_block']))
-            ? back()->with('success', "Account Updated Successfully")
-            : back()->with('warning', 'Oops! Something went wrong. Please Try again');
+      // merging suspended status with blocked status
+      if ($request->status == 'suspended') $parameters['is_blocked'] = 1;
+      if ($request->is_blocked) $parameters['status'] = 'suspended';
+      if (!$request->is_blocked) $parameters['status'] = 'active';
+
+      return ($updated = $aza->update($parameters))
+         // dd('aza blocked', $aza->is_blocked, 'aza status',$aza->status);
+         ? back()->with('success', "Account Updated Successfully")
+         : back()->with('warning', 'Oops! Something went wrong. Please Try again.');
    }
 
    /**
@@ -204,7 +209,7 @@ class AzaController extends Controller
             ? back()->with('success', "$aza->num deleted Successfully")
             : back()->with('warning', 'Oops! Something went wrong. Please Try again');
       } else {
-       return  back()->with('warning', 'Oops! Account Removal Failed : Account has funds in it');
+         return  back()->with('warning', 'Oops! Account Removal Failed : Account has funds in it');
       }
    }
 

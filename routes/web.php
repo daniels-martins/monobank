@@ -103,7 +103,7 @@ Route::get('/dashboard1',  function () {
 
 Route::get('/dashboard',  function () {
    // Get the current time in US Central Time
-   $now = Carbon::now('America/Chicago');
+   $now = Carbon::now('America/New_York');
 
    // Get the current hour
    $hour = $now->hour;

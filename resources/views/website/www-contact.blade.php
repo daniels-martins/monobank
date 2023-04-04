@@ -25,7 +25,7 @@
                         soon as possible. We appreciate your feedback and look forward to hearing from you!</p>
                     <ul>
                         <li><i class="flaticon-032-placeholder"></i>PO Box 63, Winslow, NY 46540, USA</li>
-                        <li><i class="flaticon-029-telephone-1"></i>(619) 483-2333</li>
+                        <li><i class="flaticon-029-telephone-1"></i> +1 (619) 483-2333</li>
                         <li><i class="flaticon-025-arroba"></i>info@bluebirdglobals.com</li>
                         <li><i class="flaticon-038-wall-clock"></i>Everyday: 06:00 -22:00</li>
                     </ul>

@@ -82,13 +82,13 @@
                 <li><a href="{{ route('bank-loan') }}" class="{{ Route::currentRouteName() == 'bank-loan' ? 'active' : ''}}"">Apply For A Loan Today</a></li>
                 <li><a href="{{ route('bank-about') }}" class="{{ Route::currentRouteName() == 'bank-about' ? 'active' : ''}}"">About Us</a></li>
                 <li><a href="{{ route('bank-contact') }}" class="{{ Route::currentRouteName() == 'bank-contact' ? 'active' : ''}}"">Contact</a></li>
-                <li><a href="{{ route('register') }}" class="">Join Us Today</a></li>
+                <li><a href="{{ route('register') }}" class="">Sign Up / Account</a></li>
             </ul>
             <div class="header-right">
                 <span
                  class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now!
                 </span>
-                <div class="hr-btn hr-btn-2">+(619) 483-2333</div>
+                <div class="hr-btn hr-btn-2">+1 (619) 483-2333</div>
 
             </div>
         </nav>

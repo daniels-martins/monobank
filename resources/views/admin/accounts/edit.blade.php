@@ -101,7 +101,8 @@
                                                                             <option value="{{ $status }}">
                                                                                 {{ ucfirst($key) }}</option>
                                                                         @endforeach
-                                                                    </select>
+                                                                        {{-- <option value="blocked">Blocked</option> --}}
+                                                                     </select>
                                                                 </div>
                                                             </div>
 
@@ -116,8 +117,8 @@
                                                                     <select name="is_blocked" id=""
                                                                         class="form-control">
                                                                         <option value="">--Select--</option>
-                                                                        <option value="{{ true }}">Block Account</option>
-                                                                        <option value="{{ false }}">Release Account</option>
+                                                                        <option value="1">Block Account</option>
+                                                                        <option value="0">Release Account</option>
                                                                     </select>
                                                                 </div>
                                                             </div>

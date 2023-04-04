@@ -151,8 +151,8 @@
                                                        </label>
                                                        <input value="{{ old('recipient_iban_num') }}"
                                                            class="form-control" id="recipient_iban_num"
-                                                           type="text" placeholder="eg. John Doe" minlength="9"
-                                                           maxlength="9" name="recipient_iban_num">
+                                                           type="text" placeholder="eg. John Doe" minlength="34"
+                                                           maxlength="35" name="recipient_iban_num">
                                                    </div>
                                                </div>
 
@@ -286,7 +286,7 @@
                                                             <input required value="{{ old('recipient_phone') }}"
                                                                 class="form-control" id="recipient_phone"
                                                                 type="text" placeholder="eg. John Doe" minlength="10"
-                                                                maxlength="10" name="recipient_phone">
+                                                                maxlength="18" name="recipient_phone">
                                                         </div>
                                                     </div>
 
