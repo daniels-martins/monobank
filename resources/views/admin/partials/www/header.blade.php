@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bluebird | Affordable Loans For You</title>
+    <title>Bluebird Bank| Experience banking made easy</title>
     <meta charset="UTF-8" />
     <meta name="description" content="Bluebird Global Express" />
     <meta name="keywords" content="banks, html" />
@@ -88,7 +88,7 @@
                 <span
                  class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now!
                 </span>
-                <div class="hr-btn hr-btn-2">+45 332 65767 42</div>
+                <div class="hr-btn hr-btn-2">+(619) 483-2333</div>
 
             </div>
         </nav>

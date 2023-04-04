@@ -19,7 +19,7 @@
                     <input type="email" placeholder="Your E-mail"name="email" required />
                     <input type="text" placeholder="Your Phone" name="phone" required />
                     <input type="text" placeholder="Subject" name="subject" required />
-                    <textarea type="text" placeholder="Why do you want this loan" rows="5" cols="50" name="message" required></textarea>
+                    <textarea class="form-control" type="text" placeholder="Why do you want this loan?" rows=3 cols="30" name="message" required></textarea>
                     <p>
 
                     </p>

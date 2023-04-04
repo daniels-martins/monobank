@@ -57,7 +57,7 @@
             </div>
 
             <div class="" style="display: flex; gap: .5em;">
-               <p><img src="/static_assets/website/img/brands/2.png" alt="" width="72" height="72"></p>
+               <p><img src="/static_assets/website/img/brands/frs_usa.png" alt="" width="72" height="72"></p>
                <p><img src="/static_assets/website/img/feature-1.jpg" alt="" width="72" height="72"></p>
                <p><img src="/static_assets/website/img/feature-2.jpg" alt="" width="72" height="72"></a>
                </p>

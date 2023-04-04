@@ -264,28 +264,30 @@
             <h2>We’re regulated by these authorities</h2>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+         <div class="col-lg-4">
+            <div class="authoritie-item">
+                <img src="/static_assets/website/img/brands/frs_usa.png" alt="" width="100">
+                <h5>The Federal Reserve System</h5>
+
+                {{-- <a href="about-us.html#" class="readmore">Apply for a loan now <img
+                        src="/static_assets/website/img/arrow.png" alt=""></a> --}}
+            </div>
+        </div>
+
+            <div class="col-lg-4 my-1">
                 <div class="authoritie-item">
-                    <img src="/static_assets/website/img/brands/1.png" alt="">
-                    <h4>Financial Conduct Authority</h4>
+                    <img src="/static_assets/website/img/brands/1.png" alt="" width="200">
+                    <h5 class="my-1">Financial Conduct Authority</h5>
 
                     {{-- <a href="about-us.html#" class="readmore">Apply for a loan now <img
                             src="/static_assets/website/img/arrow.png" alt=""></a> --}}
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="authoritie-item">
-                    <img src="/static_assets/website/img/brands/2.png" alt="">
-                    <h4>Prudential Regulation Authority</h4>
-
-                    {{-- <a href="about-us.html#" class="readmore">Apply for a loan now <img
-                            src="/static_assets/website/img/arrow.png" alt=""></a> --}}
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="authoritie-item">
-                    <img src="/static_assets/website/img/brands/3.png" alt="">
-                    <h4>Peer-to-Peer Finance Association</h4>
+           
+            <div class="col-lg-4 my-1">
+                <div class="authoritie-item pt-5 mt-5">
+                    <img src="/static_assets/website/img/brands/3.png" alt="" width="200">
+                    <h5>Peer-to-Peer Finance Association</h5>
 
                     {{-- <a href="about-us.html#" class="readmore">Apply for a loan now <img
                             src="/static_assets/website/img/arrow.png" alt=""></a> --}}

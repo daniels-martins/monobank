@@ -49,7 +49,7 @@
 </ul>
 <div class="header-right">
 <a href="news.html#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now! </a>
-<div class="hr-btn hr-btn-2">+45 332 65767 42</div>
+<div class="hr-btn hr-btn-2">(619) 483-2333 </div>
 </div>
 </nav>
 </header>

@@ -68,12 +68,6 @@
             <div class="ls-result">
                 Weekly payments: <span id="lone-emi">$19</span>
             </div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tem por incididunt ut labore et dolore mag na aliqua. Class
-                aptent taciti sociosqu ad litora torquent per conubia sed do eiusmod
-                tem por incididun.
-            </p>
             <div class="text-center">
                 <a href="{{ route('sweet_alert1') }}" class="site-btn mr-0 mr-sm-2 mt-4">apply right now!</a>
                 <!-- <a href="loans.html#" class="site-btn sb-dark mt-4">see other loans</a> -->
@@ -93,7 +87,7 @@
                     <img src="/static_assets/website/img/loans/1.jpg" alt="" />
                     <h4>Wedding Loan</h4>
                     <p>
-                        LoOur wedding loan is designed to provide you with the funds you need to make your special day
+                        At Blue bird, we know that your wedding is a special event that needs to be celebrated in the best way possible. Hence, o  ur wedding loan is designed to provide you with the funds you need to make your special day
                         unforgettable. With flexible repayment terms and competitive interest rates, our wedding loan
                         can help you manage the expenses associated with planning a wedding, from venue rentals to
                         catering to the dress of your dreams.
