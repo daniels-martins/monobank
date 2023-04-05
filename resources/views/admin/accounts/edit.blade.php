@@ -112,7 +112,8 @@
                                                                 </p>
                                                                 <div class="col-md-9">
                                                                     <div> Current Status :
-                                                                        {{ boolval($aza->is_blocked) ? 'Blocked' : 'Operational' }}
+                                                                        {{-- {{ ($aza->is_blocked or $aza->status !== 'active') ? 'Blocked' : 'Operational' }} --}}
+                                                                        {{ $aza->status }}
                                                                     </div>
                                                                     <select name="is_blocked" id=""
                                                                         class="form-control">

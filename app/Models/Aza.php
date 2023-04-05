@@ -37,6 +37,10 @@ class Aza extends Model
       $lastTwoNos = substr($this->num,-2);
       $appender = '*****';
       return $firsThreeNos . $appender . $lastTwoNos; //e.g 123*****90
+    }
 
+    public function presentStatus()
+    {
+      return ($this->status == 'held') ? 'On Hold' : ucfirst($this->status);
     }
 }

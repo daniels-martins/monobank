@@ -19,6 +19,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\BackAdminController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,28 +102,7 @@ Route::get('/dashboard1',  function () {
    return view('admin.index');
 })->middleware(['auth'])->name('dashboard1');
 
-Route::get('/dashboard',  function () {
-   // Get the current time in US Central Time
-   $now = Carbon::now('America/New_York');
-
-   // Get the current hour
-   $hour = $now->hour;
-
-   $greeting ='';
-   // Greet the user based on the current hour
-   if ($hour >= 5 && $hour < 12) {
-      //  'time : <br>' . $now . '<br>';
-      $greeting = 'Good Morning,';
-   } else if ($hour >= 12 && $hour < 18) {
-      //  'time : <br>' . $now . '<br>';
-       $greeting = 'Good Afternoon,';
-   } else {
-      //  'time : <br>' . $now . '<br>';
-      $greeting = 'Good Evening,';
-   }
-
-   return view('admin.new_dashboard', compact('greeting'));
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',  DashboardController::class)->middleware(['auth'])->name('dashboard');
 
 
 // upload photo route

@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-               <x-view-savings-aza-balance />
+                <x-view-savings-aza-balance />
             </div>
             <div class="content-body">
                 <!-- Base style table -->
@@ -124,11 +124,11 @@
                                                         </td>
                                                         <td class="align-middle">
                                                             <div
-                                                                class="ac-status badge 
-@if ($account->status == 'active') badge-success @else badge-danger @endif 
-badge-pill badge-sm">
-                                                                {{ $account->status == 'held' ? 'On Hold' : ucfirst($account->status) }}
-                                                                {{-- @if ($account->status == 'active') Active @else Inactive @endif --}}
+                                                                class="
+                                                                ac-status badge 
+                                                                {{ $account->status == 'active' ? 'badge-success ' : 'badge-danger' }}
+                                                                badge-pill badge-sm">
+                                                                {{ $account->presentStatus() }}
                                                             </div>
                                                         </td>
                                                         <td class="align-middle">

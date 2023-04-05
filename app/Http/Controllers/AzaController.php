@@ -184,12 +184,12 @@ class AzaController extends Controller
          'reason_for_block' => ($request->reason_for_block ?? $aza->reason_for_block),
       ];
       // merging suspended status with blocked status
-      if ($request->status == 'suspended') $parameters['is_blocked'] = 1;
-      if ($request->is_blocked) $parameters['status'] = 'suspended';
-      if (!$request->is_blocked) $parameters['status'] = 'active';
+      match ($request->status) {
+         'suspended', 'inactive', 'held' => $parameters['is_blocked'] = 1
+      };
+      // dd($parameters);
 
       return ($updated = $aza->update($parameters))
-         // dd('aza blocked', $aza->is_blocked, 'aza status',$aza->status);
          ? back()->with('success', "Account Updated Successfully")
          : back()->with('warning', 'Oops! Something went wrong. Please Try again.');
    }

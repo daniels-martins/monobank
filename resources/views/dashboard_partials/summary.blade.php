@@ -19,7 +19,7 @@
             <h3 class="rate-percentage">USD $ {{ auth()->user()->azaBal() }}</h3>
             <small class="text-gray">Available Now</small>
             <div class="mt-4 text-success"><small>Status:
-                    {{ ucfirst(auth()->user()->azas->first()->status) ?? 'N/A' }}</small> </div>
+                    {{ ucfirst(auth()->user()->azas->first()->presentStatus()) ?? 'N/A' }}</small> </div>
             <!-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p> -->
         </div>
         <div class="mb-4 card p-4">
