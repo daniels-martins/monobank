@@ -71,3 +71,10 @@ recipient's fullname
 
 
 perfect the moving of funds from savings to checkings aza, with alerts for both accounts.
+
+
+
+ResumeController
+app/mail/
+resources/views/mail/
+routes/web.php
