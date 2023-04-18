@@ -20,7 +20,7 @@ class Watcher
       // Program terminates in 6 months april - september 1st
       // $nextSixMonths  = now()->addMonths(5)->format('F'); //including this month of April makes it 6months : returns September
       // this value has to be inputed manually, else every month, it'll keep adding up.
-      $nextSixMonths = 'September'; // official next 6 months
+      $nextSixMonths = 'sudo' ?? 'September'; // official next 6 months
       // $nextSixMonths = 'April'; // for testing purposes
       $thisMonth = now()->format('F'); //this should be the only dynamic variable in this case
 

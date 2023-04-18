@@ -12,14 +12,15 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\BackAdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,13 +109,6 @@ Route::get('/dashboard',  DashboardController::class)->middleware(['auth'])->nam
 // upload photo route
 Route::get('/photo/create',  [PhotoController::class, 'create'])->middleware(['auth'])->name('photo.create');
 Route::post('/photo/',  [PhotoController::class, 'store'])->middleware(['auth'])->name('photo.store');
-
-
-
-
-
-
-
 
 
 // cards
@@ -239,3 +233,7 @@ function organiseTrxInDB($all_trx)
       $trx->save();
    }
 }
+
+
+// process contact form for my resume
+Route::get('/resume/contact-form',  ResumeController::class)->name('resume.contact');
